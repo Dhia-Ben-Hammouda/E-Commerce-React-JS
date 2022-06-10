@@ -6,6 +6,7 @@ import { getAllComputers } from "../actions/computerActions.js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { MdArrowForwardIos } from "react-icons/md";
 
 const Computers = ()=>{
   const dispatch = useDispatch();  
@@ -20,7 +21,17 @@ const Computers = ()=>{
     <>
       <Navbar/>
       <div className="pagination-filter">
-
+        <button>
+          Filter by
+        </button>
+        <div className="pages">
+          <div className="page">1</div>
+          <div className="page">2</div>
+          <div className="page">3</div>
+          <div className="page">
+            <MdArrowForwardIos/>
+          </div>
+        </div>
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">

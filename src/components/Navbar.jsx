@@ -33,7 +33,9 @@ const Navbar = () => {
                 <FaUserAlt />
               </a>
               <div className="cart" style={{ marginLeft: "1rem" }}>
-                <FaShoppingCart />
+                <a href="/cart">
+                  <FaShoppingCart />
+                </a>
                 <div className="cart-num">
                   0
                 </div>
