@@ -2,11 +2,12 @@ import React from "react";
 import Navbar from "./Navbar.jsx";
 import Keyboard from "./Keyboard.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { getAllKeyboards } from "../actions/keyboardActions.js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import CircularProgress from '@mui/material/CircularProgress';
 import { MdArrowForwardIos } from "react-icons/md";
+import { getAllKeyboards } from "../redux/actions/productActions.js";
 
 const Keyboards = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,8 @@ const Keyboards = () => {
     dispatch(getAllKeyboards());
   }, [dispatch]);
 
-  const keyboards = useSelector((state) => state.keyboards);
+  const keyboards = useSelector((state) => state.keyboardReducer.keyboards);
+  const loading = useSelector((state)=> state.keyboardReducer.loading);
 
   return (
     <>
@@ -52,7 +54,9 @@ const Keyboards = () => {
         </div>
         <div className="computer-container">
           {
-            keyboards.map((keyboard, index) => {
+            loading ? <div className="loading-wrapper">
+            <CircularProgress style={{margin:"3rem"}}/>
+            </div>:keyboards.map((keyboard, index) => {
               return (
                 <Keyboard key={index}
                   picture={keyboard.picture}

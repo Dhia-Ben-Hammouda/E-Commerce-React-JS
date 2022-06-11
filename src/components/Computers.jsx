@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar.jsx";
 import Computer from "./Computer.jsx";
+import CircularProgress from '@mui/material/CircularProgress';
 import { Checkbox , FormGroup , FormControlLabel} from "@mui/material";
-import { getAllComputers } from "../actions/computerActions.js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
+import { getAllComputers } from "../redux/actions/productActions.js";
 
 const Computers = ()=>{
   const dispatch = useDispatch();  
@@ -15,7 +16,8 @@ const Computers = ()=>{
     dispatch(getAllComputers());
   } , [dispatch]);
 
-  const computers = useSelector((state)=>state.computers);
+  const computers = useSelector((state)=>state.computerReducer.computers);
+  const loading = useSelector((state)=>state.computerReducer.loading);
 
   return(
     <>
@@ -85,7 +87,9 @@ const Computers = ()=>{
         </div>
         <div className="computer-container">
           {
-            computers.map((computer,index)=>{
+            loading ? <div className="loading-wrapper">
+              <CircularProgress style={{margin:"3rem"}}/>
+            </div>:computers.map((computer,index)=>{
               return(
                 <Computer key={index} 
                   picture={computer.picture}

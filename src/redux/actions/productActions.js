@@ -14,7 +14,7 @@ export const getAllComputers = () =>async (dispatch) => {
 export const getAllKeyboards = () => async (dispatch) => {
   try{
     dispatch({type:actionTypes.FETCH_ALL_KEYBOARDS_REQUEST});
-    const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/keyboards/getAllKeyboards");
+    const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards");
     const data = await response.json();
     dispatch({type:actionTypes.FETCH_ALL_KEYBOARDS_SUCCESS , payload : data});
   }catch(err){
