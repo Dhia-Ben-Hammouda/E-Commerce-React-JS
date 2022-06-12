@@ -11,7 +11,8 @@ const InsertKeyboard = () => {
     brand:"",
     description:"",
     mechanical:"",
-    picture:""
+    picture:"",
+    wireless:""
   })
 
   async function submitHandler(e)
@@ -62,6 +63,14 @@ const InsertKeyboard = () => {
             sx={{ mb: 1 }}
             value={keyboard.mechanical}
             onChange={(e)=>{setKeyboard({...keyboard , mechanical:e.target.value})}}
+          />
+
+          <TextField
+            label="Wirelesss : Yes | No"
+            fullWidth
+            sx={{ mb: 1 }}
+            value={keyboard.wireless}
+            onChange={(e)=>{setKeyboard({...keyboard , wireless:e.target.value})}}
           />
 
           <TextField

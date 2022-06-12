@@ -51,12 +51,26 @@ const Keyboards = () => {
               <FormControlLabel className="label" control={<Checkbox />} label="Dell" />
             </FormGroup>
           </div>
+          <div className="mechanical">
+            <h1>Mechanical</h1>
+            <FormGroup>
+              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
+              <FormControlLabel className="label" control={<Checkbox />} label="No" />
+            </FormGroup>
+          </div>
+          <div className="wireless">
+            <h1>Wireless</h1>
+            <FormGroup>
+              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
+              <FormControlLabel className="label" control={<Checkbox />} label="No" />
+            </FormGroup>
+          </div>
         </div>
         <div className="computer-container">
           {
             loading ? <div className="loading-wrapper">
             <CircularProgress style={{margin:"3rem"}}/>
-            </div>:keyboards.map((keyboard, index) => {
+            </div> : keyboards.map((keyboard, index) => {
               return (
                 <Keyboard key={index}
                   picture={keyboard.picture}
