@@ -49,6 +49,7 @@ const Screens = () => {
               <FormControlLabel className="label" control={<Checkbox />} label="HP" />
               <FormControlLabel className="label" control={<Checkbox />} label="Redragon" />
               <FormControlLabel className="label" control={<Checkbox />} label="Dell" />
+              <FormControlLabel className="label" control={<Checkbox />} label="Samsung" />
             </FormGroup>
           </div>
           <div className="size">
