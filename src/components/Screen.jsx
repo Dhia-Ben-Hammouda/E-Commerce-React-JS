@@ -1,11 +1,13 @@
 import React from "react";
 
-const Screen = ({ picture, description, price, name }) => {
+const Screen = ({id, picture, description, price, name }) => {
   return (
     <>
       <div className="computer">
         <div className="computer-left">
-          <img alt="" style={{ width: "80%" }} src={picture} />
+          <a href={`/product/${id}`}>
+            <img alt="" style={{ width: "80%" }} src={picture} />
+          </a>
           <h2>
             {price}
           </h2>
@@ -15,9 +17,11 @@ const Screen = ({ picture, description, price, name }) => {
         </div>
         <div className="computer-right">
           <h3>
-            {
-              name
-            }
+            <a href={`/product/${id}`}>
+              {
+                name
+              }
+            </a>
           </h3>
           <h4>
             {

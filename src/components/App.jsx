@@ -7,6 +7,7 @@ import Screens from "./Screens.jsx";
 import SignIn from "./SignIn.jsx";
 import SignUp from "./SignUp.jsx";
 import Cart from "./Cart.jsx";
+import Product from "./Product.jsx";
 import InsertComputer from "../api/InsertComputer.jsx";
 import InsertKeyboard from "../api/InsertKeyboard.jsx";
 import InsertMouse from "../api/InsertMouse.jsx";
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/InsertScreen" element={ <InsertScreen/> } />
         <Route path="/InsertMouse" element={ <InsertMouse/> } />
         <Route path="/InsertKeyboard" element={ <InsertKeyboard/> } />
+        <Route path="/products/:id" element={ <Product/> } />
       </Routes>
     </>
   );

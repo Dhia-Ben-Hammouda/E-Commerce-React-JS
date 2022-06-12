@@ -66,6 +66,7 @@ const Mouses = () => {
             </div> : mouses.map((mouse, index) => {
               return (
                 <Mouse key={index}
+                  id={mouse._id}
                   picture={mouse.picture}
                   description={mouse.description}
                   brand={mouse.brand}

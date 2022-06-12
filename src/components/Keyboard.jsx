@@ -1,11 +1,13 @@
 import React from "react";
 
-const Keyboard = ({ picture, description, price, name }) => {
+const Keyboard = ({ id ,picture, description, price, name }) => {
   return (
     <>
       <div className="computer">
         <div className="computer-left">
-          <img alt="" style={{ width: "80%" }} src={picture} />
+          <a href={`/product/${id}`}>
+            <img alt="" style={{ width: "80%" }} src={picture} />
+          </a>
           <h2>
             {price}
           </h2>

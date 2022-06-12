@@ -1,11 +1,13 @@
 import React from "react";
 
-const Computer = ({ picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
+const Computer = ({id , picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
   return (
     <>
       <div className="computer">
         <div className="computer-left">
-          <img alt="" style={{ width: "80%" }} src={picture} />
+          <a href={`/product/${id}`}>
+            <img alt="" style={{ width: "80%" }} src={picture} />
+          </a>
           <h2>
             {price}
           </h2>

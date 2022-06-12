@@ -92,6 +92,7 @@ const Computers = ()=>{
             </div>:computers.map((computer,index)=>{
               return(
                 <Computer key={index} 
+                  id={computer._id}
                   picture={computer.picture}
                   description={computer.description}
                   brand={computer.brand}

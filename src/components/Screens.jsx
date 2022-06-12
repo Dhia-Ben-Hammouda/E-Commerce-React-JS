@@ -78,6 +78,7 @@ const Screens = () => {
             </div> : screens.map((screen, index) => {
               return (
                 <Screen key={index}
+                  id={screen._id}
                   picture={screen.picture}
                   description={screen.description}
                   brand={screen.brand}
