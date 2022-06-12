@@ -1,6 +1,6 @@
 import React from "react";
 
-const Computer = ({id , picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
+const Computer = ({ id, picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
   return (
     <>
       <div className="computer">
@@ -17,9 +17,11 @@ const Computer = ({id , picture, description, brand, price, procesor, memory, gr
         </div>
         <div className="computer-right">
           <h3>
-            {
-              name
-            }
+            <a href={`/product/${id}`}>
+              {
+                name
+              }
+            </a>
           </h3>
           <h4>
             {
@@ -36,7 +38,7 @@ const Computer = ({id , picture, description, brand, price, procesor, memory, gr
           </div>
         </div>
       </div>
-    </> 
+    </>
   );
 }
 

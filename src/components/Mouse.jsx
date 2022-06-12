@@ -17,9 +17,11 @@ const Mouse = ({ id, picture, description, price, name }) => {
         </div>
         <div className="computer-right">
           <h3>
-            {
-              name
-            }
+            <a href={`/product/${id}`}>
+              {
+                name
+              }
+            </a>
           </h3>
           <h4>
             {
@@ -36,7 +38,7 @@ const Mouse = ({ id, picture, description, price, name }) => {
           </div>
         </div>
       </div>
-    </> 
+    </>
   );
 }
 
