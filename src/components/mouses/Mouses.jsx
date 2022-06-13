@@ -1,23 +1,23 @@
 import React from "react";
-import Navbar from "./Navbar.jsx";
-import Screen from "./Screen.jsx";
+import Navbar from "../Navbar.jsx";
+import Mouse from "./Mouse.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllScreens } from "../redux/actions/productActions.js";
+import { getAllMouses } from "../../redux/actions/productActions.js";
 
-const Screens = () => {
+const Mouses = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllScreens());
+    dispatch(getAllMouses());
   }, [dispatch]);
 
-  const screens = useSelector((state) => state.screenReducer.screens);
-  const loading = useSelector((state)=> state.screenReducer.loading);
+  const mouses = useSelector((state) => state.mouseReducer.mouses);
+  const loading = useSelector((state)=> state.mouseReducer.loading);
 
   return (
     <>
@@ -49,25 +49,13 @@ const Screens = () => {
               <FormControlLabel className="label" control={<Checkbox />} label="HP" />
               <FormControlLabel className="label" control={<Checkbox />} label="Redragon" />
               <FormControlLabel className="label" control={<Checkbox />} label="Dell" />
-              <FormControlLabel className="label" control={<Checkbox />} label="Samsung" />
             </FormGroup>
           </div>
-          <div className="size">
-            <h1>Size</h1>
+          <div className="wireless">
+            <h1>Wireless</h1>
             <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="21'" />
-              <FormControlLabel className="label" control={<Checkbox />} label="24'" />
-              <FormControlLabel className="label" control={<Checkbox />} label="27'" />
-              <FormControlLabel className="label" control={<Checkbox />} label="32'" />
-            </FormGroup>
-          </div>
-          <div className="resolution">
-            <h1>Resolution</h1>
-            <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="HD" />
-              <FormControlLabel className="label" control={<Checkbox />} label="Full HD" />
-              <FormControlLabel className="label" control={<Checkbox />} label="QHD" />
-              <FormControlLabel className="label" control={<Checkbox />} label="4K" />
+              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
+              <FormControlLabel className="label" control={<Checkbox />} label="No" />
             </FormGroup>
           </div>
         </div>
@@ -75,17 +63,16 @@ const Screens = () => {
           {
             loading ? <div className="loading-wrapper">
             <CircularProgress style={{margin:"3rem"}}/>
-            </div> : screens.map((screen, index) => {
+            </div> : mouses.map((mouse, index) => {
               return (
-                <Screen key={index}
-                  id={screen._id}
-                  picture={screen.picture}
-                  description={screen.description}
-                  brand={screen.brand}
-                  price={screen.price}
-                  name={screen.name}
-                  size={screen.size}
-                  resolution={screen.resolution}
+                <Mouse key={index}
+                  id={mouse._id}
+                  picture={mouse.picture}
+                  description={mouse.description}
+                  brand={mouse.brand}
+                  price={mouse.price}
+                  name={mouse.name}
+                  wireless={mouse.wireless}
                 />
               );
             })
@@ -96,4 +83,4 @@ const Screens = () => {
   );
 }
 
-export default Screens;
+export default Mouses;

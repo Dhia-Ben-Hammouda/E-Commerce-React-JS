@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar.jsx";
+import Navbar from "../Navbar.jsx";
 import Computer from "./Computer.jsx";
 import CircularProgress from '@mui/material/CircularProgress';
 import { Checkbox , FormGroup , FormControlLabel} from "@mui/material";
@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllComputers } from "../redux/actions/productActions.js";
+import { getAllComputers } from "../../redux/actions/productActions.js";
 
 const Computers = ()=>{
   const dispatch = useDispatch();  

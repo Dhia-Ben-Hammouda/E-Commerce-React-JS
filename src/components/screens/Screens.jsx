@@ -1,23 +1,23 @@
 import React from "react";
-import Navbar from "./Navbar.jsx";
-import Keyboard from "./Keyboard.jsx";
+import Navbar from "../Navbar.jsx";
+import Screen from "./Screen.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllKeyboards } from "../redux/actions/productActions.js";
+import { getAllScreens } from "../../redux/actions/productActions.js";
 
-const Keyboards = () => {
+const Screens = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllKeyboards());
+    dispatch(getAllScreens());
   }, [dispatch]);
 
-  const keyboards = useSelector((state) => state.keyboardReducer.keyboards);
-  const loading = useSelector((state)=> state.keyboardReducer.loading);
+  const screens = useSelector((state) => state.screenReducer.screens);
+  const loading = useSelector((state)=> state.screenReducer.loading);
 
   return (
     <>
@@ -49,20 +49,25 @@ const Keyboards = () => {
               <FormControlLabel className="label" control={<Checkbox />} label="HP" />
               <FormControlLabel className="label" control={<Checkbox />} label="Redragon" />
               <FormControlLabel className="label" control={<Checkbox />} label="Dell" />
+              <FormControlLabel className="label" control={<Checkbox />} label="Samsung" />
             </FormGroup>
           </div>
-          <div className="mechanical">
-            <h1>Mechanical</h1>
+          <div className="size">
+            <h1>Size</h1>
             <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
-              <FormControlLabel className="label" control={<Checkbox />} label="No" />
+              <FormControlLabel className="label" control={<Checkbox />} label="21'" />
+              <FormControlLabel className="label" control={<Checkbox />} label="24'" />
+              <FormControlLabel className="label" control={<Checkbox />} label="27'" />
+              <FormControlLabel className="label" control={<Checkbox />} label="32'" />
             </FormGroup>
           </div>
-          <div className="wireless">
-            <h1>Wireless</h1>
+          <div className="resolution">
+            <h1>Resolution</h1>
             <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
-              <FormControlLabel className="label" control={<Checkbox />} label="No" />
+              <FormControlLabel className="label" control={<Checkbox />} label="HD" />
+              <FormControlLabel className="label" control={<Checkbox />} label="Full HD" />
+              <FormControlLabel className="label" control={<Checkbox />} label="QHD" />
+              <FormControlLabel className="label" control={<Checkbox />} label="4K" />
             </FormGroup>
           </div>
         </div>
@@ -70,16 +75,17 @@ const Keyboards = () => {
           {
             loading ? <div className="loading-wrapper">
             <CircularProgress style={{margin:"3rem"}}/>
-            </div> : keyboards.map((keyboard, index) => {
+            </div> : screens.map((screen, index) => {
               return (
-                <Keyboard key={index}
-                  id={keyboards._id}
-                  picture={keyboard.picture}
-                  description={keyboard.description}
-                  brand={keyboard.brand}
-                  price={keyboard.price}
-                  name={keyboard.name}
-                  mechanical={keyboard.mechanical}
+                <Screen key={index}
+                  id={screen._id}
+                  picture={screen.picture}
+                  description={screen.description}
+                  brand={screen.brand}
+                  price={screen.price}
+                  name={screen.name}
+                  size={screen.size}
+                  resolution={screen.resolution}
                 />
               );
             })
@@ -90,4 +96,4 @@ const Keyboards = () => {
   );
 }
 
-export default Keyboards;
+export default Screens;

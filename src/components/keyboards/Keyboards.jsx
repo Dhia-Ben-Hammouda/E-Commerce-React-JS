@@ -1,23 +1,23 @@
 import React from "react";
-import Navbar from "./Navbar.jsx";
-import Mouse from "./Mouse.jsx";
+import Navbar from "../Navbar.jsx";
+import Keyboard from "./Keyboard.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllMouses } from "../redux/actions/productActions.js";
+import { getAllKeyboards } from "../../redux/actions/productActions.js";
 
-const Mouses = () => {
+const Keyboards = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllMouses());
+    dispatch(getAllKeyboards());
   }, [dispatch]);
 
-  const mouses = useSelector((state) => state.mouseReducer.mouses);
-  const loading = useSelector((state)=> state.mouseReducer.loading);
+  const keyboards = useSelector((state) => state.keyboardReducer.keyboards);
+  const loading = useSelector((state)=> state.keyboardReducer.loading);
 
   return (
     <>
@@ -51,6 +51,13 @@ const Mouses = () => {
               <FormControlLabel className="label" control={<Checkbox />} label="Dell" />
             </FormGroup>
           </div>
+          <div className="mechanical">
+            <h1>Mechanical</h1>
+            <FormGroup>
+              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
+              <FormControlLabel className="label" control={<Checkbox />} label="No" />
+            </FormGroup>
+          </div>
           <div className="wireless">
             <h1>Wireless</h1>
             <FormGroup>
@@ -63,16 +70,16 @@ const Mouses = () => {
           {
             loading ? <div className="loading-wrapper">
             <CircularProgress style={{margin:"3rem"}}/>
-            </div> : mouses.map((mouse, index) => {
+            </div> : keyboards.map((keyboard, index) => {
               return (
-                <Mouse key={index}
-                  id={mouse._id}
-                  picture={mouse.picture}
-                  description={mouse.description}
-                  brand={mouse.brand}
-                  price={mouse.price}
-                  name={mouse.name}
-                  wireless={mouse.wireless}
+                <Keyboard key={index}
+                  id={keyboards._id}
+                  picture={keyboard.picture}
+                  description={keyboard.description}
+                  brand={keyboard.brand}
+                  price={keyboard.price}
+                  name={keyboard.name}
+                  mechanical={keyboard.mechanical}
                 />
               );
             })
@@ -83,4 +90,4 @@ const Mouses = () => {
   );
 }
 
-export default Mouses;
+export default Keyboards;
