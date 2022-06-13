@@ -39,13 +39,16 @@ body{
 }
 
 @import "colors.scss";
+
 @import "navbar.scss";
+
 @import "home.scss";
+
 @import "signin.scss";
 @import "signup.scss";
-@import "computers.scss";
-@import "computer.scss";
-@import "keyboards.scss";
-@import "mouses.scss";
-@import "screens.scss";
+
+@import "productPage.scss";
+@import "productDetails.scss";
+@import "product.scss";
+
 @import "cart.scss";

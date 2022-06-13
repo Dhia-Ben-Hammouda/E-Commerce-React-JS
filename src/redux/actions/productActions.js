@@ -43,14 +43,3 @@ export const getAllMouses = () => async (dispatch) => {
     console.error(err);
   }
 }
-
-export const getProductById = (id) => async (dispatch) =>{
-  try{
-    dispatch({type:actionTypes.FETCH_PRODUCT_BY_ID_REQUEST});
-    const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/product/${id}`);
-    const data = await response.json();
-    dispatch({type:actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS , payload : data});
-  }catch(err){
-    console.error(err);
-  }
-}

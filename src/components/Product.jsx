@@ -1,23 +1,63 @@
 import React from "react";
+import CircularProgress from '@mui/material/CircularProgress';
+import Navbar from "./Navbar.jsx";
 import { useParams } from "react-router-dom";
-import { useDispatch , useSelector } from "react-redux";
-import { getProductById } from "../redux/actions/productActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const Product = ()=>{
-  const dispatch = useDispatch();
+const Product = () => {
+  const [product, setProduct] = useState({});
+  const [loading , setLoading] = useState(true);
   const { id } = useParams();
 
-  useEffect(()=>{
-    dispatch(getProductById(id));
-  } , [dispatch]);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/product/${id}`);
+      const data = await response.json();
 
-  const product = useSelector(state => state.productReducer.product);
-  const loading = useSelector(state => state.productReducer.loading);
+      setLoading(false);
+      setProduct(data[0]);
+    }
+    fetchData();
+  }, []);
 
-  return(
+  return (
     <>
-    
+      <Navbar />
+      {
+        loading ? <div className="loading-wrapper">
+        <CircularProgress style={{margin:"3rem"}}/>
+        </div> :<div className="details">
+        <div className="product">
+          <div className="product-left">
+            <img src={product.picture} alt="" />
+          </div>
+          <div className="product-right">
+            <div className="container">
+              <h1>
+                {
+                  product.name
+                }
+              </h1>
+              <h2>
+                {
+                  product.description
+                }
+              </h2>
+              <div className="wrapper">
+                <h3>
+                  {
+                    product.price
+                  }
+                </h3>
+                <button>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
     </>
   );
 }
