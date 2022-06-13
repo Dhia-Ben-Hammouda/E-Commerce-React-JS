@@ -24,7 +24,7 @@ const Product = () => {
     <>
       <Navbar />
       {
-        loading ? <div className="loading-wrapper">
+        loading ? <div className="loading-wrapper" style={{textAlign:"center"}}>
         <CircularProgress style={{margin:"3rem"}}/>
         </div> : <div className="details">
         <div className="product">
