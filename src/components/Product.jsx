@@ -18,7 +18,7 @@ const Product = () => {
       setProduct(data[0]);
     }
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -26,7 +26,7 @@ const Product = () => {
       {
         loading ? <div className="loading-wrapper">
         <CircularProgress style={{margin:"3rem"}}/>
-        </div> :<div className="details">
+        </div> : <div className="details">
         <div className="product">
           <div className="product-left">
             <img src={product.picture} alt="" />
