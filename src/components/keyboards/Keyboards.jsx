@@ -73,7 +73,7 @@ const Keyboards = () => {
             </div> : keyboards.map((keyboard, index) => {
               return (
                 <Keyboard key={index}
-                  id={keyboards._id}
+                  id={keyboard._id}
                   picture={keyboard.picture}
                   description={keyboard.description}
                   brand={keyboard.brand}

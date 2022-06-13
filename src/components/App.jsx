@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/InsertScreen" element={ <InsertScreen/> } />
         <Route path="/InsertMouse" element={ <InsertMouse/> } />
         <Route path="/InsertKeyboard" element={ <InsertKeyboard/> } />
-        <Route path="/products/:id" element={ <Product/> } />
+        <Route path="/product/:id" element={ <Product/> } />
       </Routes>
     </>
   );

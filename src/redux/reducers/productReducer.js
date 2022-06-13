@@ -71,3 +71,21 @@ export const mouseReducer = (state = { mouses : [] } , action) =>{
       return state;
   }
 }
+
+export const productReducer = (state =  {product : []} , action ) =>{
+  switch(action.type)
+  {
+    case actionTypes.FETCH_PRODUCT_BY_ID_REQUEST:
+      return {
+        loading:true,
+        product : []
+      }
+    case actionTypes.FETCH_PRODUCT_BY_ID_SUCCESS:
+      return {
+        loading:false,
+        product : action.payload
+      }
+    default:
+      return state;
+  }
+}
