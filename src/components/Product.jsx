@@ -1,6 +1,6 @@
 import React from "react";
 import CircularProgress from '@mui/material/CircularProgress';
-import Navbar from "./Navbar.jsx";
+import Navbar from "./Nav.jsx";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
