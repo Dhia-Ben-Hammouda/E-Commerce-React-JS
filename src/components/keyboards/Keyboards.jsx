@@ -2,22 +2,43 @@ import React from "react";
 import Navbar from "../Navbar.jsx";
 import Keyboard from "./Keyboard.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import Slider from "@mui/material/Slider";
+import { useEffect , useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllKeyboards } from "../../redux/actions/productActions.js";
 
 const Keyboards = () => {
-  const dispatch = useDispatch();
+  const [loading , setLoading ] = useState(true);
+  const [allKeyboards , setAllKeyboards] = useState([]);
+  const [priceRange , setPriceRange] = useState([0 , 300]);
+  const [keyboards , setKeyboards ] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllKeyboards());
-  }, [dispatch]);
+    async function fetchData()
+    {
+      const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards");
+      const data = await response.json();
 
-  const keyboards = useSelector((state) => state.keyboardReducer.keyboards);
-  const loading = useSelector((state)=> state.keyboardReducer.loading);
+      setLoading(false);
+      setKeyboards([...data]);
+      setAllKeyboards([...data]);
+    }
+    fetchData();
+  }, []);
+
+  async function filterData()
+  {
+    setLoading(true);
+
+    const filtredKeyboards = allKeyboards.filter((keyboard)=>{
+      return parseInt(keyboard.price.slice(0 , keyboard.price.length-1)) >= priceRange[0] && parseInt(keyboard.price.slice(0 , keyboard.price.length -1)) <= priceRange[1];
+    })
+    await new Promise(r => setTimeout(r, 2000));
+    setLoading(false);
+    setKeyboards(filtredKeyboards);
+  }
+
+  
 
   return (
     <>
@@ -42,6 +63,18 @@ const Keyboards = () => {
           </div>
           <div className="price">
             <h1>Price</h1>
+            <Slider
+              min={0}
+              max={300}
+              value={priceRange}
+              valueLabelDisplay="auto"
+              onChange={(e,newValue)=>{setPriceRange(newValue)}}
+              onChangeCommitted={(e,newValue)=>{filterData()}}
+            />
+            <div className="price-inputs">
+              <input className="min" value={priceRange[0] + "  DT"} onChange={()=>{}} />
+              <input className="max" value={priceRange[1] + "  DT"} onChange={()=>{}} />
+            </div>
           </div>
           <div className="brand">
             <h1>Brand</h1>

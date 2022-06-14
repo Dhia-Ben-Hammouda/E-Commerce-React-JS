@@ -31,7 +31,7 @@ const Computers = ()=>{
     setLoading(true);
     await new Promise(r => setTimeout(r, 2000));
     const filtredComputers = allComputers.filter((computer)=>{
-      return (parseInt(computer.price.slice(0 , computer.price.length-1) )  > priceRange[0] && parseInt(computer.price.slice(0 , computer.price.length-1 ) )< priceRange[1] )
+      return (parseInt(computer.price.slice(0 , computer.price.length-1) )  >= priceRange[0] && parseInt(computer.price.slice(0 , computer.price.length-1 ) )<= priceRange[1] )
     })
     setLoading(false);
     setComputers(filtredComputers);
