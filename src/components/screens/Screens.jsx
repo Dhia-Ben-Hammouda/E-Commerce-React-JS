@@ -2,22 +2,43 @@ import React from "react";
 import Navbar from "../Navbar.jsx";
 import Screen from "./Screen.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
+import Slider from "@mui/material/Slider";
 import CircularProgress from '@mui/material/CircularProgress';
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllScreens } from "../../redux/actions/productActions.js";
 
 const Screens = () => {
-  const dispatch = useDispatch();
+  const [ loading , setLoading  ] = useState(false);
+  const [ allScreens , setAllScreens ] = useState([]);
+  const [ screens , setScreens ] = useState([]);
+  const [ priceRange , setPriceRange ] = useState([0 , 1500]);
+  
 
   useEffect(() => {
-    dispatch(getAllScreens());
-  }, [dispatch]);
+    async function fetchData()
+    {
+      setLoading(true);
+      const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/screens/getAllScreens");
+      const data = await response.json();
+      
+      setLoading(false);
+      setAllScreens([...data]);
+      setScreens([...data]);
+    }
+    fetchData();
+  }, []);
 
-  const screens = useSelector((state) => state.screenReducer.screens);
-  const loading = useSelector((state)=> state.screenReducer.loading);
+  async function filterData()
+  {
+    setLoading(true);
+    const filtredScreens = allScreens.filter((screen)=>{
+      return parseInt(screen.price.slice(0 , screen.price.length-1)) >= priceRange[0] && parseInt(screen.price.slice(0 , screen.price.length -1)) <= priceRange[1];
+    })
+    await new Promise(r => setTimeout(r, 2000));
+    setLoading(false);
+    setScreens(filtredScreens);
+  }
+
 
   return (
     <>
@@ -42,6 +63,18 @@ const Screens = () => {
           </div>
           <div className="price">
             <h1>Price</h1>
+            <Slider 
+              min={0}
+              max={1500}
+              valueLabelDisplay="auto"
+              value={priceRange}
+              onChange={(e,newValue) => { setPriceRange(newValue) }}
+              onChangeCommitted={filterData}
+            />
+            <div className="price-inputs">
+              <input className="min" value={priceRange[0] + "  DT"} onChange={()=>{}} />
+              <input className="max" value={priceRange[1] + "  DT"} onChange={()=>{}}/>
+            </div>
           </div>
           <div className="brand">
             <h1>Brand</h1>
