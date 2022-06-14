@@ -4,22 +4,38 @@ import Computer from "./Computer.jsx";
 import CircularProgress from '@mui/material/CircularProgress';
 import Slider from "@mui/material/Slider";
 import { Checkbox , FormGroup , FormControlLabel} from "@mui/material";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useEffect , useState } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
-import { getAllComputers } from "../../redux/actions/productActions.js";
 
 const Computers = ()=>{
   const [priceRange , setPriceRange] = useState([0 , 4000]);
-  const dispatch = useDispatch();  
+  const [computers , setComputers ] = useState([]);
+  const [loading , setLoading ] = useState(true);
+  const [allComputers , setAllComputers] = useState([]);
   
   useEffect(()=>{
-    dispatch(getAllComputers());
-  } , [dispatch]);
+    async function fetchData()
+    {
+      const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers");
+      const data = await response.json();
 
-  const computers = useSelector((state)=>state.computerReducer.computers);
-  const loading = useSelector((state)=>state.computerReducer.loading);
+      setLoading(false);
+      setComputers([...data]);
+      setAllComputers([...data]);
+    }
+    fetchData();
+  } , []);
+
+  async function filterData()
+  {
+    setLoading(true);
+    await new Promise(r => setTimeout(r, 2000));
+    const filtredComputers = allComputers.filter((computer)=>{
+      return (parseInt(computer.price.slice(0 , computer.price.length-1) )  > priceRange[0] && parseInt(computer.price.slice(0 , computer.price.length-1 ) )< priceRange[1] )
+    })
+    setLoading(false);
+    setComputers(filtredComputers);
+  }
 
   return(
     <>
@@ -50,11 +66,11 @@ const Computers = ()=>{
               value={priceRange}
               valueLabelDisplay="auto"
               onChange={(e,newValue) => {setPriceRange(newValue)}}
-              onChangeCommitted={()=>{}}
+              onChangeCommitted={(e,newValue)=>{ filterData() }}
             />
             <div className="price-inputs">
-              <input className="min" value={priceRange[0] + "  DT"} />
-              <input className="max" value={priceRange[1] + "  DT"}/>
+              <input className="min" value={priceRange[0] + "  DT"} onChange={()=>{}}/>
+              <input className="max" value={priceRange[1] + "  DT"} onChange={()=>{}}/>
             </div>
           </div>
           <div className="brand">
