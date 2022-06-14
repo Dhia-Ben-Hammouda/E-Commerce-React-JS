@@ -37,6 +37,24 @@
         font-size: 18px;
         color:#777;
       }
+
+      .price-inputs{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0px;
+
+        input{
+          width:80px;
+          text-align: center;
+          
+
+          &:first-of-type{
+            margin-right:.3rem;
+          }
+        }
+      }
+
     }
 
     .header{

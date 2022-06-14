@@ -2,14 +2,16 @@ import React from "react";
 import Navbar from "../Navbar.jsx";
 import Computer from "./Computer.jsx";
 import CircularProgress from '@mui/material/CircularProgress';
+import Slider from "@mui/material/Slider";
 import { Checkbox , FormGroup , FormControlLabel} from "@mui/material";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 import { getAllComputers } from "../../redux/actions/productActions.js";
 
 const Computers = ()=>{
+  const [priceRange , setPriceRange] = useState([0 , 4000]);
   const dispatch = useDispatch();  
   
   useEffect(()=>{
@@ -42,6 +44,18 @@ const Computers = ()=>{
           </div>
           <div className="price">
             <h1>Price</h1>
+            <Slider
+              min={0}
+              max={4000}
+              value={priceRange}
+              valueLabelDisplay="auto"
+              onChange={(e,newValue) => {setPriceRange(newValue)}}
+              onChangeCommitted={()=>{}}
+            />
+            <div className="price-inputs">
+              <input className="min" value={priceRange[0] + "  DT"} />
+              <input className="max" value={priceRange[1] + "  DT"}/>
+            </div>
           </div>
           <div className="brand">
             <h1>Brand</h1>
