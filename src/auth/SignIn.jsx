@@ -15,7 +15,6 @@ const SignIn = ()=>{
             <div className="input">
               <FaUser />
               <input 
-                style={{fontSize:"14px"}}
                 type="email"
                 placeholder="Enter email..."
               />
@@ -23,7 +22,6 @@ const SignIn = ()=>{
             <div className="input">
               <FaLock />
               <input 
-                style={{fontSize:"14px"}}
                 type="password"
                 placeholder="Enter password..."
               />
