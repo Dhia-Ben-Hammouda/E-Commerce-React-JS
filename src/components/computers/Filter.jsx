@@ -1,46 +1,41 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
 import { Checkbox , FormGroup , FormControlLabel} from "@mui/material";
+import { useState } from "react";
 
 const Filter = ({loading,setLoading,setComputers,priceRange,setPriceRange,computers,setAllComputers,allComputers}) => {
+  const [filters , setFilters] = useState({
+    brand:[],
+    procesor:[],
+    memory:[],
+    drive:[],
+    card:[],
+  })
 
-  async function filterData()
+  async function filterData(e)
   {
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 2000));
-    const filtredComputers = allComputers.filter((computer)=>{
-      return (parseInt(computer.price.slice(0 , computer.price.length-1) )  >= priceRange[0] && parseInt(computer.price.slice(0 , computer.price.length-1 ) )<= priceRange[1] )
-    })
-    setLoading(false);
-    setComputers(filtredComputers);
-  }
+    if(e.target.type !== "checkbox")
+    {
+      setLoading(true);
+      await new Promise(r => setTimeout(r, 1000));
+      const filtredComputers = allComputers.filter((computer)=>{
+        return (parseInt(computer.price.slice(0 , computer.price.length-1) )  >= priceRange[0] && parseInt(computer.price.slice(0 , computer.price.length-1 ) )<= priceRange[1] )
+      })
+      setLoading(false);
+      setComputers(filtredComputers);
+    }
+    else
+    {
+      setLoading(true);
+      await new Promise(r => setTimeout(r, 1000));
+      const filtredComputers = allComputers.filter((computer)=>{
+        return (parseInt(computer.price.slice(0 , computer.price.length-1) )  >= priceRange[0] && parseInt(computer.price.slice(0 , computer.price.length-1 ) )<= priceRange[1] )
+      })
 
-  function brandCheckBoxHandler(e)
-  {
-    console.log(allComputers);
-    console.log(e.target.checked);
-    console.log(e.target.value);
-    console.log("checkbox");
-  }
+      console.log(e.target.name);
 
-  function procesorHandler(e)
-  {
-    
-  }
 
-  function memoryHandler(e)
-  {
-    
-  }
-
-  function driveHandler(e)
-  {
-
-  }
-
-  function graphicsCardHandler()
-  {
-
+    }
   }
 
   return (
@@ -76,15 +71,15 @@ const Filter = ({loading,setLoading,setComputers,priceRange,setPriceRange,comput
           <h1>Brand</h1>
           <FormGroup>
             <FormControlLabel 
-              control={<Checkbox value="HP" onChange={brandCheckBoxHandler} />} 
+              control={<Checkbox name="brand" value="HP" onChange={filterData} />} 
               label="HP" 
             />
             <FormControlLabel 
-              control={<Checkbox value="Asus" onChange={brandCheckBoxHandler} />} 
+              control={<Checkbox name="brand" value="Asus" onChange={filterData} />} 
               label="Asus" 
             />
             <FormControlLabel 
-              control={<Checkbox value="Dell" onChange={brandCheckBoxHandler} />} 
+              control={<Checkbox name="brand" value="Dell" onChange={filterData} />} 
               label="Dell" 
             />
           </FormGroup>
@@ -93,19 +88,19 @@ const Filter = ({loading,setLoading,setComputers,priceRange,setPriceRange,comput
           <h1>Procesor</h1>
           <FormGroup>
             <FormControlLabel 
-              control={<Checkbox value="ryzen5" onChange={procesorHandler} />} 
+              control={<Checkbox name="procesor" value="ryzen5" onChange={filterData} />} 
               label="AMD Ryzen 5" 
             />
             <FormControlLabel 
-              control={<Checkbox value="i5" onChange={procesorHandler} />} 
+              control={<Checkbox name="procesor" value="i5" onChange={filterData} />} 
               label="Intel Core i5" 
             />
             <FormControlLabel 
-              control={<Checkbox value="ryzen7" onChange={procesorHandler} />} 
+              control={<Checkbox name="procesor" value="ryzen7" onChange={filterData} />} 
               label="AMD Ryzen 7" 
             />
             <FormControlLabel 
-              control={<Checkbox value="i7" onChange={procesorHandler} />} 
+              control={<Checkbox name="procesor" value="i7" onChange={filterData} />} 
               label="Intel Core i7" 
             />
           </FormGroup>
@@ -114,15 +109,15 @@ const Filter = ({loading,setLoading,setComputers,priceRange,setPriceRange,comput
           <h1>Memory</h1>
           <FormGroup>
             <FormControlLabel 
-              control={<Checkbox value="8gb" onChange={memoryHandler}/>} 
+              control={<Checkbox name="memory" value="8gb" onChange={filterData}/>} 
               label="8 gb" 
             />
             <FormControlLabel 
-              control={<Checkbox value="16gb" onChange={memoryHandler}/>} 
+              control={<Checkbox name="memory" value="16gb" onChange={filterData}/>} 
               label="16 gb" 
             />
             <FormControlLabel 
-              control={<Checkbox value="32gb" onChange={memoryHandler}/>} 
+              control={<Checkbox name="memory" value="32gb" onChange={filterData}/>} 
               label="32 gb" 
             />
           </FormGroup>
@@ -131,15 +126,15 @@ const Filter = ({loading,setLoading,setComputers,priceRange,setPriceRange,comput
           <h1>Drive</h1>
           <FormGroup>
             <FormControlLabel 
-              control={<Checkbox value="1hdd+256ssd" onChange={driveHandler}/>} 
+              control={<Checkbox name="drive" value="1hdd+256ssd" onChange={filterData}/>} 
               label="1TB + 256GB SSD " 
             />
             <FormControlLabel 
-              control={<Checkbox value="1ssd" onChange={driveHandler}/>} 
+              control={<Checkbox name="drive" value="1ssd" onChange={filterData}/>} 
               label="1TB SSD" 
             />
             <FormControlLabel 
-              control={<Checkbox value="512ssd" onChange={driveHandler}/>} 
+              control={<Checkbox name="drive" value="512ssd" onChange={filterData}/>} 
               label="512GB SSD" 
             />
           </FormGroup>
@@ -148,15 +143,15 @@ const Filter = ({loading,setLoading,setComputers,priceRange,setPriceRange,comput
           <h1>Graphics Card</h1>
           <FormGroup>
             <FormControlLabel 
-              control={<Checkbox value="gtx1650" onChange={graphicsCardHandler}/>} 
+              control={<Checkbox name="card" value="gtx1650" onChange={filterData}/>} 
               label="GTX 1650" 
             />
             <FormControlLabel 
-              control={<Checkbox value="rtx3050" onChange={graphicsCardHandler}/>} 
+              control={<Checkbox name="card" value="rtx3050" onChange={filterData}/>} 
               label="RTX 3050" 
             />
             <FormControlLabel 
-              control={<Checkbox value="rtx3050ti" onChange={graphicsCardHandler}/>} 
+              control={<Checkbox name="card" value="rtx3050ti" onChange={filterData}/>} 
               label="RTX 3050 ti" 
             />
           </FormGroup>
