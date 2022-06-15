@@ -63,7 +63,8 @@ const Screens = () => {
           </div>
           <div className="price">
             <h1>Price</h1>
-            <Slider 
+            <Slider
+              style={{color:"#777"}} 
               min={0}
               max={1500}
               valueLabelDisplay="auto"

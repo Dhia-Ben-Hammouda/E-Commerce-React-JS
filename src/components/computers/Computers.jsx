@@ -61,6 +61,7 @@ const Computers = ()=>{
           <div className="price">
             <h1>Price</h1>
             <Slider
+              style={{color:"#777"}}
               min={0}
               max={4000}
               value={priceRange}

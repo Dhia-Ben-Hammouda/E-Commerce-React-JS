@@ -64,6 +64,7 @@ const Keyboards = () => {
           <div className="price">
             <h1>Price</h1>
             <Slider
+              style={{color:"#777"}}
               min={0}
               max={300}
               value={priceRange}
