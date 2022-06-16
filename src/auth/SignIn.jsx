@@ -1,4 +1,5 @@
 import React from "react";
+import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
@@ -10,6 +11,8 @@ import { IconContext } from "react-icons";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error1 , setError1] = useState(false);
+  const [error2 , setError2] = useState(false);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -26,10 +29,23 @@ const SignIn = () => {
     });
 
     const data = await response.json();
+
+    console.log(data);
     
     switch(data.msg)
     {
-      
+      case "user with the given email doesn't exist":
+        setError1(true);
+        break;
+      case "wrong password":
+        setError2(true);  
+        break;
+      case "ok":
+        sessionStorage.setItem("profile" , JSON.stringify(data));
+        window.location.href = "/";
+        break;
+      default:
+        break;
     }
 
   }
@@ -84,6 +100,16 @@ const SignIn = () => {
             </IconContext.Provider>
           </div>
         </form>
+        {
+          error1 && <Alert className="alert" style={{position:"relative",top:"20px"}} variant="filled" color="error">
+          user with the given email doesn't exist
+        </Alert>
+        }
+        {
+          error2 && <Alert className="alert" style={{position:"relative",top:"20px"}} variant="filled" color="error">
+          wrong password
+        </Alert>
+        }
       </div>
     </>
   );

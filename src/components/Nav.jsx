@@ -1,8 +1,21 @@
 import React from "react";
 import { FaShoppingCart, FaUserAlt, FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import { useState , useEffect } from "react";
 
 const Navbar = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+
+    const profile = sessionStorage.getItem("profile");
+
+    if (profile) {
+      setUser(JSON.parse(profile));
+    }
+
+  }, []);
+
   return (
     <>
       <nav>
@@ -29,9 +42,11 @@ const Navbar = () => {
               <input placeholder="Search for products" />
             </div>
             <div className="wrapper">
-              <a href="/signin">
-                <FaUserAlt />
-              </a>
+              {
+                user ? <img style={{ width: "2.25rem", height: "2.25rem", borderRadius: "50%" }} src={user.picture} alt="profilePicture" /> : <a href="/signin">
+                  <FaUserAlt />
+                </a>
+              }
               <div className="cart" style={{ marginLeft: "1rem" }}>
                 <a href="/cart">
                   <FaShoppingCart />
@@ -44,7 +59,7 @@ const Navbar = () => {
           </IconContext.Provider>
         </div>
       </nav>
-      <ul className="mobile-list" style={{background:"white"}}>
+      <ul className="mobile-list" style={{ background: "white" }}>
         <li>
           <a href="/computers">Computers</a>
         </li>
