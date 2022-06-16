@@ -25,6 +25,12 @@ const Navbar = () => {
     document.querySelector(".option-list").style.display = "none";
   }
 
+  function signOutHandler()
+  {
+    sessionStorage.clear();
+    window.location.href = "/"
+  }
+
 
   return (
     <>
@@ -60,9 +66,9 @@ const Navbar = () => {
                     <ul className="option-list">
                       <li>
                         <FaCog/>
-                        <h3>Settings</h3>
+                        <a href="/settings">Settings</a>
                       </li>
-                      <li>
+                      <li onClick={signOutHandler}>
                         <FaSignOutAlt/>
                         <h3>Sign Out</h3>
                       </li>

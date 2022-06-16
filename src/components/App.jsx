@@ -6,6 +6,7 @@ import Mouses from "./mouses/Mouses.jsx";
 import Screens from "./screens/Screens.jsx";
 import SignIn from "../auth/SignIn.jsx";
 import SignUp from "../auth/SignUp.jsx";
+import Settings from "./Settings.jsx";
 import Cart from "./Cart.jsx";
 import Product from "./Product.jsx";
 import InsertComputer from "../api/InsertComputer.jsx";
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/InsertMouse" element={ <InsertMouse/> } />
         <Route path="/InsertKeyboard" element={ <InsertKeyboard/> } />
         <Route path="/product/:id" element={ <Product/> } />
+        <Route path="/settings" element={ <Settings/> } />
       </Routes>
     </>
   );

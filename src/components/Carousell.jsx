@@ -3,6 +3,7 @@ import { Carousel } from "react-bootstrap";
 import img5 from "../images/img5.jpg";
 import img6 from "../images/img6.jpg";
 import img7 from "../images/img7.jpg";
+import img12 from "../images/img12.jpg";
 
 const Carousell = () => {
   return (
@@ -27,6 +28,13 @@ const Carousell = () => {
             className="d-block w-100"
             src={img7}
             alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={img12}
+            alt="Fourth slide"
           />
         </Carousel.Item>
       </Carousel>
