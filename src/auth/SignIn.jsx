@@ -14,6 +14,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error1, setError1] = useState(false);
   const [error2, setError2] = useState(false);
+  const [loading , setLoading] = useState(false);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -52,12 +53,12 @@ const SignIn = () => {
 
   async function googleSuccess(res)
   {
-
+    console.log(res);
   }
 
-  function googleFailure()
+  function googleFailure(err)
   {
-
+    console.error(err);
   }
 
   return (
