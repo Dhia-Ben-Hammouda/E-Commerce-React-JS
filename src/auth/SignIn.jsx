@@ -7,12 +7,13 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import { GoogleLogin } from "react-google-login";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error1 , setError1] = useState(false);
-  const [error2 , setError2] = useState(false);
+  const [error1, setError1] = useState(false);
+  const [error2, setError2] = useState(false);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -31,22 +32,31 @@ const SignIn = () => {
     const data = await response.json();
 
     console.log(data);
-    
-    switch(data.msg)
-    {
+
+    switch (data.msg) {
       case "user with the given email doesn't exist":
         setError1(true);
         break;
       case "wrong password":
-        setError2(true);  
+        setError2(true);
         break;
       case "ok":
-        sessionStorage.setItem("profile" , JSON.stringify(data));
+        sessionStorage.setItem("profile", JSON.stringify(data));
         window.location.href = "/";
         break;
       default:
         break;
     }
+
+  }
+
+  async function googleSuccess(res)
+  {
+
+  }
+
+  function googleFailure()
+  {
 
   }
 
@@ -88,27 +98,33 @@ const SignIn = () => {
           </div>
           <div style={{ display: "flex" }}>
             <IconContext.Provider value={{ size: "1.5rem", color: "white" }}>
-              <div className="circle" style={{ background: "#405498" }}>
+              <button className="circle" style={{ background: "#405498" }}>
                 <FaFacebookF />
-              </div>
-              <div className="circle" style={{ background: "#359BF1" }}>
+              </button>
+              <button className="circle" style={{ background: "#359BF1" }}>
                 <FaTwitter />
-              </div>
-              <div className="circle" style={{ background: "#E74639" }}>
-                <FaGoogle />
-              </div>
+              </button>
+              <GoogleLogin
+                clientId="465138218686-82fu8614sum97d6b9nv32bmlas2j9um3.apps.googleusercontent.com"
+                render={(renderProps) => (<button onClick={renderProps.onClick} className="circle" style={{ background: "#E74639" }}>
+                  <FaGoogle />
+                </button>)}
+                onSuccess={googleSuccess}
+                onFailure={googleFailure}
+                cookiePolicy="single_host_origin"
+              />
             </IconContext.Provider>
           </div>
         </form>
         {
-          error1 && <Alert className="alert" style={{position:"relative",top:"20px"}} variant="filled" color="error">
-          user with the given email doesn't exist
-        </Alert>
+          error1 && <Alert className="alert" style={{ position: "relative", top: "20px" }} variant="filled" color="error">
+            user with the given email doesn't exist
+          </Alert>
         }
         {
-          error2 && <Alert className="alert" style={{position:"relative",top:"20px"}} variant="filled" color="error">
-          wrong password
-        </Alert>
+          error2 && <Alert className="alert" style={{ position: "relative", top: "20px" }} variant="filled" color="error">
+            wrong password
+          </Alert>
         }
       </div>
     </>
