@@ -34,7 +34,7 @@ const Screens = () => {
     const filtredScreens = allScreens.filter((screen)=>{
       return parseInt(screen.price.slice(0 , screen.price.length-1)) >= priceRange[0] && parseInt(screen.price.slice(0 , screen.price.length -1)) <= priceRange[1];
     })
-    await new Promise(r => setTimeout(r, 2000));
+
     setLoading(false);
     setScreens(filtredScreens);
   }

@@ -51,7 +51,7 @@ nav{
     .wrapper{
       display:flex;
       align-items: center;
-      z-index:5000000;
+      z-index:20;
 
       .wrap{
         position: relative;
@@ -62,9 +62,10 @@ nav{
           width:130px;
           position:absolute;
           border-radius: 10px;
-          display: flex;
+          display: none;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           padding:1rem 1rem;
           right:-10px;
           top:60px;

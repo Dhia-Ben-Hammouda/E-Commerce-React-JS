@@ -5,7 +5,6 @@ import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 const Filter = ({ loading, setLoading, setComputers, priceRange, setPriceRange, computers, setAllComputers, allComputers }) => {
   async function filterData(e) {
     setLoading(true);
-    await new Promise(r => setTimeout(r, 1000));
     const filtredComputers = allComputers.filter((computer) => {
       return (parseInt(computer.price.slice(0, computer.price.length - 1)) >= priceRange[0] && parseInt(computer.price.slice(0, computer.price.length - 1)) <= priceRange[1])
     })

@@ -33,7 +33,7 @@ const Keyboards = () => {
     const filtredKeyboards = allKeyboards.filter((keyboard)=>{
       return parseInt(keyboard.price.slice(0 , keyboard.price.length-1)) >= priceRange[0] && parseInt(keyboard.price.slice(0 , keyboard.price.length -1)) <= priceRange[1];
     })
-    await new Promise(r => setTimeout(r, 2000));
+
     setLoading(false);
     setKeyboards(filtredKeyboards);
   }

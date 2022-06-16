@@ -17,6 +17,15 @@ const Navbar = () => {
 
   } , []);
 
+  function clickHandler(e)
+  {
+    if(document.querySelector(".option-list").style.display === "none")
+    document.querySelector(".option-list").style.display = "flex";
+    else
+    document.querySelector(".option-list").style.display = "none";
+  }
+
+
   return (
     <>
       <nav>
@@ -44,8 +53,8 @@ const Navbar = () => {
             </div>
             <div className="wrapper">
               {
-                user ? <div className="wrap" style={{width:"2.5rem" , height:"2.5rem" , borderRadius:"50%" , borderRadius:"50%"}}>
-                  <img style={{width:"100%" , height:"95%" , borderRadius:"50%"}} src={user.picture} alt="profilePicture" />
+                user ? <div onClick={clickHandler} className="wrap" style={{width:"2.5rem" , height:"2.5rem" , borderRadius:"50%" }}>
+                  <img style={{cursor:"pointer" , width:"100%" , height:"95%" , borderRadius:"50%"}} src={user.picture} alt="profilePicture" />
 
                   <IconContext.Provider value={{size:"1rem"}}>
                     <ul className="option-list">

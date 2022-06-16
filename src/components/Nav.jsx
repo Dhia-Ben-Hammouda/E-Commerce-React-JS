@@ -1,20 +1,30 @@
 import React from "react";
-import { FaShoppingCart, FaUserAlt, FaSearch } from "react-icons/fa";
+import { FaShoppingCart, FaUserAlt, FaSearch , FaCog , FaSignOutAlt } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { useState , useEffect } from "react";
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
+  const [user , setUser] = useState(null);
 
-  useEffect(() => {
+  useEffect(()=>{
 
     const profile = sessionStorage.getItem("profile");
 
-    if (profile) {
+    if(profile)
+    {
       setUser(JSON.parse(profile));
     }
 
-  }, []);
+  } , []);
+
+  function clickHandler(e)
+  {
+    if(document.querySelector(".option-list").style.display === "none")
+    document.querySelector(".option-list").style.display = "flex";
+    else
+    document.querySelector(".option-list").style.display = "none";
+  }
+
 
   return (
     <>
@@ -43,9 +53,24 @@ const Navbar = () => {
             </div>
             <div className="wrapper">
               {
-                user ? <img style={{ width: "2.25rem", height: "2.25rem", borderRadius: "50%" }} src={user.picture} alt="profilePicture" /> : <a href="/signin">
-                  <FaUserAlt />
-                </a>
+                user ? <div onClick={clickHandler} className="wrap" style={{width:"2.5rem" , height:"2.5rem" , borderRadius:"50%" }}>
+                  <img style={{cursor:"pointer" , width:"100%" , height:"95%" , borderRadius:"50%"}} src={user.picture} alt="profilePicture" />
+
+                  <IconContext.Provider value={{size:"1rem"}}>
+                    <ul className="option-list">
+                      <li>
+                        <FaCog/>
+                        <h3>Settings</h3>
+                      </li>
+                      <li>
+                        <FaSignOutAlt/>
+                        <h3>Sign Out</h3>
+                      </li>
+                    </ul>
+                  </IconContext.Provider>
+                </div> : <a href="/signin">
+                <FaUserAlt />
+              </a>
               }
               <div className="cart" style={{ marginLeft: "1rem" }}>
                 <a href="/cart">
@@ -59,7 +84,7 @@ const Navbar = () => {
           </IconContext.Provider>
         </div>
       </nav>
-      <ul className="mobile-list" style={{ background: "white" }}>
+      <ul className="mobile-list" style={{background:"white"}}>
         <li>
           <a href="/computers">Computers</a>
         </li>

@@ -34,7 +34,7 @@ const Mouses = () => {
     const filtredMouses = allMouses.filter((mouse)=>{
       return parseInt(mouse.price.slice(0 , mouse.price.length-1)) >= priceRange[0] && parseInt(mouse.price.slice(0 , mouse.price.length -1)) <= priceRange[1];
     })
-    await new Promise(r => setTimeout(r, 2000));
+
     setLoading(false);
     setMouses(filtredMouses);
   }
