@@ -38,8 +38,6 @@ const Keyboards = () => {
     setKeyboards(filtredKeyboards);
   }
 
-  
-
   return (
     <>
       <Navbar />
