@@ -5,38 +5,42 @@ import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { useEffect , useState} from "react";
 import Slider from "@mui/material/Slider";
 import CircularProgress from '@mui/material/CircularProgress';
-import { MdArrowForwardIos } from "react-icons/md";
+import Pagination from "../Pagination.jsx";
 
 const Screens = () => {
   const [ loading , setLoading  ] = useState(false);
-  const [ allScreens , setAllScreens ] = useState([]);
   const [ screens , setScreens ] = useState([]);
   const [ priceRange , setPriceRange ] = useState([0 , 1500]);
-  
+  const [page, setPage] = useState(1);
+  const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData()
+    async function fetchData() 
     {
-      setLoading(true);
-      const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/screens/getAllScreens");
-      const data = await response.json();
-      
-      setLoading(false);
-      setAllScreens([...data]);
-      setScreens([...data]);
+      try{
+        setLoading(true);
+        const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/screens/getAllScreens?page=${page}`);
+        const data = await response.json();
+
+        setLoading(false);
+        setScreens(data.screens);
+        setNumOfPages(data.numberOfPages);
+      }catch(err){
+        console.error(err);
+      }
     }
     fetchData();
-  }, []);
+  }, [page]);
 
   async function filterData()
   {
-    setLoading(true);
-    const filtredScreens = allScreens.filter((screen)=>{
-      return parseInt(screen.price.slice(0 , screen.price.length-1)) >= priceRange[0] && parseInt(screen.price.slice(0 , screen.price.length -1)) <= priceRange[1];
-    })
+    // setLoading(true);
+    // const filtredScreens = allScreens.filter((screen)=>{
+    //   return parseInt(screen.price.slice(0 , screen.price.length-1)) >= priceRange[0] && parseInt(screen.price.slice(0 , screen.price.length -1)) <= priceRange[1];
+    // })
 
-    setLoading(false);
-    setScreens(filtredScreens);
+    // setLoading(false);
+    // setScreens(filtredScreens);
   }
 
 
@@ -44,17 +48,14 @@ const Screens = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button>
+      <button className="filter-btn">
           Filter by
         </button>
-        <div className="pages">
-          <div className="page">1</div>
-          <div className="page">2</div>
-          <div className="page">3</div>
-          <div className="page">
-            <MdArrowForwardIos />
-          </div>
-        </div>
+        <Pagination 
+          page={page}
+          setPage={setPage}
+          numOfPages={numOfPages}
+        />
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">

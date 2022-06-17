@@ -21,6 +21,8 @@ const Computers = () => {
         const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers?page=${page}`);
         const data = await response.json();
 
+        console.log(data);
+
         setLoading(false);
         setComputers(data.computers);
         setNumOfPages(data.numberOfPages);
