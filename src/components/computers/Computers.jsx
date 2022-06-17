@@ -19,7 +19,7 @@ const Computers = () => {
     {
       try{
         setLoading(true);
-        const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com//computers/getAllComputers?page=${page}`);
+        const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers?page=${page}`);
         const data = await response.json();
 
         setLoading(false);
