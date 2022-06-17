@@ -5,38 +5,42 @@ import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import { useEffect , useState } from "react";
 import Slider from "@mui/material/Slider";
 import CircularProgress from '@mui/material/CircularProgress';
-import { MdArrowForwardIos } from "react-icons/md";
+import Pagination from "../Pagination.jsx";
 
 const Mouses = () => {
   const [ loading , setLoading  ] = useState(false);
-  const [ allMouses , setAllMouses ] = useState([]);
   const [ mouses , setMouses ] = useState([]);
   const [ priceRange , setPriceRange ] = useState([0 , 300]);
-  
+  const [page, setPage] = useState(1);
+  const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData()
+    async function fetchData() 
     {
-      setLoading(true);
-      const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/mouses/getAllMouses");
-      const data = await response.json();
-      
-      setLoading(false);
-      setAllMouses([...data]);
-      setMouses([...data]);
+      try{
+        setLoading(true);
+        const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/mouses/getAllMouses?page=${page}`);
+        const data = await response.json();
+
+        setLoading(false);
+        setMouses(data.mouses);
+        setNumOfPages(data.numberOfPages);
+      }catch(err){
+        console.error(err);
+      }
     }
     fetchData();
-  }, []);
+  }, [page]);
 
   async function filterData()
   {
-    setLoading(true);
-    const filtredMouses = allMouses.filter((mouse)=>{
-      return parseInt(mouse.price.slice(0 , mouse.price.length-1)) >= priceRange[0] && parseInt(mouse.price.slice(0 , mouse.price.length -1)) <= priceRange[1];
-    })
+    // setLoading(true);
+    // const filtredMouses = allMouses.filter((mouse)=>{
+    //   return parseInt(mouse.price.slice(0 , mouse.price.length-1)) >= priceRange[0] && parseInt(mouse.price.slice(0 , mouse.price.length -1)) <= priceRange[1];
+    // })
 
-    setLoading(false);
-    setMouses(filtredMouses);
+    // setLoading(false);
+    // setMouses(filtredMouses);
   }
 
 
@@ -44,17 +48,14 @@ const Mouses = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button>
+        <button className="filter-btn">
           Filter by
         </button>
-        <div className="pages">
-          <div className="page">1</div>
-          <div className="page">2</div>
-          <div className="page">3</div>
-          <div className="page">
-            <MdArrowForwardIos />
-          </div>
-        </div>
+        <Pagination 
+          page={page}
+          setPage={setPage}
+          numOfPages={numOfPages}
+        />
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">

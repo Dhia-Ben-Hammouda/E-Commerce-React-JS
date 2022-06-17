@@ -5,54 +5,58 @@ import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import { useEffect , useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
-import { MdArrowForwardIos } from "react-icons/md";
+import Pagination from "../Pagination.jsx";
 
 const Keyboards = () => {
-  const [loading , setLoading ] = useState(true);
+  const [loading , setLoading ] = useState(false);
   const [allKeyboards , setAllKeyboards] = useState([]);
   const [priceRange , setPriceRange] = useState([0 , 300]);
   const [keyboards , setKeyboards ] = useState([]);
+  const [page, setPage] = useState(1);
+  const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData()
+    async function fetchData() 
     {
-      const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards");
-      const data = await response.json();
+      try{
+        setLoading(true);
+        const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards?page=${page}`);
+        const data = await response.json();
 
-      setLoading(false);
-      setKeyboards([...data]);
-      setAllKeyboards([...data]);
+        setLoading(false);
+        setKeyboards(data.keyboards);
+        setNumOfPages(data.numberOfPages);
+      }catch(err){
+        console.error(err);
+      }
     }
     fetchData();
-  }, []);
+  }, [page]);
 
   async function filterData()
   {
-    setLoading(true);
+    // setLoading(true);
 
-    const filtredKeyboards = allKeyboards.filter((keyboard)=>{
-      return parseInt(keyboard.price.slice(0 , keyboard.price.length-1)) >= priceRange[0] && parseInt(keyboard.price.slice(0 , keyboard.price.length -1)) <= priceRange[1];
-    })
+    // const filtredKeyboards = allKeyboards.filter((keyboard)=>{
+    //   return parseInt(keyboard.price.slice(0 , keyboard.price.length-1)) >= priceRange[0] && parseInt(keyboard.price.slice(0 , keyboard.price.length -1)) <= priceRange[1];
+    // })
 
-    setLoading(false);
-    setKeyboards(filtredKeyboards);
+    // setLoading(false);
+    // setKeyboards(filtredKeyboards);
   }
 
   return (
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button>
+        <button className="filter-btn">
           Filter by
         </button>
-        <div className="pages">
-          <div className="page">1</div>
-          <div className="page">2</div>
-          <div className="page">3</div>
-          <div className="page">
-            <MdArrowForwardIos />
-          </div>
-        </div>
+        <Pagination 
+          page={page}
+          setPage={setPage}
+          numOfPages={numOfPages}
+        />
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">

@@ -5,7 +5,6 @@ import Filter from "./Filter.jsx";
 import CircularProgress from "@mui/material/CircularProgress";
 import Pagination from "../Pagination.jsx";
 import { useEffect, useState } from "react";
-import { MdArrowForwardIos } from "react-icons/md";
 
 const Computers = () => {
   const [priceRange, setPriceRange] = useState([0, 4000]);
