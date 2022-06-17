@@ -3,22 +3,20 @@ import Navbar from "../Navbar.jsx";
 import Keyboard from "./Keyboard.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import Slider from "@mui/material/Slider";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 
 const Keyboards = () => {
-  const [loading , setLoading ] = useState(false);
-  const [allKeyboards , setAllKeyboards] = useState([]);
-  const [priceRange , setPriceRange] = useState([0 , 300]);
-  const [keyboards , setKeyboards ] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [priceRange, setPriceRange] = useState([0, 300]);
+  const [keyboards, setKeyboards] = useState([]);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData() 
-    {
-      try{
+    async function fetchData() {
+      try {
         setLoading(true);
         const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards?page=${page}`);
         const data = await response.json();
@@ -26,15 +24,14 @@ const Keyboards = () => {
         setLoading(false);
         setKeyboards(data.keyboards);
         setNumOfPages(data.numberOfPages);
-      }catch(err){
+      } catch (err) {
         console.error(err);
       }
     }
     fetchData();
   }, [page]);
 
-  async function filterData()
-  {
+  async function filterData() {
     // setLoading(true);
 
     // const filtredKeyboards = allKeyboards.filter((keyboard)=>{
@@ -49,14 +46,18 @@ const Keyboards = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button className="filter-btn">
-          Filter by
-        </button>
-        <Pagination 
-          page={page}
-          setPage={setPage}
-          numOfPages={numOfPages}
-        />
+        {
+          !loading && <>
+            <button className="filter-btn">
+              Filter by
+            </button>
+            <Pagination
+              page={page}
+              setPage={setPage}
+              numOfPages={numOfPages}
+            />
+          </>
+        }
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">
@@ -66,17 +67,17 @@ const Keyboards = () => {
           <div className="price">
             <h1>Price</h1>
             <Slider
-              style={{color:"#777"}}
+              style={{ color: "#777" }}
               min={0}
               max={300}
               value={priceRange}
               valueLabelDisplay="auto"
-              onChange={(e,newValue)=>{setPriceRange(newValue)}}
-              onChangeCommitted={(e,newValue)=>{filterData()}}
+              onChange={(e, newValue) => { setPriceRange(newValue) }}
+              onChangeCommitted={(e, newValue) => { filterData() }}
             />
             <div className="price-inputs">
-              <input className="min" value={priceRange[0] + "  DT"} onChange={()=>{}} />
-              <input className="max" value={priceRange[1] + "  DT"} onChange={()=>{}} />
+              <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />
+              <input className="max" value={priceRange[1] + "  DT"} onChange={() => { }} />
             </div>
           </div>
           <div className="brand">
@@ -105,7 +106,7 @@ const Keyboards = () => {
         <div className="computer-container">
           {
             loading ? <div className="loading-wrapper">
-            <CircularProgress style={{margin:"3rem"}}/>
+              <CircularProgress style={{ margin: "3rem" }} />
             </div> : keyboards.map((keyboard, index) => {
               return (
                 <Keyboard key={index}

@@ -14,9 +14,8 @@ const Computers = () => {
   const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData() 
-    {
-      try{
+    async function fetchData() {
+      try {
         setLoading(true);
         const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers?page=${page}`);
         const data = await response.json();
@@ -26,7 +25,7 @@ const Computers = () => {
         setLoading(false);
         setComputers(data.computers);
         setNumOfPages(data.numberOfPages);
-      }catch(err){
+      } catch (err) {
         console.error(err);
       }
     }
@@ -37,14 +36,18 @@ const Computers = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button className="filter-btn">
-          Filter by
-        </button>
-        <Pagination 
-          page={page}
-          setPage={setPage}
-          numOfPages={numOfPages}
-        />
+        {
+          !loading && <>
+            <button className="filter-btn">
+              Filter by
+            </button>
+            <Pagination
+              page={page}
+              setPage={setPage}
+              numOfPages={numOfPages}
+            />
+          </>
+        }
       </div>
       <div className="computer-wrapper">
         <Filter

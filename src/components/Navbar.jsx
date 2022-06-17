@@ -1,32 +1,29 @@
 import React from "react";
-import { FaShoppingCart, FaUserAlt, FaSearch , FaCog , FaSignOutAlt } from "react-icons/fa";
+import { FaShoppingCart, FaUserAlt, FaSearch, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const [user , setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
 
     const profile = sessionStorage.getItem("profile");
 
-    if(profile)
-    {
+    if (profile) {
       setUser(JSON.parse(profile));
     }
 
-  } , []);
+  }, []);
 
-  function clickHandler(e)
-  {
-    if(document.querySelector(".option-list").style.display === "none")
-    document.querySelector(".option-list").style.display = "flex";
+  function clickHandler(e) {
+    if (document.querySelector(".option-list").style.display === "none")
+      document.querySelector(".option-list").style.display = "flex";
     else
-    document.querySelector(".option-list").style.display = "none";
+      document.querySelector(".option-list").style.display = "none";
   }
 
-  function signOutHandler()
-  {
+  function signOutHandler() {
     sessionStorage.clear();
     window.location.href = "/"
   }
@@ -59,32 +56,29 @@ const Navbar = () => {
             </div>
             <div className="wrapper">
               {
-                user ? <div onClick={clickHandler} className="wrap" style={{width:"2.5rem" , height:"2.5rem" , borderRadius:"50%" }}>
-                  <img style={{cursor:"pointer" , width:"100%" , height:"95%" , borderRadius:"50%"}} src={user.picture} alt="profilePicture" />
+                user ? <div onClick={clickHandler} className="wrap" style={{ width: "2.5rem", height: "2.5rem", borderRadius: "50%" }}>
+                  <img style={{ cursor: "pointer", width: "100%", height: "95%", borderRadius: "50%" }} src={user.picture} alt="profilePicture" />
 
-                  <IconContext.Provider value={{size:"1rem"}}>
+                  <IconContext.Provider value={{ size: "1rem" }}>
                     <ul className="option-list">
                       <li>
-                        <FaCog/>
+                        <FaCog />
                         <a href="/settings">Settings</a>
                       </li>
                       <li onClick={signOutHandler}>
-                        <FaSignOutAlt/>
+                        <FaSignOutAlt />
                         <h3>Sign Out</h3>
                       </li>
                     </ul>
                   </IconContext.Provider>
                 </div> : <a href="/signin">
-                <FaUserAlt />
-              </a>
+                  <FaUserAlt />
+                </a>
               }
-              <div className="cart" style={{ marginLeft: "1rem" }}>
+              <div className="cart" style={{ marginLeft: ".75rem" }}>
                 <a href="/cart">
                   <FaShoppingCart />
                 </a>
-                <div className="cart-num">
-                  0
-                </div>
               </div>
             </div>
           </IconContext.Provider>

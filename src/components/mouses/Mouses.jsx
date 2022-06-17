@@ -48,14 +48,18 @@ const Mouses = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button className="filter-btn">
-          Filter by
-        </button>
-        <Pagination 
-          page={page}
-          setPage={setPage}
-          numOfPages={numOfPages}
-        />
+        {
+          !loading && <>
+            <button className="filter-btn">
+              Filter by
+            </button>
+            <Pagination
+              page={page}
+              setPage={setPage}
+              numOfPages={numOfPages}
+            />
+          </>
+        }
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">

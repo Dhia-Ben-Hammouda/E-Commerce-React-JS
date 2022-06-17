@@ -2,22 +2,21 @@ import React from "react";
 import Navbar from "../Navbar.jsx";
 import Screen from "./Screen.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { useEffect , useState} from "react";
+import { useEffect, useState } from "react";
 import Slider from "@mui/material/Slider";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 
 const Screens = () => {
-  const [ loading , setLoading  ] = useState(false);
-  const [ screens , setScreens ] = useState([]);
-  const [ priceRange , setPriceRange ] = useState([0 , 1500]);
+  const [loading, setLoading] = useState(false);
+  const [screens, setScreens] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 1500]);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData() 
-    {
-      try{
+    async function fetchData() {
+      try {
         setLoading(true);
         const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/screens/getAllScreens?page=${page}`);
         const data = await response.json();
@@ -25,15 +24,14 @@ const Screens = () => {
         setLoading(false);
         setScreens(data.screens);
         setNumOfPages(data.numberOfPages);
-      }catch(err){
+      } catch (err) {
         console.error(err);
       }
     }
     fetchData();
   }, [page]);
 
-  async function filterData()
-  {
+  async function filterData() {
     // setLoading(true);
     // const filtredScreens = allScreens.filter((screen)=>{
     //   return parseInt(screen.price.slice(0 , screen.price.length-1)) >= priceRange[0] && parseInt(screen.price.slice(0 , screen.price.length -1)) <= priceRange[1];
@@ -48,14 +46,18 @@ const Screens = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-      <button className="filter-btn">
-          Filter by
-        </button>
-        <Pagination 
-          page={page}
-          setPage={setPage}
-          numOfPages={numOfPages}
-        />
+        {
+          !loading && <>
+            <button className="filter-btn">
+              Filter by
+            </button>
+            <Pagination
+              page={page}
+              setPage={setPage}
+              numOfPages={numOfPages}
+            />
+          </>
+        }
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">
@@ -65,17 +67,17 @@ const Screens = () => {
           <div className="price">
             <h1>Price</h1>
             <Slider
-              style={{color:"#777"}} 
+              style={{ color: "#777" }}
               min={0}
               max={1500}
               valueLabelDisplay="auto"
               value={priceRange}
-              onChange={(e,newValue) => { setPriceRange(newValue) }}
+              onChange={(e, newValue) => { setPriceRange(newValue) }}
               onChangeCommitted={filterData}
             />
             <div className="price-inputs">
-              <input className="min" value={priceRange[0] + "  DT"} onChange={()=>{}} />
-              <input className="max" value={priceRange[1] + "  DT"} onChange={()=>{}}/>
+              <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />
+              <input className="max" value={priceRange[1] + "  DT"} onChange={() => { }} />
             </div>
           </div>
           <div className="brand">
@@ -109,7 +111,7 @@ const Screens = () => {
         <div className="computer-container">
           {
             loading ? <div className="loading-wrapper">
-            <CircularProgress style={{margin:"3rem"}}/>
+              <CircularProgress style={{ margin: "3rem" }} />
             </div> : screens.map((screen, index) => {
               return (
                 <Screen key={index}
