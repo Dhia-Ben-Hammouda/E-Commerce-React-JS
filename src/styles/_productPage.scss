@@ -3,10 +3,33 @@
   height:35px;
   display: flex;
   justify-content: flex-end;
-  background:red;
-  padding-inline:1rem;
+  align-items: center;
+  padding:2rem 2rem;
 
-  
+  .filter-btn{
+    display: none;
+  }
+
+  .pages{
+    display: flex;
+    justify-content: center;
+
+    .active{
+      background:$secondary !important;
+      color:black !important;
+    }
+
+    .page{
+      background:black;
+      color:white;
+      margin-inline: .5rem;
+      height:30px;
+      width:30px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+    }
+  }
 }
 
 .computer-wrapper{
@@ -91,6 +114,21 @@
 
 @media (max-width:576px)
 {
+  .pagination-filter{
+    justify-content: space-around;
+
+    .filter-btn{
+      display: block;
+      background:$secondary;
+      border:none;
+      outline:none;
+      font-size: 12px;
+      border-radius: 8px;
+      padding:.5rem 1rem;
+    }
+  }
+
+
   .computer-wrapper{
     display: flex;
     justify-content: center;
@@ -101,6 +139,17 @@
 
     .filter-container{
       display: none;
+    }
+  }
+}
+
+@media (max-width:321px)
+{
+  .pagination-filter{
+    justify-content: space-between;
+    .filter-btn{
+      font-size: 12px;
+      padding:.5rem .6rem;
     }
   }
 }
