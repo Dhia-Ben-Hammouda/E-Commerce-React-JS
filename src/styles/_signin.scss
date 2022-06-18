@@ -54,6 +54,11 @@
       border-radius: 50%;
       margin-inline:.3rem;
       padding:.5rem;
+
+      &:hover{
+        transform: scale(1 , 1);
+      }
+
     }
 
     .sign-in-with{

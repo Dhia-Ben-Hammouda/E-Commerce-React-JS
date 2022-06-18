@@ -10,6 +10,7 @@ const Computers = () => {
   const [priceRange, setPriceRange] = useState([0, 4000]);
   const [computers, setComputers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [paginationLoading, setPaginationLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
 
@@ -20,9 +21,8 @@ const Computers = () => {
         const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers?page=${page}`);
         const data = await response.json();
 
-        console.log(data);
-
         setLoading(false);
+        setPaginationLoading(false);
         setComputers(data.computers);
         setNumOfPages(data.numberOfPages);
       } catch (err) {
@@ -37,7 +37,7 @@ const Computers = () => {
       <Navbar />
       <div className="pagination-filter">
         {
-          !loading && <>
+          !paginationLoading && <>
             <button className="filter-btn">
               Filter by
             </button>

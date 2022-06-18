@@ -2,38 +2,38 @@ import React from "react";
 import Navbar from "../Navbar.jsx";
 import Mouse from "./Mouse.jsx";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "@mui/material/Slider";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 
 const Mouses = () => {
-  const [ loading , setLoading  ] = useState(false);
-  const [ mouses , setMouses ] = useState([]);
-  const [ priceRange , setPriceRange ] = useState([0 , 300]);
+  const [loading, setLoading] = useState(false);
+  const [paginationLoading, setPaginationLoading] = useState(true);
+  const [mouses, setMouses] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 300]);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
 
   useEffect(() => {
-    async function fetchData() 
-    {
-      try{
+    async function fetchData() {
+      try {
         setLoading(true);
         const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/mouses/getAllMouses?page=${page}`);
         const data = await response.json();
 
         setLoading(false);
+        setPaginationLoading(false);
         setMouses(data.mouses);
         setNumOfPages(data.numberOfPages);
-      }catch(err){
+      } catch (err) {
         console.error(err);
       }
     }
     fetchData();
   }, [page]);
 
-  async function filterData()
-  {
+  async function filterData() {
     // setLoading(true);
     // const filtredMouses = allMouses.filter((mouse)=>{
     //   return parseInt(mouse.price.slice(0 , mouse.price.length-1)) >= priceRange[0] && parseInt(mouse.price.slice(0 , mouse.price.length -1)) <= priceRange[1];
@@ -49,7 +49,7 @@ const Mouses = () => {
       <Navbar />
       <div className="pagination-filter">
         {
-          !loading && <>
+          !paginationLoading && <>
             <button className="filter-btn">
               Filter by
             </button>
@@ -69,17 +69,17 @@ const Mouses = () => {
           <div className="price">
             <h1>Price</h1>
             <Slider
-              style={{color:"#777"}} 
+              style={{ color: "#777" }}
               min={0}
               max={300}
               valueLabelDisplay="auto"
               value={priceRange}
-              onChange={(e,newValue) => { setPriceRange(newValue) }}
+              onChange={(e, newValue) => { setPriceRange(newValue) }}
               onChangeCommitted={filterData}
             />
             <div className="price-inputs">
-              <input className="min" value={priceRange[0] + "  DT"} onChange={()=>{}} />
-              <input className="max" value={priceRange[1] + "  DT"} onChange={()=>{}}/>
+              <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />
+              <input className="max" value={priceRange[1] + "  DT"} onChange={() => { }} />
             </div>
           </div>
           <div className="brand">
@@ -101,7 +101,7 @@ const Mouses = () => {
         <div className="computer-container">
           {
             loading ? <div className="loading-wrapper">
-            <CircularProgress style={{margin:"3rem"}}/>
+              <CircularProgress style={{ margin: "3rem" }} />
             </div> : mouses.map((mouse, index) => {
               return (
                 <Mouse key={index}

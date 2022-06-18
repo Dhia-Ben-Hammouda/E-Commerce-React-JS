@@ -14,7 +14,6 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error1, setError1] = useState(false);
   const [error2, setError2] = useState(false);
-  const [loading , setLoading] = useState(false);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -106,7 +105,7 @@ const SignIn = () => {
                 <FaTwitter />
               </button>
               <GoogleLogin
-                clientId="465138218686-82fu8614sum97d6b9nv32bmlas2j9um3.apps.googleusercontent.com"
+                clientId="465138218686-g25mmikjc55jkjogth4q10in41v4q9tt.apps.googleusercontent.com"
                 render={(renderProps) => (<button onClick={renderProps.onClick} className="circle" style={{ background: "#E74639" }}>
                   <FaGoogle />
                 </button>)}

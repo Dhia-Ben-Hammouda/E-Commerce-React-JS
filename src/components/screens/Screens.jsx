@@ -9,6 +9,7 @@ import Pagination from "../Pagination.jsx";
 
 const Screens = () => {
   const [loading, setLoading] = useState(false);
+  const [paginationLoading, setPaginationLoading] = useState(true);
   const [screens, setScreens] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1500]);
   const [page, setPage] = useState(1);
@@ -22,6 +23,7 @@ const Screens = () => {
         const data = await response.json();
 
         setLoading(false);
+        setPaginationLoading(false);
         setScreens(data.screens);
         setNumOfPages(data.numberOfPages);
       } catch (err) {
@@ -47,7 +49,7 @@ const Screens = () => {
       <Navbar />
       <div className="pagination-filter">
         {
-          !loading && <>
+          !paginationLoading && <>
             <button className="filter-btn">
               Filter by
             </button>

@@ -6,7 +6,8 @@ const reducer = combineReducers({
   computerReducer,
   screenReducer,
   keyboardReducer,
-  mouseReducer
+  mouseReducer,
+  cartReducer
 })
 
 export default reducer;

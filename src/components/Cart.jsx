@@ -1,15 +1,25 @@
 import React from "react";
 import Navbar from "./Navbar.jsx";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+
+  const products = useSelector((state)=>state.cartReducer.products);
+
+  console.log(products);
+
   return (
     <>
       <Navbar />
       <div className="cart-container">
         <div className="products">
-          <div className="product"></div>
-          <div className="product"></div>
-          <div className="product"></div>
+          {
+            products.map((product , index)=>{
+              return(
+                <div key={index} className="product"></div>
+              )
+            })
+          }
         </div>
         <div className="checkout">
           <div className="wrapper">

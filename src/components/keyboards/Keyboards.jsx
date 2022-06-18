@@ -9,6 +9,7 @@ import Pagination from "../Pagination.jsx";
 
 const Keyboards = () => {
   const [loading, setLoading] = useState(false);
+  const [paginationLoading, setPaginationLoading] = useState(true);
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [keyboards, setKeyboards] = useState([]);
   const [page, setPage] = useState(1);
@@ -22,6 +23,7 @@ const Keyboards = () => {
         const data = await response.json();
 
         setLoading(false);
+        setPaginationLoading(false);
         setKeyboards(data.keyboards);
         setNumOfPages(data.numberOfPages);
       } catch (err) {
@@ -47,7 +49,7 @@ const Keyboards = () => {
       <Navbar />
       <div className="pagination-filter">
         {
-          !loading && <>
+          !paginationLoading && <>
             <button className="filter-btn">
               Filter by
             </button>

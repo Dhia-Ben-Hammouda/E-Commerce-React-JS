@@ -116,6 +116,15 @@
 {
   .pagination-filter{
     justify-content: space-around;
+    padding:2rem 1rem;
+
+    .pages{
+
+      .page{
+        margin-inline:.3rem;
+      }
+
+    }
 
     .filter-btn{
       display: block;
