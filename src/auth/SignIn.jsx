@@ -50,13 +50,11 @@ const SignIn = () => {
 
   }
 
-  async function googleSuccess(res)
-  {
+  async function googleSuccess(res) {
     console.log(res);
   }
 
-  function googleFailure(err)
-  {
+  function googleFailure(err) {
     console.error(err);
   }
 
@@ -84,8 +82,9 @@ const SignIn = () => {
               />
             </div>
           </IconContext.Provider>
-          <div className="forgot" style={{ margin: ".5rem 0", width: "85%", display: "flex", justifyContent: "flex-end", color: "#777" }}>
-            <p style={{ fontSize: "12px" }}>Forgot password ?</p>
+          <div className="forgot" style={{ color: "#777" }}>
+            <label><input type="checkbox" /> Remember Me </label>
+            <p>Forgot password ?</p>
           </div>
           <button type="submit">
             Sign in
