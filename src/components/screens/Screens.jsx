@@ -129,6 +129,15 @@ const Screens = () => {
               );
             })
           }
+          {
+            !loading && <div className="pagination-filter" style={{justifyContent:"flex-start" , paddingTop:"1rem"}}>
+                <Pagination
+            page={page}
+            setPage={setPage}
+            numOfPages={numOfPages}
+            />
+            </div>
+          }
         </div>
       </div>
     </>
