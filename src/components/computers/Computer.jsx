@@ -1,9 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/actions/cartActions.js";
 
 const Computer = ({ id, picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
-  const dispatch = useDispatch();
   
   return (
     <>
@@ -36,7 +33,7 @@ const Computer = ({ id, picture, description, brand, price, procesor, memory, gr
             <h2>
               {price}
             </h2>
-            <button onClick={()=>{dispatch(addToCart(id));}}>
+            <button>
               Add to Cart
             </button>
           </div>
