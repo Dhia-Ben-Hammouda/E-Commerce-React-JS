@@ -1,6 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../app/features/cartSlice.js";
 
 const Computer = ({ id, picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
+  const dispatch = useDispatch();
+
+  function addItemToCart()
+  {
+    dispatch(cartActions.addToCart({
+      id,
+      price,
+      picture,
+      name
+    }));
+  }
   
   return (
     <>
@@ -12,7 +25,7 @@ const Computer = ({ id, picture, description, brand, price, procesor, memory, gr
           <h2>
             {price}
           </h2>
-          <button>
+          <button onClick={addItemToCart}>
             Add to Cart
           </button>
         </div>
@@ -33,7 +46,7 @@ const Computer = ({ id, picture, description, brand, price, procesor, memory, gr
             <h2>
               {price}
             </h2>
-            <button>
+            <button onClick={addItemToCart}>
               Add to Cart
             </button>
           </div>

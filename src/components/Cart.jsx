@@ -1,7 +1,12 @@
 import React from "react";
 import Navbar from "./Navbar.jsx";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+  const products = useSelector((state)=> state.cart.products);
+
+  console.log(products);
+
   return (
     <>
       <Navbar />

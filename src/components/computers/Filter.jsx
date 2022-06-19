@@ -3,7 +3,18 @@ import Slider from "@mui/material/Slider";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 
 const Filter = ({ loading, setLoading, setComputers, priceRange, setPriceRange, computers}) => {
-  async function filterData(e) {
+
+  
+  async function filterData(e) 
+  {
+
+    const property = e.target.name;
+    const value = e.target.value;
+
+    console.log(property);
+    console.log(value);
+
+
     // setLoading(true);
     // const filtredComputers = allComputers.filter((computer) => {
     //   return (parseInt(computer.price.slice(0, computer.price.length - 1)) >= priceRange[0] && parseInt(computer.price.slice(0, computer.price.length - 1)) <= priceRange[1])

@@ -33,17 +33,6 @@ const Keyboards = () => {
     fetchData();
   }, [page]);
 
-  async function filterData() {
-    // setLoading(true);
-
-    // const filtredKeyboards = allKeyboards.filter((keyboard)=>{
-    //   return parseInt(keyboard.price.slice(0 , keyboard.price.length-1)) >= priceRange[0] && parseInt(keyboard.price.slice(0 , keyboard.price.length -1)) <= priceRange[1];
-    // })
-
-    // setLoading(false);
-    // setKeyboards(filtredKeyboards);
-  }
-
   return (
     <>
       <Navbar />
@@ -75,7 +64,6 @@ const Keyboards = () => {
               value={priceRange}
               valueLabelDisplay="auto"
               onChange={(e, newValue) => { setPriceRange(newValue) }}
-              onChangeCommitted={(e, newValue) => { filterData() }}
             />
             <div className="price-inputs">
               <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />
@@ -124,12 +112,12 @@ const Keyboards = () => {
             })
           }
           {
-            !loading && <div className="pagination-filter" style={{justifyContent:"flex-start" , paddingTop:"1rem"}}>
-                <Pagination
-            page={page}
-            setPage={setPage}
-            numOfPages={numOfPages}
-            />
+            !loading && <div className="pagination-filter" style={{ justifyContent: "flex-start", paddingTop: "1rem" }}>
+              <Pagination
+                page={page}
+                setPage={setPage}
+                numOfPages={numOfPages}
+              />
             </div>
           }
         </div>

@@ -33,17 +33,6 @@ const Mouses = () => {
     fetchData();
   }, [page]);
 
-  async function filterData() {
-    // setLoading(true);
-    // const filtredMouses = allMouses.filter((mouse)=>{
-    //   return parseInt(mouse.price.slice(0 , mouse.price.length-1)) >= priceRange[0] && parseInt(mouse.price.slice(0 , mouse.price.length -1)) <= priceRange[1];
-    // })
-
-    // setLoading(false);
-    // setMouses(filtredMouses);
-  }
-
-
   return (
     <>
       <Navbar />
@@ -75,7 +64,6 @@ const Mouses = () => {
               valueLabelDisplay="auto"
               value={priceRange}
               onChange={(e, newValue) => { setPriceRange(newValue) }}
-              onChangeCommitted={filterData}
             />
             <div className="price-inputs">
               <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />

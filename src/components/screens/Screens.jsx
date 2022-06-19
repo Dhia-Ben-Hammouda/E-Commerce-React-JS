@@ -33,17 +33,6 @@ const Screens = () => {
     fetchData();
   }, [page]);
 
-  async function filterData() {
-    // setLoading(true);
-    // const filtredScreens = allScreens.filter((screen)=>{
-    //   return parseInt(screen.price.slice(0 , screen.price.length-1)) >= priceRange[0] && parseInt(screen.price.slice(0 , screen.price.length -1)) <= priceRange[1];
-    // })
-
-    // setLoading(false);
-    // setScreens(filtredScreens);
-  }
-
-
   return (
     <>
       <Navbar />
@@ -75,7 +64,6 @@ const Screens = () => {
               valueLabelDisplay="auto"
               value={priceRange}
               onChange={(e, newValue) => { setPriceRange(newValue) }}
-              onChangeCommitted={filterData}
             />
             <div className="price-inputs">
               <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />
