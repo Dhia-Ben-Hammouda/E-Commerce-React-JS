@@ -81,7 +81,7 @@ const Navbar = () => {
               <div className="cart" style={{ marginLeft: ".75rem" }}>
                 <a href="/cart">
                   <FaShoppingCart />
-                  <div className="num">
+                  <div className="num" style={{color:"white"}}>
                     {
                       count
                     }

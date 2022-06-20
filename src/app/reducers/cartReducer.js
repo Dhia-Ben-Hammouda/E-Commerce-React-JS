@@ -16,7 +16,7 @@ const cartReducer = (state = initialState , action) => {
         quantity : state.quantity + 1
       }
     case actionTypes.REMOVE_FROM_CART:
-
+      break;
     default:
       return state;
   }
