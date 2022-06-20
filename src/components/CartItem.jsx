@@ -21,7 +21,7 @@ const CartItem = ({id , name , picture , price})=>{
               value={val}
               onChange={(e)=>{setVal(e.target.value)}}
             />
-            <h2>{price}</h2>
+            <h2>{price} DT</h2>
           </div>
         </div>
       </div>

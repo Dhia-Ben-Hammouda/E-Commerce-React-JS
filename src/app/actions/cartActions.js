@@ -13,3 +13,9 @@ export const removeFromCart = (item)=>{
     payload:item
   }
 }
+
+export const getNumberOfItems = ()=>{
+  return {
+    type:actionTypes.NUMBER_OF_ITEMS,
+  }
+}

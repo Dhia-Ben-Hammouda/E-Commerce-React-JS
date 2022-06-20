@@ -23,7 +23,7 @@ const Computer = ({ id, picture, description, brand, price, procesor, memory, gr
             <img alt="" style={{ width: "80%" }} src={picture} />
           </a>
           <h2>
-            {price}
+            {price} DT
           </h2>
           <button onClick={addItemToCart}>
             Add to Cart
@@ -44,7 +44,7 @@ const Computer = ({ id, picture, description, brand, price, procesor, memory, gr
           </h4>
           <div className="right-btn">
             <h2>
-              {price}
+              {price} DT
             </h2>
             <button onClick={addItemToCart}>
               Add to Cart
