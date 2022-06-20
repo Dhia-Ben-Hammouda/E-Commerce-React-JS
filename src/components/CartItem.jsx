@@ -1,6 +1,9 @@
 import React from "react";
+import { useState } from "react";
 
 const CartItem = ({id , name , picture , price})=>{
+  const [val , setVal ] = useState(1);
+
   return(
     <>
       <div className="product">
@@ -12,7 +15,12 @@ const CartItem = ({id , name , picture , price})=>{
         </div>
         <div className="right">
           <div>
-            <input type="number" />
+            <input 
+              type="number" 
+              min="1" 
+              value={val}
+              onChange={(e)=>{setVal(e.target.value)}}
+            />
             <h2>{price}</h2>
           </div>
         </div>

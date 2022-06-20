@@ -12,6 +12,7 @@
       margin-bottom: 2rem;
       box-shadow: 0px 0px 1px 0px;
       display: flex;
+      padding:1.6rem 0;
       
 
       .left{
@@ -25,6 +26,7 @@
           justify-content: flex-start;
           align-items: center;
           margin-left: 2rem;
+          width:40%;
           
 
           img{
@@ -57,6 +59,7 @@
             width:40px;
             margin-left: 1rem;
             text-align: center;
+            padding-left: .5rem;
           }
   
           h2{
@@ -98,6 +101,7 @@
         border:none;
         outline:none;
         width: 100%;
+        font-size: 14px;
         padding:.75rem 0rem;
         border-radius: 15px;
         transition: .5s;
@@ -135,7 +139,6 @@
         margin-bottom: 1rem;
 
         .img-wrapper{
-          background:red;
           width: 30%;
           position: relative;
 
@@ -146,7 +149,7 @@
         }
       }
     }
-
+    
     .checkout{
       width:95%;
     }

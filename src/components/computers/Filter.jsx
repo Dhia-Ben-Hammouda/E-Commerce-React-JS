@@ -1,18 +1,17 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
+import { useState } from "react";
 
 const Filter = ({ loading, setLoading, setComputers, priceRange, setPriceRange, computers}) => {
-
+  const [filters , setFilters ] = useState({
+    
+  })
   
-  async function filterData(e) 
-  {
+  async function filterData(e) {
 
     const property = e.target.name;
     const value = e.target.value;
-
-    console.log(property);
-    console.log(value);
 
 
     // setLoading(true);
@@ -32,6 +31,7 @@ const Filter = ({ loading, setLoading, setComputers, priceRange, setPriceRange, 
         <div className="price">
           <h1>Price</h1>
           <Slider
+            step={200}
             style={{ color: "#777" }}
             min={0}
             max={4000}
