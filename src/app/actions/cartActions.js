@@ -1,4 +1,4 @@
-import * as actionTypes from "../constants/cartActions.js";
+import * as actionTypes from "../constants/cartConstants.js";
 
 export const addToCart = (item)=>{
   return {
@@ -11,11 +11,5 @@ export const removeFromCart = (item)=>{
   return {
     type:actionTypes.REMOVE_FROM_CART,
     payload:item
-  }
-}
-
-export const getNumberOfItems = ()=>{
-  return {
-    type:actionTypes.NUMBER_OF_ITEMS,
   }
 }

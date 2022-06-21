@@ -11,7 +11,7 @@ const Computer = ({ id, picture, description, brand, price, procesor, memory, gr
       id,
       name,
       picture,
-      price,
+      price:parseFloat(price)
     }))
   }
   
