@@ -13,37 +13,39 @@ const cartReducer = (state = initialState , action) => {
       const newItem = action.payload;
       newItem.price = parseFloat(newItem.price).toFixed(3);
 
-      const exists = state.cartItems.find((item)=> item.id === newItem.id);
+      console.log(newItem.price);
 
-      if(exists)
-      {
+      // const exists = state.cartItems.find((item)=> item.id === newItem.id);
 
-        const array = state.cartItems;
+      // if(exists)
+      // {
 
-        array.forEach((item)=>{
-          if(item.id === newItem.id)
-          {
-            item.quantity++;
-            item.total+= parseFloat(item.price);
-          }
-        })
+      //   const array = state.cartItems;
 
-        return {
-          ...state,
-          cartItems : array,
-          quantity : state.quantity+1,
-          total : state.total + parseFloat(newItem.price)
-        }
-      }
-      else
-      {
-        return {
-          ...state ,
-          cartItems : [...state.cartItems , newItem],
-          quantity : state.quantity + 1,
-          total : state.total + newItem.price
-        }
-      }
+      //   array.forEach((item)=>{
+      //     if(item.id === newItem.id)
+      //     {
+      //       item.quantity++;
+      //       item.total+= parseFloat(item.price);
+      //     }
+      //   })
+
+      //   return {
+      //     ...state,
+      //     cartItems : array,
+      //     quantity : state.quantity+1,
+      //     total : state.total + parseFloat(newItem.price)
+      //   }
+      // }
+      // else
+      // {
+      //   return {
+      //     ...state ,
+      //     cartItems : [...state.cartItems , newItem],
+      //     quantity : state.quantity + 1,
+      //     total : state.total + newItem.price
+      //   }
+      // }
 
     case actionTypes.REMOVE_FROM_CART:
       break;
