@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "./Navbar.jsx";
 import Carousel from "./Carousell.jsx";
-import img1 from "../images/img1.jpg";
-import img2 from "../images/img2.jpg";
-import img3 from "../images/img3.jpg";
-import img4 from "../images/img4.jpg";
-import img8 from "../images/img8.jpg";
-import img9 from "../images/img9.jpg";
-import img10 from "../images/img10.jpg";
-import img11 from "../images/img11.jpg";
+import img1 from "../images/ads/img1.jpg";
+import img2 from "../images/ads/img2.jpg";
+import img3 from "../images/ads/img3.jpg";
+import img4 from "../images/ads/img4.jpg";
+import img8 from "../images/ads/img8.jpg";
+import img9 from "../images/ads/img9.jpg";
+import img10 from "../images/ads/img10.jpg";
+import img11 from "../images/ads/img11.jpg";
 
 const Home = ()=>{
   return(
