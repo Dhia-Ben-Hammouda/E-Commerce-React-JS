@@ -1,6 +1,5 @@
 import React from "react";
 import { TextField, Button } from "@mui/material";
-import FileBase from "react-file-base64";
 import { useState } from "react";
 
 const InsertKeyboard = () => {
@@ -74,10 +73,14 @@ const InsertKeyboard = () => {
             onChange={(e)=>{setKeyboard({...keyboard , description:e.target.value})}}
           />
 
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({base64}) => {setKeyboard({...keyboard , picture:base64}) ; console.log(base64) }}
+          <TextField
+            label="Picture"
+            fullWidth
+            sx={{ mb: 1 }}
+            multiline
+            minRows={4}
+            value={keyboard.picture}
+            onChange={(e)=>{setKeyboard({...keyboard , picture:e.target.value})}}
           />
 
           <br />

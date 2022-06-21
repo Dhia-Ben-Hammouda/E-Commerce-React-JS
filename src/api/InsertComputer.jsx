@@ -1,6 +1,5 @@
 import React from "react";
 import { TextField, Button } from "@mui/material";
-import FileBase from "react-file-base64";
 import { useState } from "react";
 
 const InsertComputer = () => {
@@ -101,11 +100,14 @@ const InsertComputer = () => {
             onChange={(e)=>{setComputer({...computer , description:e.target.value})}}
           />
 
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({base64}) => {setComputer({...computer , picture:base64}) ; console.log(base64) }}
+          <TextField
+            label="Picture"
+            fullWidth
+            sx={{ mb: 1 }}
+            value={computer.picture}
+            onChange={(e)=>{setComputer({...computer , picture:e.target.value})}}
           />
+
 
           <br />
 
