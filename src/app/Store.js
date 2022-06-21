@@ -1,6 +1,6 @@
 import { legacy_createStore as createStore} from "redux";
 import { applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension"
+import { composeWithDevTools } from "@redux-devtools/extension"
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "./rootReducer.js";

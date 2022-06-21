@@ -46,7 +46,7 @@ const cartReducer = (state = initialState , action) => {
       //     total : state.total + newItem.price
       //   }
       // }
-
+      break;
     case actionTypes.REMOVE_FROM_CART:
       break;
     default:

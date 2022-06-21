@@ -1,19 +1,10 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { useState } from "react";
 
 const Filter = ({ loading, setLoading, setComputers, priceRange, setPriceRange, computers}) => {
-  const [filters , setFilters ] = useState({
-    
-  })
   
   async function filterData(e) {
-
-    const property = e.target.name;
-    const value = e.target.value;
-
-
     // setLoading(true);
     // const filtredComputers = allComputers.filter((computer) => {
     //   return (parseInt(computer.price.slice(0, computer.price.length - 1)) >= priceRange[0] && parseInt(computer.price.slice(0, computer.price.length - 1)) <= priceRange[1])
