@@ -11,8 +11,7 @@ const InsertScreen = () => {
     description: "",
     resolution: "",
     picture: "",
-    size: "",
-    wireless: ""
+    size: ""
   })
 
   async function submitHandler(e) {
@@ -80,14 +79,6 @@ const InsertScreen = () => {
             minRows={4}
             value={keyboard.description}
             onChange={(e) => { setKeyboard({ ...keyboard, description: e.target.value }) }}
-          />
-
-          <TextField
-            label="Wireless : Yes | No"
-            fullWidth
-            sx={{ mb: 1 }}
-            value={keyboard.wireless}
-            onChange={(e) => { setKeyboard({ ...keyboard, wireless: e.target.value }) }}
           />
 
           <TextField

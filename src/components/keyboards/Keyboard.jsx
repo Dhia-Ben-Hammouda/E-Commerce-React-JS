@@ -9,7 +9,7 @@ const Keyboard = ({ id, picture, description, price, name }) => {
             <img alt="" style={{ width: "80%" }} src={picture} />
           </a>
           <h2>
-            {price}
+            {price} DT
           </h2>
           <button>
             Add to Cart
@@ -30,7 +30,7 @@ const Keyboard = ({ id, picture, description, price, name }) => {
           </h4>
           <div className="right-btn">
             <h2>
-              {price}
+              {price} DT
             </h2>
             <button>
               Add to Cart

@@ -7,6 +7,15 @@ nav{
   justify-content: space-between;
   align-items: center;
   padding:1px 0px;
+
+  .logo-wrapper{
+    margin-left: 1rem;
+    
+    img{
+      transform: scale(.7);
+    }
+    
+  }
   
   .desktop-list{
     margin-left: 2rem;

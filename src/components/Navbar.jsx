@@ -3,6 +3,7 @@ import { FaShoppingCart, FaUserAlt, FaSearch, FaCog, FaSignOutAlt } from "react-
 import { IconContext } from "react-icons";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import logo from "../images/logo.png";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -35,6 +36,9 @@ const Navbar = () => {
   return (
     <>
       <nav>
+        <div className="logo-wrapper">
+          <img alt="" src={logo} />
+        </div>
         <ul className="desktop-list">
           <li>
             <a href="/computers">Computers</a>
