@@ -52,9 +52,6 @@ const Navbar = () => {
           <li>
             <a href="/screens">Screens</a>
           </li>
-          <li>
-            <a href="/webcams">Webcams</a>
-          </li>
         </ul>
         <div className="action-container">
           <IconContext.Provider value={{ color: "white", size: "2rem" }}>
@@ -111,9 +108,6 @@ const Navbar = () => {
         </li>
         <li>
           <a href="/screens">Screens</a>
-        </li>
-        <li>
-          <a href="/webcams">Webcams</a>
         </li>
       </ul>
     </>

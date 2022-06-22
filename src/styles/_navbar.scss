@@ -22,7 +22,7 @@ nav{
     margin-right: 3rem;
     li{
       display: inline;
-      margin-right:1.5rem;
+      margin-inline:1.25rem;
       a{
         color:white;
         position:relative;
@@ -85,7 +85,6 @@ nav{
             display: flex;
             justify-content: space-around;
             align-items: center;
-            margin-bottom: .3rem;
             cursor: pointer;
 
             a{
