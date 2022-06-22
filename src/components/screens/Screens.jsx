@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import Slider from "@mui/material/Slider";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
+import { FaSearch } from "react-icons/fa";
 
 const Screens = () => {
   const [loading, setLoading] = useState(false);
-  const [paginationLoading, setPaginationLoading] = useState(true);
   const [screens, setScreens] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1500]);
   const [page, setPage] = useState(1);
@@ -23,7 +23,6 @@ const Screens = () => {
         const data = await response.json();
 
         setLoading(false);
-        setPaginationLoading(false);
         setScreens(data.screens);
         setNumOfPages(data.numberOfPages);
       } catch (err) {
@@ -37,7 +36,15 @@ const Screens = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        
+        <button className="filter-btn">
+          Filter
+        </button>
+        <div className="search-container">
+          <div className="search-icon">
+            <FaSearch color="white" size={"1.25rem"} />
+          </div>
+          <input placeholder="Search for products" />
+        </div>
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">
@@ -107,12 +114,12 @@ const Screens = () => {
             })
           }
           {
-            !loading && <div className="pagination-filter" style={{justifyContent:"flex-start" , paddingTop:"1rem"}}>
-                <Pagination
-            page={page}
-            setPage={setPage}
-            numOfPages={numOfPages}
-            />
+            !loading && <div className="pagination-filter" style={{ justifyContent: "flex-start", paddingTop: "1rem" }}>
+              <Pagination
+                page={page}
+                setPage={setPage}
+                numOfPages={numOfPages}
+              />
             </div>
           }
         </div>

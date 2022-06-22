@@ -5,12 +5,12 @@ import Filter from "./Filter.jsx";
 import CircularProgress from "@mui/material/CircularProgress";
 import Pagination from "../Pagination.jsx";
 import { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 const Computers = () => {
   const [priceRange, setPriceRange] = useState([0, 4000]);
   const [computers, setComputers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [paginationLoading, setPaginationLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
 
@@ -22,7 +22,6 @@ const Computers = () => {
         const data = await response.json();
 
         setLoading(false);
-        setPaginationLoading(false);
         setComputers(data.computers);
         setNumOfPages(data.numberOfPages);
       } catch (err) {
@@ -36,7 +35,15 @@ const Computers = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        
+        <button className="filter-btn">
+          Filter
+        </button>
+        <div className="search-container">
+          <div className="search-icon">
+            <FaSearch color="white" size={"1.25rem"} />
+          </div>
+          <input placeholder="Search for products" />
+        </div>
       </div>
       <div className="computer-wrapper">
         <Filter

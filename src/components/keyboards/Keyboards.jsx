@@ -6,10 +6,10 @@ import Slider from "@mui/material/Slider";
 import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
+import { FaSearch } from "react-icons/fa";
 
 const Keyboards = () => {
   const [loading, setLoading] = useState(false);
-  const [paginationLoading, setPaginationLoading] = useState(true);
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [keyboards, setKeyboards] = useState([]);
   const [page, setPage] = useState(1);
@@ -23,7 +23,6 @@ const Keyboards = () => {
         const data = await response.json();
 
         setLoading(false);
-        setPaginationLoading(false);
         setKeyboards(data.keyboards);
         setNumOfPages(data.numberOfPages);
       } catch (err) {
@@ -37,7 +36,15 @@ const Keyboards = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-
+        <button className="filter-btn">
+          Filter
+        </button>
+        <div className="search-container">
+          <div className="search-icon">
+            <FaSearch color="white" size={"1.25rem"} />
+          </div>
+          <input placeholder="Search for products" />
+        </div>
       </div>
       <div className="computer-wrapper">
         <div className="filter-container">

@@ -5,7 +5,6 @@ import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 const SignIn = () => {
@@ -47,14 +46,6 @@ const SignIn = () => {
         break;
     }
 
-  }
-
-  async function googleSuccess(res) {
-    console.log(res);
-  }
-
-  function googleFailure(err) {
-    console.error(err);
   }
 
   return (
