@@ -5,7 +5,11 @@
   align-items: center;
   padding:1rem 2rem;
 
-  .search-container{
+  button{
+    display: none;
+  }
+
+  .search{
     background:white;
     display: none;
     justify-content: flex-start;
@@ -13,6 +17,8 @@
     padding:.3rem .3rem;
     margin-right: 1rem;
     border-radius: 50px;
+
+    
 
     input{
       border:none;
@@ -136,38 +142,101 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:1024px) and (min-width:700px)
+{
+  .pagination-filter{
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width:576px)
 {
   .pagination-filter{
     display: flex;
-    justify-content: space-around;
-    padding:2rem 1rem;
+    justify-content: space-between;
+    padding:2rem .5rem;
 
-    .search-container{
-      display: flex;
-      transform: scale(.8);
-      margin-right: 0;
-      box-shadow: 0px 0px 2px;
-    }
-
-    .pages{
-
-      .page{
-        margin-inline:.3rem;
-      }
-
-    }
-
-    .filter-btn{
+    button{
+      background: $secondary;
       display: block;
-      background:$secondary;
       border:none;
       outline:none;
       font-size: 12px;
-      border-radius: 8px;
-      padding:.5rem 1rem;
-      margin-left: 2rem;
+      border-radius: 10px;
+      padding:.5rem .8rem;
+      margin-left: .5rem;
     }
+
+    .search{
+      background:white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding:.3rem .3rem;
+      border-radius: 50px;
+      box-shadow: 0px 0px 2px;
+
+      
+
+      input{
+        border:none;
+        outline:none; 
+        font-size: 11px;
+        margin-left: 1rem;
+      }
+      
+      .search-icon{
+        background:$secondary;
+        border-radius: 50%;
+        width:40px;
+        height:40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor:pointer;
+        transition: .5s;
+
+        &:hover{
+          transform: scale(1.26);
+        }
+      }
+      
+    }
+
   }
 
 
@@ -184,6 +253,18 @@
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width:321px)
 {

@@ -35,12 +35,10 @@ const Computers = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button className="filter-btn">
-          Filter
-        </button>
-        <div className="search-container">
+        <button>Filter By</button>
+        <div className="search">
           <div className="search-icon">
-            <FaSearch color="white" size={"1.25rem"} />
+            <FaSearch size={"1.25rem"} />
           </div>
           <input placeholder="Search for products" />
         </div>
@@ -76,12 +74,12 @@ const Computers = () => {
             })
           }
           {
-            !loading && <div className="pagination-filter" style={{justifyContent:"flex-start" , paddingTop:"1rem"}}>
-                <Pagination
-            page={page}
-            setPage={setPage}
-            numOfPages={numOfPages}
-            />
+            !loading && <div className="pagination-filter" style={{ justifyContent: "flex-start", paddingTop: "1rem" }}>
+              <Pagination
+                page={page}
+                setPage={setPage}
+                numOfPages={numOfPages}
+              />
             </div>
           }
         </div>

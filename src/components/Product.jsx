@@ -47,7 +47,7 @@ const Product = () => {
                 <h3>
                   {
                     product.price
-                  }
+                  } DT
                 </h3>
                 <button>
                   Add to Cart

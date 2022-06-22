@@ -8,12 +8,10 @@ nav{
   align-items: center;
 
   .logo-wrapper{
-    
     img{
       transform: scale(.65);
       cursor: pointer;
     }
-    
   }
   
   .desktop-list{
@@ -111,10 +109,8 @@ nav{
             right:15px;
             transform: rotate(45deg);
           }
-
         }
       }
-
     }
 
     .search-container{
@@ -182,7 +178,7 @@ nav{
 
 
 
-@media (max-width:1024px) and (min-width:768px)
+@media (max-width:1024px) and (min-width:700px)
 {
   nav{
     justify-content: space-between;
@@ -256,7 +252,6 @@ nav{
           width:170px;
           font-size:12px;
         }
-
       }
     }
   }
@@ -270,6 +265,7 @@ nav{
     justify-content: space-around;
     padding-left:0px;
     padding:.7rem 0px;
+    padding-bottom: .2rem;
     
     a{
       text-decoration: none;
@@ -293,13 +289,13 @@ nav{
 @media ( max-width:321px )
 {
   nav{
-    .action-container{
-      .search-container{
-        input{
-          width:130px;
-          font-size: 10px;
-        }
+    .logo-wrapper{
+      img{
+        margin-right: 0px;
+        transform: scale(.6);
       }
     }
+
+    
   }
 }
