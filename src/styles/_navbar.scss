@@ -6,22 +6,23 @@ nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:1px 0px;
 
   .logo-wrapper{
-    margin-left: 1rem;
     
     img{
-      transform: scale(.7);
+      transform: scale(.65);
+      cursor: pointer;
     }
     
   }
   
   .desktop-list{
-    margin-left: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 3rem;
     li{
       display: inline;
-      margin:1.25rem;
+      margin-right:1.5rem;
       a{
         color:white;
         position:relative;
@@ -174,17 +175,17 @@ nav{
 }
 
 
-@media (max-width:992px) and (min-width:768px)
+@media (max-width:1024px) and (min-width:768px)
 {
   nav{
-    justify-content: center;
-    padding:10px 0;
+    justify-content: space-between;
+    padding:0px 0px;
 
     .action-container{
       width:100%;
       margin-right: 0rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       padding:0 2rem;
     }
     
@@ -196,7 +197,7 @@ nav{
   .mobile-list{
     display: flex;
     justify-content: space-evenly;
-    padding:.5rem 0;
+    padding:1.5rem 0;
 
     a{
       color:$primary;
@@ -208,18 +209,28 @@ nav{
 @media ( max-width:576px )
 {
   nav{
+    width: 100%;
+    padding: 0px 0px;
+    .logo-wrapper{
+      transform: translate(-1rem);
+      
+      img{
+        margin-right: 1rem;
+      }
+    }
 
     .desktop-list{
       display:none;
     }
 
     .action-container{
-      width:100%;
       display: flex;
       justify-content: space-between;
       margin-right: 0px;
+      padding:.5rem .7rem;
 
       .search-container{
+        display: none;
 
         input{
           width:170px;

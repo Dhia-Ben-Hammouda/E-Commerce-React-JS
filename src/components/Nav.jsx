@@ -2,6 +2,7 @@ import React from "react";
 import { FaShoppingCart, FaUserAlt, FaSearch, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { useState, useEffect } from "react";
+import logo from "../images/logo.png";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -28,10 +29,16 @@ const Navbar = () => {
     window.location.href = "/"
   }
 
+  function imgHandler() {
+    window.location.href = "/";
+  }
 
   return (
     <>
       <nav>
+        <div className="logo-wrapper">
+          <img onClick={imgHandler} alt="" src={logo} />
+        </div>
         <ul className="desktop-list">
           <li>
             <a href="/computers">Computers</a>
@@ -44,6 +51,9 @@ const Navbar = () => {
           </li>
           <li>
             <a href="/screens">Screens</a>
+          </li>
+          <li>
+            <a href="/webcams">Webcams</a>
           </li>
         </ul>
         <div className="action-container">
@@ -78,13 +88,18 @@ const Navbar = () => {
               <div className="cart" style={{ marginLeft: ".75rem" }}>
                 <a href="/cart">
                   <FaShoppingCart />
+                  <div className="num" style={{ color: "white" }}>
+                    {
+                      0
+                    }
+                  </div>
                 </a>
               </div>
             </div>
           </IconContext.Provider>
         </div>
       </nav>
-      <ul className="mobile-list" style={{background:"white"}}>
+      <ul className="mobile-list">
         <li>
           <a href="/computers">Computers</a>
         </li>
@@ -96,6 +111,9 @@ const Navbar = () => {
         </li>
         <li>
           <a href="/screens">Screens</a>
+        </li>
+        <li>
+          <a href="/webcams">Webcams</a>
         </li>
       </ul>
     </>

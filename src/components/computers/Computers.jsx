@@ -36,18 +36,7 @@ const Computers = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        {
-          !paginationLoading && <>
-            <button className="filter-btn">
-              Filter by
-            </button>
-            <Pagination
-              page={page}
-              setPage={setPage}
-              numOfPages={numOfPages}
-            />
-          </>
-        }
+        
       </div>
       <div className="computer-wrapper">
         <Filter

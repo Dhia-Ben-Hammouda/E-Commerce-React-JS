@@ -9,12 +9,21 @@ import img8 from "../images/ads/img8.jpg";
 import img9 from "../images/ads/img9.jpg";
 import img10 from "../images/ads/img10.jpg";
 import img11 from "../images/ads/img11.jpg";
+import { FaSearch } from "react-icons/fa";
 
-const Home = ()=>{
-  return(
+const Home = () => {
+  return (
     <>
-      <Navbar/>
-      <Carousel/>
+      <Navbar />
+      <div className="search-wrapper">
+        <div className="search-container">
+          <div className="search-icon">
+            <FaSearch color="white" size={"1.25rem"} />
+          </div>
+          <input placeholder="Search for products" />
+        </div>
+      </div>
+      <Carousel />
       <div className="add-container">
         <div className="add-grid">
           <div className="item">
