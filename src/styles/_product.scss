@@ -84,12 +84,14 @@
     margin: 1.25rem 1rem;
 
     .computer-right {
+      padding-right: 0px;
       .right-btn {
         display: none;
       }
 
       h3 {
-        font-size: 12px;
+        font-size: 13px;
+        line-height: 15px;
         
 
         a{
@@ -98,13 +100,19 @@
       }
 
       h4 {
-        font-size:11px;
+        font-size:13px;
+        line-height: 20px;
       }
     }
 
     .computer-left {
       display: flex;
       flex-direction: column;
+
+      a{
+        display: flex;
+        justify-content: center;
+      }
 
       h2 {
         display: block;
