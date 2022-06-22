@@ -1,69 +1,73 @@
-.pagination-filter{
-  width:100%;
-  height:35px;
+.pagination-filter {
+  width: 100%;
+  height: 35px;
   display: flex;
   align-items: center;
-  padding:1rem 2rem;
+  padding: 1rem 2rem;
 
-  button{
+  button {
     display: none;
   }
 
-  .search{
-    background:white;
+  .search {
+    display: none;
+  }
+
+  .search-container {
+    background: white;
     display: none;
     justify-content: flex-start;
     align-items: center;
-    padding:.3rem .3rem;
+    padding: .3rem .3rem;
     margin-right: 1rem;
     border-radius: 50px;
 
-    
 
-    input{
-      border:none;
-      outline:none; 
+
+    input {
+      border: none;
+      outline: none;
       font-size: 14px;
     }
-    
-    .search-icon{
-      background:$secondary;
+
+    .search-icon {
+      background: $secondary;
       border-radius: 50%;
-      width:40px;
-      height:40px;
+      width: 40px;
+      height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-right:1rem;
-      cursor:pointer;
+      margin-right: 1rem;
+      cursor: pointer;
       transition: .5s;
 
-      &:hover{
+      &:hover {
         transform: scale(1.26);
       }
     }
-    
+
   }
 
-  .filter-btn{
+  .filter-btn {
     display: none;
   }
 
-  .pages{
+  .pages {
     display: flex;
     justify-content: center;
 
-    .active{
-      background:$secondary !important;
-      color:black !important;
+    .active {
+      background: $secondary  !important;
+      color: black !important;
     }
 
-    .page{
-      background:black;
-      color:white;
+    .page {
+      background: black;
+      color: white;
       margin-inline: .5rem;
-      height:30px;
-      width:30px;
+      height: 30px;
+      width: 30px;
       border-radius: 7px;
       border: none;
       cursor: pointer;
@@ -71,72 +75,72 @@
   }
 }
 
-.computer-wrapper{
-  width:100%;
+.computer-wrapper {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
 
-  .loading-wrapper{
+  .loading-wrapper {
     display: flex;
     justify-content: center;
   }
 
-  .filter-container{
-    background:white;
+  .filter-container {
+    background: white;
     overflow: hidden;
     box-shadow: 0px 0px 1px 0px;
-    width:26%;
+    width: 26%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom:2rem;
+    padding-bottom: 2rem;
     margin-bottom: 2rem;
 
-    div:not(.header){
+    div:not(.header) {
       margin-top: 1rem;
-      width:80%;
+      width: 80%;
 
-      h1{
+      h1 {
         font-size: 18px;
-        color:#777;
+        color: #777;
       }
 
-      .price-inputs{
-        width:100%;
+      .price-inputs {
+        width: 100%;
         display: flex;
         justify-content: flex-start;
         margin-top: 0px;
 
-        input{
-          width:80px;
-          color:#777;
+        input {
+          width: 80px;
+          color: #777;
           text-align: center;
-          
-          &:first-of-type{
-            margin-right:.3rem;
+
+          &:first-of-type {
+            margin-right: .3rem;
           }
         }
       }
     }
 
-    .header{
-      background:$secondary;
+    .header {
+      background: $secondary;
       display: flex;
       justify-content: flex-start;
-      padding-inline:1rem;
+      padding-inline: 1rem;
       align-items: center;
-      width:100%;
-      height:50px;
-      
-      h2{
+      width: 100%;
+      height: 50px;
+
+      h2 {
         font-size: 18px;
       }
     }
   }
 
-  .computer-container{
-    width:70%;
+  .computer-container {
+    width: 70%;
   }
 }
 
@@ -156,9 +160,8 @@
 
 
 
-@media (max-width:1024px) and (min-width:700px)
-{
-  .pagination-filter{
+@media (max-width:1024px) and (min-width:700px) {
+  .pagination-filter {
     display: none;
   }
 }
@@ -183,72 +186,78 @@
 
 
 
-@media (max-width:576px)
-{
-  .pagination-filter{
+@media (max-width:576px) {
+  .pagination-filter {
     display: flex;
-    justify-content: space-between;
-    padding:2rem .5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem .5rem;
+    width: 100%;
 
-    button{
-      background: $secondary;
-      display: block;
-      border:none;
-      outline:none;
-      font-size: 12px;
-      border-radius: 10px;
-      padding:.5rem .8rem;
-      margin-left: .5rem;
-    }
-
-    .search{
-      background:white;
+    .wrapper {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-around;
       align-items: center;
-      padding:.3rem .3rem;
-      border-radius: 50px;
-      box-shadow: 0px 0px 2px;
-
-      
-
-      input{
-        border:none;
-        outline:none; 
-        font-size: 11px;
-        margin-left: 1rem;
+      width: 90%;
+      button {
+        background: $secondary;
+        display: block;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        border-radius: 10px;
+        padding: .5rem .8rem;
+        margin-left: .5rem;
       }
-      
-      .search-icon{
-        background:$secondary;
-        border-radius: 50%;
-        width:40px;
-        height:40px;
+
+      .search {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        cursor:pointer;
-        transition: .5s;
+        padding: .3rem .3rem;
+        border-radius: 50px;
+        box-shadow: 0px 0px 2px;
 
-        &:hover{
-          transform: scale(1.26);
+
+
+        input {
+          border: none;
+          outline: none;
+          font-size: 11px;
+          margin-left: 1rem;
         }
+
+        .search-icon {
+          background: $secondary;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          transition: .5s;
+
+          &:hover {
+            transform: scale(1.26);
+          }
+        }
+
       }
-      
     }
 
   }
 
 
-  .computer-wrapper{
+  .computer-wrapper {
     display: flex;
     justify-content: center;
 
-    .computer-container{
-      width:100%;
+    .computer-container {
+      width: 100%;
     }
 
-    .filter-container{
+    .filter-container {
       display: none;
     }
   }
@@ -266,13 +275,13 @@
 
 
 
-@media (max-width:321px)
-{
-  .pagination-filter{
+@media (max-width:321px) {
+  .pagination-filter {
     justify-content: space-between;
-    .filter-btn{
+
+    .filter-btn {
       font-size: 12px;
-      padding:.5rem .6rem;
+      padding: .5rem .6rem;
     }
   }
 }

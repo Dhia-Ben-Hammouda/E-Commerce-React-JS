@@ -35,12 +35,14 @@ const Computers = () => {
     <>
       <Navbar />
       <div className="pagination-filter">
-        <button>Filter By</button>
-        <div className="search">
-          <div className="search-icon">
-            <FaSearch size={"1.25rem"} />
+        <div className="wrapper">
+          <button>Filter By</button>
+          <div className="search">
+            <div className="search-icon">
+              <FaSearch color="white" size={"1.25rem"} />
+            </div>
+            <input placeholder="Search for products" />
           </div>
-          <input placeholder="Search for products" />
         </div>
       </div>
       <div className="computer-wrapper">
