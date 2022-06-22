@@ -175,6 +175,14 @@ nav{
 }
 
 
+
+
+
+
+
+
+
+
 @media (max-width:1024px) and (min-width:768px)
 {
   nav{
@@ -206,16 +214,28 @@ nav{
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
 @media ( max-width:576px )
 {
   nav{
     width: 100%;
     padding: 0px 0px;
     .logo-wrapper{
-      transform: translate(-1rem);
+      transform: translate(-1.5rem);
       
       img{
         margin-right: 1rem;
+
       }
     }
 
@@ -228,6 +248,7 @@ nav{
       justify-content: space-between;
       margin-right: 0px;
       padding:.5rem .7rem;
+      margin-right: 10px;
 
       .search-container{
         display: none;
@@ -258,6 +279,17 @@ nav{
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 @media ( max-width:321px )
 {

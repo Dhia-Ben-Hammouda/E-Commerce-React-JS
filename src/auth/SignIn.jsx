@@ -7,7 +7,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import { GoogleLogin } from "react-google-login";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -103,15 +102,7 @@ const SignIn = () => {
               <button className="circle" style={{ background: "#359BF1" }}>
                 <FaTwitter />
               </button>
-              <GoogleLogin
-                clientId="465138218686-g25mmikjc55jkjogth4q10in41v4q9tt.apps.googleusercontent.com"
-                render={(renderProps) => (<button onClick={renderProps.onClick} className="circle" style={{ background: "#E74639" }}>
-                  <FaGoogle />
-                </button>)}
-                onSuccess={googleSuccess}
-                onFailure={googleFailure}
-                cookiePolicy="single_host_origin"
-              />
+              
             </IconContext.Provider>
           </div>
         </form>
