@@ -54,6 +54,7 @@ const Screens = () => {
           <div className="price">
             <h1>Price</h1>
             <Slider
+              step={100}
               style={{ color: "#777" }}
               min={0}
               max={1500}
@@ -113,15 +114,13 @@ const Screens = () => {
               );
             })
           }
-          {
-            !loading && <div className="pagination-filter" style={{ justifyContent: "flex-start", paddingTop: "1rem" }}>
-              <Pagination
-                page={page}
-                setPage={setPage}
-                numOfPages={numOfPages}
-              />
-            </div>
-          }
+          <div className="pagination">
+            <Pagination
+              page={page}
+              setPage={setPage}
+              numOfPages={numOfPages}
+            />
+          </div>
         </div>
       </div>
     </>

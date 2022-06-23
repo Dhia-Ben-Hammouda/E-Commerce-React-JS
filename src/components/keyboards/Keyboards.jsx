@@ -54,6 +54,7 @@ const Keyboards = () => {
           <div className="price">
             <h1>Price</h1>
             <Slider
+              step={20}
               style={{ color: "#777" }}
               min={0}
               max={300}
@@ -107,15 +108,13 @@ const Keyboards = () => {
               );
             })
           }
-          {
-            !loading && <div className="pagination-filter" style={{ justifyContent: "flex-start", paddingTop: "1rem" }}>
-              <Pagination
-                page={page}
-                setPage={setPage}
-                numOfPages={numOfPages}
-              />
-            </div>
-          }
+          <div className="pagination">
+            <Pagination
+              page={page}
+              setPage={setPage}
+              numOfPages={numOfPages}
+            />
+          </div>
         </div>
       </div>
     </>
