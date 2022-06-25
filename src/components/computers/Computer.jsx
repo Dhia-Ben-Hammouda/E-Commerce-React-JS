@@ -1,10 +1,20 @@
 import React from "react";
+import { addToCart } from "../../app/actions/cartActions";
+import { useDispatch } from "react-redux";
 
 const Computer = ({ id, picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
 
+  const dispatch = useDispatch();
+
   function addItemToCart()
   {
-
+    dispatch(addToCart({
+      id,
+      picture,
+      name,
+      price,
+      quantity:1
+    }))
   }
   
   return (

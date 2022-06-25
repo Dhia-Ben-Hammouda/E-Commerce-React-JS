@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 const SignIn = () => {
@@ -50,8 +50,8 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="sign-in-container" onSubmit={submitHandler}>
-        <form className="sign-in-form">
+      <div className="sign-in-container">
+        <form className="sign-in-form" onSubmit={submitHandler}>
           <IconContext.Provider value={{ color: "#777", size: "1.25rem" }}>
             <div className="input">
               <FaUser />
@@ -87,12 +87,12 @@ const SignIn = () => {
           </div>
           <div style={{ display: "flex" }}>
             <IconContext.Provider value={{ size: "1.5rem", color: "white" }}>
-              <button className="circle" style={{ background: "#405498" }}>
+              <div className="circle" style={{ background: "#405498", cursor:"pointer" }}>
                 <FaFacebookF />
-              </button>
-              <button className="circle" style={{ background: "#359BF1" }}>
-                <FaTwitter />
-              </button>
+              </div>
+              <div className="circle" style={{ background: "#F23D2F", cursor:"pointer" }}>
+                <FaGoogle />
+              </div>
               
             </IconContext.Provider>
           </div>
