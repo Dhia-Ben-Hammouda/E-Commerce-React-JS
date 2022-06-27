@@ -30,32 +30,32 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
       case "wireless":
         if(e.target.checked)
         {
-          const arr = filters.procesor;
+          const arr = filters.wireless;
           arr.push(value);
-          setFilters({...filters , procesor:arr})
+          setFilters({...filters , wireless:arr})
           console.log(filters);
         }
         else
         {
-          let arr = filters.procesor;
+          let arr = filters.wireless;
           arr = arr.filter((item) => item !== value);
-          setFilters({...filters , procesor:arr})
+          setFilters({...filters , wireless:arr})
           console.log(filters);
         }
         break;
       case "mechanical":
         if(e.target.checked)
         {
-          const arr = filters.memory;
+          const arr = filters.mechanical;
           arr.push(value);
-          setFilters({...filters , memory:arr})
+          setFilters({...filters , mechanical:arr})
           console.log(filters);
         }
         else
         {
-          let arr = filters.memory;
+          let arr = filters.mechanical;
           arr = arr.filter((item) => item !== value);
-          setFilters({...filters , memory:arr})
+          setFilters({...filters , mechanical:arr})
           console.log(filters);
         }
         break;

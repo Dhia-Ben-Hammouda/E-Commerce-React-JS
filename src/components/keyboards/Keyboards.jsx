@@ -16,15 +16,15 @@ const Keyboards = () => {
   const [realPriceRange , setRealPriceRange ] = useState([]);
   const [filters , setFilters ] =useState({
     brand:[],
-    mechanical:"",
-    wireless:""
+    mechanical:[],
+    wireless:[]
   })
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/keyboards/getAllKeyboards`,{
+        const response = await fetch("http://localhost:5000/keyboards/getAllKeyboards",{
           method:"POST",
           headers:{
             "content-type":"application/json"
@@ -37,6 +37,8 @@ const Keyboards = () => {
         });
         const data = await response.json();
 
+        await new Promise(r => setTimeout(r, 500));
+
         setLoading(false);
         setKeyboards(data.keyboards);
         setNumOfPages(data.numberOfPages);
@@ -45,7 +47,7 @@ const Keyboards = () => {
       }
     }
     fetchData();
-  }, [page , filters , realPriceRange , priceRange]);
+  }, [page , filters , realPriceRange ]);
 
   return (
     <>
@@ -67,6 +69,7 @@ const Keyboards = () => {
           setFilters={setFilters}
           priceRange={priceRange}
           setPriceRange={setPriceRange}
+          setRealPriceRange={setRealPriceRange}
         />
         <div className="computer-container">
           {

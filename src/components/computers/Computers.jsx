@@ -26,7 +26,7 @@ const Computers = () => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/computers/getAllComputers`,{
+        const response = await fetch("http://localhost:5000/computers/getAllComputers",{
           method:"POST",
           headers:{
             "content-type":"application/json"
@@ -49,7 +49,7 @@ const Computers = () => {
       }
     }
     fetchData();
-  }, [page , filters , realPriceRange , priceRange]);
+  }, [page , filters , realPriceRange ]);
 
   return (
     <>
