@@ -23,7 +23,17 @@ const Mouses = () => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/mouses/getAllMouses");
+        const response = await fetch("http://localhost:5000/mouses/getAllMouses",{
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body : JSON.stringify({
+            page,
+            ...filters,
+            priceRange
+          })
+        });
         const data = await response.json();
 
         setLoading(false);
