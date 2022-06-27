@@ -13,11 +13,13 @@ const Computers = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
-  const [brand , setBrand ] = useState([]);
-  const [memory , setMemory ] = useState([]);
-  const [procesor , setProcesor ] = useState([]);
-  const [graphicsCard , setGraphicsCard ] = useState([]);
-  const [drive , setDrive ] = useState([]);
+  const [filters , setFilters ] =useState({
+    brand:[],
+    memory:[],
+    procesor:[],
+    graphicsCard:[],
+    drive:[],
+  })
   const [realPriceRange , setRealPriceRange ] = useState([]);
 
   useEffect(() => {
@@ -31,11 +33,7 @@ const Computers = () => {
           },
           body: JSON.stringify({
             page,
-            brand,
-            memory,
-            procesor,
-            graphicsCard,
-            drive,
+            ...filters,
             priceRange
           })
         });
@@ -49,7 +47,12 @@ const Computers = () => {
       }
     }
     fetchData();
-  }, [page , brand , memory, procesor , graphicsCard , drive , realPriceRange]);
+  }, [page , filters , realPriceRange ]);
+
+
+
+
+
 
   function handleFilters(e)
   {
@@ -61,99 +64,91 @@ const Computers = () => {
       case "brand":
         if(e.target.checked)
         {
-          setBrand([...brand , value]);
-
-          console.log(brand);
+          const arr = filters.brand;
+          arr.push(value);
+          setFilters({...filters , brand:arr})
+          console.log(filters);
         }
         else
         {
-          let arr = brand;
-
+          let arr = filters.brand;
           arr = arr.filter((item) => item !== value);
-
-          setBrand(arr);
-
-          console.log(brand);
+          setFilters({...filters , brand:arr})
+          console.log(filters);
         }
         break;
       case "procesor":
         if(e.target.checked)
         {
-          setProcesor([...procesor , value]);
-
-          console.log(procesor);
+          const arr = filters.procesor;
+          arr.push(value);
+          setFilters({...filters , procesor:arr})
+          console.log(filters);
         }
         else
         {
-          let arr = procesor;
-
+          let arr = filters.procesor;
           arr = arr.filter((item) => item !== value);
-
-          setProcesor(arr);
-
-          console.log(procesor);
+          setFilters({...filters , procesor:arr})
+          console.log(filters);
         }
         break;
       case "memory":
         if(e.target.checked)
         {
-          setMemory([...memory , value]);
-
-          console.log(memory);
+          const arr = filters.memory;
+          arr.push(value);
+          setFilters({...filters , memory:arr})
+          console.log(filters);
         }
         else
         {
-          let arr = memory;
-
+          let arr = filters.memory;
           arr = arr.filter((item) => item !== value);
-
-          setMemory(arr);
-
-          console.log(memory);
+          setFilters({...filters , memory:arr})
+          console.log(filters);
         }
         break;
       case "drive":
         if(e.target.checked)
         {
-          setDrive([...drive , value]);
-
-          console.log(drive);
+          const arr = filters.drive;
+          arr.push(value);
+          setFilters({...filters , drive:arr})
+          console.log(filters);
         }
         else
         {
-          let arr = drive;
-
+          let arr = filters.drive;
           arr = arr.filter((item) => item !== value);
-
-          setDrive(arr);
-
-          console.log(brand);
+          setFilters({...filters , drive:arr})
+          console.log(filters);
         }
         break;
       case "graphicsCard":
         if(e.target.checked)
         {
-          setGraphicsCard([...graphicsCard , value]);
-
-          console.log(graphicsCard);
+          const arr = filters.graphicsCard;
+          arr.push(value);
+          setFilters({...filters , graphicsCard:arr})
+          console.log(filters);
         }
         else
         {
-          let arr = graphicsCard;
-
+          let arr = filters.graphicsCard;
           arr = arr.filter((item) => item !== value);
-
-          setGraphicsCard(arr);
-
-          console.log(graphicsCard);
+          setFilters({...filters , graphicsCard:arr})
+          console.log(filters);
         }
         break;
       default:
         break;
     }
-
   }
 
+
+
+  
   return (
     <>
       <Navbar />
