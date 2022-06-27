@@ -1,8 +1,7 @@
 import React from "react";
 import Navbar from "../Navbar.jsx";
 import Keyboard from "./Keyboard.jsx";
-import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import Slider from "@mui/material/Slider";
+import Filter from "./Filter.jsx";
 import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
@@ -14,12 +13,28 @@ const Keyboards = () => {
   const [keyboards, setKeyboards] = useState([]);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
+  const [realPriceRange , setRealPriceRange ] = useState([]);
+  const [filters , setFilters ] =useState({
+    brand:[],
+    mechanical:"",
+    wireless:""
+  })
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(`https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards?page=${page}`);
+        const response = await fetch(`http://localhost:5000/keyboards/getAllKeyboards`,{
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body: JSON.stringify({
+            page,
+            ...filters,
+            priceRange
+          })
+        });
         const data = await response.json();
 
         setLoading(false);
@@ -30,7 +45,7 @@ const Keyboards = () => {
       }
     }
     fetchData();
-  }, [page]);
+  }, [page , filters , realPriceRange , priceRange]);
 
   return (
     <>
@@ -47,49 +62,12 @@ const Keyboards = () => {
         </div>
       </div>
       <div className="computer-wrapper">
-        <div className="filter-container">
-          <div className="header">
-            <h2>Filter By</h2>
-          </div>
-          <div className="price">
-            <h1>Price</h1>
-            <Slider
-              step={20}
-              style={{ color: "#777" }}
-              min={0}
-              max={300}
-              value={priceRange}
-              valueLabelDisplay="auto"
-              onChange={(e, newValue) => { setPriceRange(newValue) }}
-            />
-            <div className="price-inputs">
-              <input className="min" value={priceRange[0] + "  DT"} onChange={() => { }} />
-              <input className="max" value={priceRange[1] + "  DT"} onChange={() => { }} />
-            </div>
-          </div>
-          <div className="brand">
-            <h1>Brand</h1>
-            <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="HP" />
-              <FormControlLabel className="label" control={<Checkbox />} label="Redragon" />
-              <FormControlLabel className="label" control={<Checkbox />} label="Dell" />
-            </FormGroup>
-          </div>
-          <div className="mechanical">
-            <h1>Mechanical</h1>
-            <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
-              <FormControlLabel className="label" control={<Checkbox />} label="No" />
-            </FormGroup>
-          </div>
-          <div className="wireless">
-            <h1>Wireless</h1>
-            <FormGroup>
-              <FormControlLabel className="label" control={<Checkbox />} label="Yes" />
-              <FormControlLabel className="label" control={<Checkbox />} label="No" />
-            </FormGroup>
-          </div>
-        </div>
+        <Filter
+          filters={filters}
+          setFilters={setFilters}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+        />
         <div className="computer-container">
           {
             loading ? <div className="loading-wrapper">
