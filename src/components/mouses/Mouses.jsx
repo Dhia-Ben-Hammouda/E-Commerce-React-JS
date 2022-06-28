@@ -36,6 +36,8 @@ const Mouses = () => {
         });
         const data = await response.json();
 
+        await new Promise(r => setTimeout(r, 500));
+
         setLoading(false);
         setMouses(data.mouses);
         setNumOfPages(data.numberOfPages);
