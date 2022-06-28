@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const CartItem = ({id , name , picture , price})=>{
+const CartItem = ({id , name , picture , price , quantity})=>{
   const [val , setVal ] = useState(1);
 
   return(
@@ -15,13 +15,12 @@ const CartItem = ({id , name , picture , price})=>{
         </div>
         <div className="right">
           <div>
-            <input 
-              type="number" 
-              min="1" 
-              value={val}
-              onChange={(e)=>{setVal(e.target.value)}}
-            />
-            <h2>{price} DT</h2>
+            <span>
+              {
+                quantity
+              }
+            </span>
+            <h2>{price * quantity}.000 DT</h2>
           </div>
         </div>
       </div>

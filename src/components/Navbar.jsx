@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const [user, setUser] = useState(null);
 
-  const count = useSelector(state => state.cartReducer.quantity);
+  const count = useSelector(state => state.cart.quantity);
 
   useEffect(() => {
 
