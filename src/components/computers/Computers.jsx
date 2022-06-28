@@ -26,7 +26,7 @@ const Computers = () => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/computers/getAllComputers",{
+        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers",{
           method:"POST",
           headers:{
             "content-type":"application/json"

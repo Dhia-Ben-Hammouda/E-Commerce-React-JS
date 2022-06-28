@@ -23,7 +23,7 @@ const Mouses = () => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/mouses/getAllMouses",{
+        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/mouses/getAllMouses",{
           method:"POST",
           headers:{
             "content-type":"application/json"

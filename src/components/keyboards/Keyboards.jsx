@@ -24,7 +24,7 @@ const Keyboards = () => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/keyboards/getAllKeyboards",{
+        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards",{
           method:"POST",
           headers:{
             "content-type":"application/json"
