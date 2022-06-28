@@ -3,7 +3,6 @@ import { addToCart } from "../../app/actions/cartActions";
 import { useDispatch } from "react-redux";
 
 const Computer = ({ id, picture, description, brand, price, procesor, memory, graphicsCard, name, drive }) => {
-
   const dispatch = useDispatch();
 
   function addItemToCart()

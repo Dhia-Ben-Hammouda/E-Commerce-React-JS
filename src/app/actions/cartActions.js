@@ -7,9 +7,16 @@ export const addToCart = (product)=>{
   })
 }
 
-export const removeFromCart = (id)=>{
+export const decrementQuantity = (id)=>{
   return({
-    type:actionTypes.REMOVE_FROM_CART,
+    type:actionTypes.DECREMENT_QUANTITY,
+    payload:id
+  })
+}
+
+export const incrementQuantity = (id)=>{
+  return({
+    type:actionTypes.INCREMENT_QUANTITY,
     payload:id
   })
 }

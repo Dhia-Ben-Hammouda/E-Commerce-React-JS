@@ -1,8 +1,20 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { decrementQuantity , incrementQuantity} from "../app/actions/cartActions.js";
+
 
 const CartItem = ({id , name , picture , price , quantity})=>{
-  const [val , setVal ] = useState(1);
+  const dispatch = useDispatch();
+
+  function increment()
+  {
+    dispatch(incrementQuantity(id));
+  }
+
+  function decrement()
+  {
+    dispatch(decrementQuantity(id));
+  }
 
   return(
     <>
@@ -14,12 +26,12 @@ const CartItem = ({id , name , picture , price , quantity})=>{
           <h1>{name}</h1>
         </div>
         <div className="right">
-          <div>
-            <span>
-              {
-                quantity
-              }
-            </span>
+          <div className="wrap">
+            <div>
+              <span onClick={decrement}>-</span>
+              <span style={{marginInline:"1rem"}}>{quantity}</span>
+              <span onClick={increment}>+</span>
+            </div>
             <h2>{price * quantity}.000 DT</h2>
           </div>
         </div>

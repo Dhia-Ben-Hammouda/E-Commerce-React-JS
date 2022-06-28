@@ -8,8 +8,6 @@ const Cart = () => {
   let products = useSelector(state => state.cart.products);
   let total = useSelector(state => state.cart.total);
 
-  console.log(total);
-
   return (
     <>
       <Navbar />

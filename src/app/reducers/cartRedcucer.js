@@ -27,10 +27,38 @@ const reducer = (state = initialState, action) => {
           draft.total = parseFloat(draft.total) + parseFloat(newProduct.price);
         }
       });
-    case actionTypes.REMOVE_FROM_CART:
-      return produce(state , (draft) => {
+      case actionTypes.DECREMENT_QUANTITY:
+        return produce(state , (draft)=>{
+          let id = action.payload;
 
-      })
+          let item = draft.products.find((product) => product.id = id);
+
+          if(item.quantity === 1)
+          {
+            draft.products = draft.products.filter((product) => product.id !== id);
+          }
+          else
+          {
+            draft.products.forEach((product)=>{
+              if(product.id === id)
+              {
+                product.quantity--;
+              }
+            })
+          }
+
+        })
+      case actionTypes.INCREMENT_QUANTITY:
+        return produce(state , (draft)=>{
+          let id = action.payload;
+
+          draft.products.forEach((product)=>{
+            if(product.id === id)
+            {
+              product.quantity--;
+            }
+          })
+        })
     default:
       return state;
   }
