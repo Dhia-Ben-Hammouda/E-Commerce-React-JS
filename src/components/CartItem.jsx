@@ -26,6 +26,11 @@ const CartItem = ({id , name , picture , price , quantity})=>{
           <h1>{name}</h1>
         </div>
         <div className="right">
+          <h1 className="mobile-name">
+            {
+              name
+            }
+          </h1>
           <div className="wrap">
             <div>
               <span style={{cursor:"pointer"}} onClick={decrement}>-</span>

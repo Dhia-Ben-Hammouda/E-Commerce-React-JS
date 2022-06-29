@@ -48,6 +48,10 @@
         align-items: center;
         width: 40%;
 
+        .mobile-name{
+          display: none;
+        }
+
         .wrap{
           width: 100%;
           display: flex;
@@ -137,14 +141,35 @@
       .product{
         margin-bottom: 1rem;
 
-        .img-wrapper{
-          width: 30%;
-          position: relative;
+        .left{
+          width:40%;
 
-          img{
-            width: 100%;
+          .img-wrapper{
+            width: 60%;
+            position: relative;
+  
+            img{
+              width: 100%;
+            }
+  
           }
 
+          h1{
+            display:none;
+          }
+        }
+
+
+        .right{
+          width:60%;
+          flex-direction: column;
+
+          .mobile-name{
+            display: block;
+            font-size: 13px;
+            color:$primary;
+            width: 90%;
+          }
         }
       }
     }
