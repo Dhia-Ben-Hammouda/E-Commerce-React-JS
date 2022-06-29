@@ -19,6 +19,7 @@ const reducer = (state = initialState, action) => {
         {
           existingProduct.quantity++;
           draft.total = parseFloat(draft.total) + parseFloat(newProduct.price);
+          draft.quantity++;
         }
         else
         {
@@ -36,6 +37,8 @@ const reducer = (state = initialState, action) => {
           if(item.quantity === 1)
           {
             draft.products = draft.products.filter((product) => product.id !== id);
+            draft.quantity--;
+            draft.total -= item.price;
           }
           else
           {
@@ -45,6 +48,8 @@ const reducer = (state = initialState, action) => {
                 product.quantity--;
               }
             })
+            draft.quantity--;
+            draft.total -= item.price;
           }
 
         })
@@ -52,12 +57,16 @@ const reducer = (state = initialState, action) => {
         return produce(state , (draft)=>{
           let id = action.payload;
 
+          let item = draft.products.find((product) => product.id === id);
+
           draft.products.forEach((product)=>{
             if(product.id === id)
             {
-              product.quantity--;
+              product.quantity++;
             }
           })
+          draft.quantity++;
+          draft.total += parseFloat(item.price);
         })
     default:
       return state;
