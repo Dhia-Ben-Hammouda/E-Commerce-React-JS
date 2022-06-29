@@ -28,9 +28,9 @@ const CartItem = ({id , name , picture , price , quantity})=>{
         <div className="right">
           <div className="wrap">
             <div>
-              <span onClick={decrement}>-</span>
+              <span style={{cursor:"pointer"}} onClick={decrement}>-</span>
               <span style={{marginInline:"1rem"}}>{quantity}</span>
-              <span onClick={increment}>+</span>
+              <span style={{cursor:"pointer"}} onClick={increment}>+</span>
             </div>
             <h2>{price * quantity}.000 DT</h2>
           </div>

@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
         return produce(state , (draft)=>{
           let id = action.payload;
 
-          let item = draft.products.find((product) => product.id = id);
+          let item = draft.products.find((product) => product.id === id);
 
           if(item.quantity === 1)
           {

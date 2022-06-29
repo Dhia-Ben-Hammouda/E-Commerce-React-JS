@@ -3,9 +3,12 @@ import { FaShoppingCart, FaUserAlt, FaSearch, FaCog, FaSignOutAlt } from "react-
 import { IconContext } from "react-icons";
 import { useState, useEffect } from "react";
 import logo from "../images/logo.png";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+
+  const count = useSelector(state => state.cart.quantity);
 
   useEffect(() => {
 
@@ -87,7 +90,7 @@ const Navbar = () => {
                   <FaShoppingCart />
                   <div className="num" style={{ color: "white" }}>
                     {
-                      0
+                      count
                     }
                   </div>
                 </a>

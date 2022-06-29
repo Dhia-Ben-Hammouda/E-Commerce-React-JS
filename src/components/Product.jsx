@@ -1,13 +1,16 @@
 import React from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Navbar from "./Nav.jsx";
+import { addToCart } from "../app/actions/cartActions.js";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Product = () => {
   const [product, setProduct] = useState({});
   const [loading , setLoading] = useState(true);
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -19,6 +22,17 @@ const Product = () => {
     }
     fetchData();
   }, [id]);
+
+  function clickHandler()
+  {
+    dispatch(addToCart({
+      id:product.id,
+      picture:product.picture,
+      name:product.name,
+      price:product.price,
+      quantity:1
+    }))
+  }
 
   return (
     <>
@@ -49,7 +63,7 @@ const Product = () => {
                     product.price
                   } DT
                 </h3>
-                <button>
+                <button onClick={clickHandler}>
                   Add to Cart
                 </button>
               </div>
