@@ -51,12 +51,23 @@ const Computers = () => {
     fetchData();
   }, [page , filters , realPriceRange ]);
 
+  function clickHandler()
+  { 
+    let filter = document.querySelector(".mobile-filter");
+
+    filter.classList.toggle("opened");
+    
+  }
+
   return (
     <>
       <Navbar />
+      <div className="mobile-filter">
+        <button onClick={clickHandler}>fr</button>
+      </div>
       <div className="pagination-filter">
         <div className="wrapper">
-          <button>Filter By</button>
+          <button onClick={clickHandler}>Filter By</button>
           <div className="search">
             <div className="search-icon">
               <FaSearch color="white" size={"1.25rem"} />
