@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 import { FaSearch } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 const Mouses = () => {
   const [loading, setLoading] = useState(false);
@@ -48,12 +49,23 @@ const Mouses = () => {
     fetchData();
   }, [page , filters , realPriceRange]);
 
+  function clickHandler() {
+    let filter = document.querySelector(".mobile-filter3");
+
+    filter.classList.toggle("opened");
+  }
+
   return (
     <>
       <Navbar />
+      <div className="mobile-filter3">
+        <div style={{ color: "#777", position: "absolute", top: "20px", right: "20px" }} onClick={clickHandler}>
+          <ImCross />
+        </div>
+      </div>
       <div className="pagination-filter">
         <div className="wrapper">
-          <button>Filter By</button>
+          <button onClick={clickHandler}>Filter By</button>
           <div className="search">
             <div className="search-icon">
               <FaSearch color="white" size={"1.25rem"} />

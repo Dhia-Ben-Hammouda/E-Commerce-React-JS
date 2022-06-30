@@ -6,6 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 import { FaSearch } from "react-icons/fa";
 import Filter from "./Filter.jsx";
+import { ImCross } from "react-icons/im";
 
 const Screens = () => {
   const [loading, setLoading] = useState(false);
@@ -49,12 +50,23 @@ const Screens = () => {
     fetchData();
   }, [page , realPriceRange , filters]);
 
+  function clickHandler() {
+    let filter = document.querySelector(".mobile-filter4");
+
+    filter.classList.toggle("opened");
+  }
+
   return (
     <>
       <Navbar />
+      <div className="mobile-filter4">
+        <div style={{ color: "#777", position: "absolute", top: "20px", right: "20px" }} onClick={clickHandler}>
+          <ImCross />
+        </div>
+      </div>
       <div className="pagination-filter">
         <div className="wrapper">
-          <button>Filter By</button>
+          <button onClick={clickHandler}>Filter By</button>
           <div className="search">
             <div className="search-icon">
               <FaSearch color="white" size={"1.25rem"} />

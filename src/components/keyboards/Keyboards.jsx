@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 import { FaSearch } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 const Keyboards = () => {
   const [loading, setLoading] = useState(false);
@@ -13,21 +14,21 @@ const Keyboards = () => {
   const [keyboards, setKeyboards] = useState([]);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
-  const [realPriceRange , setRealPriceRange ] = useState([]);
-  const [filters , setFilters ] =useState({
-    brand:[],
-    mechanical:[],
-    wireless:[]
+  const [realPriceRange, setRealPriceRange] = useState([]);
+  const [filters, setFilters] = useState({
+    brand: [],
+    mechanical: [],
+    wireless: []
   })
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards",{
-          method:"POST",
-          headers:{
-            "content-type":"application/json"
+        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/keyboards/getAllKeyboards", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
           },
           body: JSON.stringify({
             page,
@@ -47,14 +48,26 @@ const Keyboards = () => {
       }
     }
     fetchData();
-  }, [page , filters , realPriceRange ]);
+  }, [page, filters, realPriceRange]);
+
+  function clickHandler() {
+    let filter = document.querySelector(".mobile-filter2");
+
+    filter.classList.toggle("opened");
+
+  }
 
   return (
     <>
       <Navbar />
+      <div className="mobile-filter2">
+        <div style={{ color: "#777", position: "absolute", top: "20px", right: "20px" }} onClick={clickHandler}>
+          <ImCross />
+        </div>
+      </div>
       <div className="pagination-filter">
-      <div className="wrapper">
-          <button>Filter By</button>
+        <div className="wrapper">
+          <button onClick={clickHandler}>Filter By</button>
           <div className="search">
             <div className="search-icon">
               <FaSearch color="white" size={"1.25rem"} />

@@ -122,7 +122,13 @@
 
 @media (max-width:992px) and (min-width:768px)
 {
-
+  .cart-container{
+    .checkout{
+      .wrapper{
+        width: 80%;
+      }
+    }
+  }
 }
 
 
@@ -166,9 +172,9 @@
 
           .mobile-name{
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             color:$primary;
-            width: 90%;
+            width: 92%;
           }
         }
       }

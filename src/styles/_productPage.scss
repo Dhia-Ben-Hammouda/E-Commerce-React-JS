@@ -222,7 +222,42 @@
     top:80px;
     box-shadow: 1px 0px 1px;
     transition: .5s;
-    overflow:hidden;
+  }
+
+  .mobile-filter2{
+    display: block;
+    background:#fff;
+    height: calc(100vh - 80px);
+    width:0%;
+    position: fixed;
+    z-index: 5555555556;
+    top:80px;
+    box-shadow: 1px 0px 1px;
+    transition: .5s;
+  }
+
+  .mobile-filter3{
+    display: block;
+    background:#fff;
+    height: calc(100vh - 80px);
+    width:0%;
+    position: fixed;
+    z-index: 5555555556;
+    top:80px;
+    box-shadow: 1px 0px 1px;
+    transition: .5s;
+  }
+
+  .mobile-filter4{
+    display: block;
+    background:#fff;
+    height: calc(100vh - 80px);
+    width:0%;
+    position: fixed;
+    z-index: 5555555556;
+    top:80px;
+    box-shadow: 1px 0px 1px;
+    transition: .5s;
   }
 
   .pagination-filter {
@@ -320,6 +355,19 @@
 
 
 @media (max-width:321px) {
+
+  .mobile-filter{
+    display: block;
+    background:#fff;
+    height: calc(110vh - 80px);
+    width:0%;
+    position: fixed;
+    z-index: 5555555556;
+    top:80px;
+    box-shadow: 1px 0px 1px;
+    transition: .5s;
+  }
+
   .pagination-filter {
     justify-content: space-between;
 
