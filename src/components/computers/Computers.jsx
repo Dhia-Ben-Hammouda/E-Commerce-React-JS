@@ -5,6 +5,7 @@ import Pagination from "../Pagination.jsx";
 import Filter from "./Filter.jsx";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 import { CircularProgress } from "@mui/material";
 
 const Computers = () => {
@@ -63,7 +64,9 @@ const Computers = () => {
     <>
       <Navbar />
       <div className="mobile-filter">
-        <button onClick={clickHandler}>fr</button>
+        <div style={{ color:"#777" , position:"absolute" , top:"20px" , right:"20px"}} onClick={clickHandler}>
+          <ImCross />
+        </div>
       </div>
       <div className="pagination-filter">
         <div className="wrapper">

@@ -215,12 +215,12 @@
   .mobile-filter{
     display: block;
     background:#fff;
-    height: 100vh;
+    height: calc(100vh - 80px);
     width:0%;
     position: fixed;
     z-index: 5555555556;
-    top:0px;
-    box-shadow: 3px 2px 3px;
+    top:80px;
+    box-shadow: 1px 0px 1px;
     transition: .5s;
     overflow:hidden;
   }
