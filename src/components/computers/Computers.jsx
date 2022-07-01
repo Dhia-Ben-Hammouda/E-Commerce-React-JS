@@ -3,10 +3,16 @@ import Navbar from "../Navbar.jsx";
 import Computer from "./Computer.jsx";
 import Pagination from "../Pagination.jsx";
 import Filter from "./Filter.jsx";
+import MobileFilter from "./MobileFilter.jsx";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { ImCross } from "react-icons/im";
 import { CircularProgress } from "@mui/material";
+
+export function clickHandler() {
+  let filter = document.querySelector(".mobile-filter");
+
+  filter.classList.toggle("opened");
+}
 
 const Computers = () => {
   const [priceRange, setPriceRange] = useState([0, 4000]);
@@ -14,23 +20,23 @@ const Computers = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
-  const [realPriceRange , setRealPriceRange ] = useState([]);
-  const [filters , setFilters ] =useState({
-    brand:[],
-    memory:[],
-    procesor:[],
-    graphicsCard:[],
-    drive:[],
+  const [realPriceRange, setRealPriceRange] = useState([]);
+  const [filters, setFilters] = useState({
+    brand: [],
+    memory: [],
+    procesor: [],
+    graphicsCard: [],
+    drive: [],
   })
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers",{
-          method:"POST",
-          headers:{
-            "content-type":"application/json"
+        const response = await fetch("https://e-commerce-shop-react-js.herokuapp.com/computers/getAllComputers", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
           },
           body: JSON.stringify({
             page,
@@ -50,24 +56,12 @@ const Computers = () => {
       }
     }
     fetchData();
-  }, [page , filters , realPriceRange ]);
-
-  function clickHandler()
-  { 
-    let filter = document.querySelector(".mobile-filter");
-
-    filter.classList.toggle("opened");
-    
-  }
+  }, [page, filters, realPriceRange]);
 
   return (
     <>
       <Navbar />
-      <div className="mobile-filter">
-        <div style={{ color:"#777" , position:"absolute" , top:"20px" , right:"20px"}} onClick={clickHandler}>
-          <ImCross />
-        </div>
-      </div>
+      <MobileFilter />
       <div className="pagination-filter">
         <div className="wrapper">
           <button onClick={clickHandler}>Filter By</button>
@@ -80,7 +74,7 @@ const Computers = () => {
         </div>
       </div>
       <div className="computer-wrapper">
-        <Filter 
+        <Filter
           filters={filters}
           setFilters={setFilters}
           priceRange={priceRange}
@@ -108,15 +102,13 @@ const Computers = () => {
               );
             })
           }
-          {
-            !loading && <div className="pagination">
+          <div className="pagination">
             <Pagination
               page={page}
               setPage={setPage}
               numOfPages={numOfPages}
             />
           </div>
-          }
         </div>
       </div>
     </>
