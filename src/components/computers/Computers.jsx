@@ -61,7 +61,13 @@ const Computers = () => {
   return (
     <>
       <Navbar />
-      <MobileFilter />
+      <MobileFilter 
+        filters={filters}
+        setFilters={setFilters}
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
+        setRealPriceRange={setRealPriceRange}
+      />
       <div className="pagination-filter">
         <div className="wrapper">
           <button onClick={clickHandler}>Filter By</button>

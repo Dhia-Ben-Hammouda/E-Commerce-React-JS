@@ -208,6 +208,11 @@
   width:45% !important;
 }
 
+.toggled{
+  height:80px !important;
+}
+
+
 
 
 @media (max-width:576px) {
@@ -251,6 +256,24 @@
             font-size: 11px;
             color: #777;
           }
+        }
+
+        .content{
+          display: flex;
+          flex-direction: column;
+          padding-inline:1rem;
+          height: 0px;
+          overflow:hidden;
+
+          label{
+            font-size: 12px;
+
+            input{
+              margin-right: .7rem;
+              margin-bottom: .5rem;
+            }
+          }
+
         }
 
       }

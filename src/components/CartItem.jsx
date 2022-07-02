@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { decrementQuantity , incrementQuantity} from "../app/actions/cartActions.js";
 
-
 const CartItem = ({id , name , picture , price , quantity})=>{
   const dispatch = useDispatch();
 
