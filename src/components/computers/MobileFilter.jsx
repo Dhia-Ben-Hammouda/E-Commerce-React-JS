@@ -1,6 +1,5 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
-import { FormControlLabel, Checkbox, FormGroup } from "@mui/material";
 import { clickHandler } from "./Computers.jsx";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
@@ -16,13 +15,11 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
           const arr = filters.brand;
           arr.push(value);
           setFilters({ ...filters, brand: arr })
-          console.log(filters);
         }
         else {
           let arr = filters.brand;
           arr = arr.filter((item) => item !== value);
           setFilters({ ...filters, brand: arr })
-          console.log(filters);
         }
         break;
       case "procesor":
@@ -30,13 +27,11 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
           const arr = filters.procesor;
           arr.push(value);
           setFilters({ ...filters, procesor: arr })
-          console.log(filters);
         }
         else {
           let arr = filters.procesor;
           arr = arr.filter((item) => item !== value);
           setFilters({ ...filters, procesor: arr })
-          console.log(filters);
         }
         break;
       case "memory":
@@ -44,13 +39,11 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
           const arr = filters.memory;
           arr.push(value);
           setFilters({ ...filters, memory: arr })
-          console.log(filters);
         }
         else {
           let arr = filters.memory;
           arr = arr.filter((item) => item !== value);
           setFilters({ ...filters, memory: arr })
-          console.log(filters);
         }
         break;
       case "drive":
@@ -58,13 +51,11 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
           const arr = filters.drive;
           arr.push(value);
           setFilters({ ...filters, drive: arr })
-          console.log(filters);
         }
         else {
           let arr = filters.drive;
           arr = arr.filter((item) => item !== value);
           setFilters({ ...filters, drive: arr })
-          console.log(filters);
         }
         break;
       case "graphicsCard":
@@ -72,18 +63,21 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
           const arr = filters.graphicsCard;
           arr.push(value);
           setFilters({ ...filters, graphicsCard: arr })
-          console.log(filters);
         }
         else {
           let arr = filters.graphicsCard;
           arr = arr.filter((item) => item !== value);
           setFilters({ ...filters, graphicsCard: arr })
-          console.log(filters);
         }
         break;
       default:
         break;
     }
+  }
+
+  function toggleHandler(e)
+  {
+    console.log(e.target);    
   }
 
   return (
@@ -92,8 +86,17 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <ImCross color="#fff" />
       </div>
       <div className="filter-container">
-        <div className="filter">
+        <div className="filter"onClick={toggleHandler}>
           <div className="header">
+            <h2>Price</h2>
+            <IoIosArrowDown color="#777" />
+          </div>
+          <div className="content">
+
+          </div>
+        </div>
+        <div className="filter">
+          <div className="header" onClick={toggleHandler}>
             <h2>Brand</h2>
             <IoIosArrowDown color="#777" />
           </div>
