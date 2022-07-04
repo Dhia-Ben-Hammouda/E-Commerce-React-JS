@@ -1,7 +1,6 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
 import { clickHandler } from "./Computers.jsx";
-import { IoIosArrowDown } from "react-icons/io";
 import arrow from "../../images/arrow.png";
 
 const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealPriceRange }) => {
