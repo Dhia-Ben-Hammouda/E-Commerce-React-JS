@@ -17,14 +17,12 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
           const arr = filters.brand;
           arr.push(value);
           setFilters({...filters , brand:arr})
-          console.log(filters);
         }
         else
         {
           let arr = filters.brand;
           arr = arr.filter((item) => item !== value);
           setFilters({...filters , brand:arr})
-          console.log(filters);
         }
         break;
       case "procesor":
@@ -33,14 +31,12 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
           const arr = filters.procesor;
           arr.push(value);
           setFilters({...filters , procesor:arr})
-          console.log(filters);
         }
         else
         {
           let arr = filters.procesor;
           arr = arr.filter((item) => item !== value);
           setFilters({...filters , procesor:arr})
-          console.log(filters);
         }
         break;
       case "memory":
@@ -49,14 +45,12 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
           const arr = filters.memory;
           arr.push(value);
           setFilters({...filters , memory:arr})
-          console.log(filters);
         }
         else
         {
           let arr = filters.memory;
           arr = arr.filter((item) => item !== value);
           setFilters({...filters , memory:arr})
-          console.log(filters);
         }
         break;
       case "drive":
@@ -65,14 +59,12 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
           const arr = filters.drive;
           arr.push(value);
           setFilters({...filters , drive:arr})
-          console.log(filters);
         }
         else
         {
           let arr = filters.drive;
           arr = arr.filter((item) => item !== value);
           setFilters({...filters , drive:arr})
-          console.log(filters);
         }
         break;
       case "graphicsCard":
@@ -81,14 +73,12 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
           const arr = filters.graphicsCard;
           arr.push(value);
           setFilters({...filters , graphicsCard:arr})
-          console.log(filters);
         }
         else
         {
           let arr = filters.graphicsCard;
           arr = arr.filter((item) => item !== value);
           setFilters({...filters , graphicsCard:arr})
-          console.log(filters);
         }
         break;
       default:
