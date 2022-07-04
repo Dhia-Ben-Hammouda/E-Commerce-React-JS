@@ -56,16 +56,18 @@ const Filter = ({filters , setFilters , priceRange , setRealPriceRange , setPric
         </div>
         <div className="price">
           <h1>Price</h1>
-          <Slider
-            step={20}
-            style={{ color: "#777" }}
-            min={0}
-            max={300}
-            valueLabelDisplay="auto"
-            value={priceRange}
-            onChange={(e, newValue) => { setPriceRange(newValue) }}
-            onChangeCommitted={()=>{setRealPriceRange(priceRange)}}
-          />
+          <div className="slider">
+            <Slider
+              step={20}
+              style={{ color: "#777" , transform:"scale(.9)" , marginBottom:".75rem" }}
+              min={0}
+              max={300}
+              valueLabelDisplay="auto"
+              value={priceRange}
+              onChange={(e, newValue) => { setPriceRange(newValue) }}
+              onChangeCommitted={()=>{setRealPriceRange(priceRange)}}
+            />
+          </div>
           <div className="price-inputs">
             <input 
               className="min" 
