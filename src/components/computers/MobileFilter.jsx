@@ -144,9 +144,9 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
             <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="drive" alt="" />
           </div>
           <div className="content">
-            <label><input name="drive" value="8gb" type="checkbox" onChange={handleFilters}  />8 gb</label>
-            <label><input name="drive" value="16gb" type="checkbox" onChange={handleFilters}  />16 gb</label>
-            <label><input name="drive" value="32gb" type="checkbox" onChange={handleFilters}  />32 gb</label>
+            <label><input name="drive" value="1hdd+256ssd" type="checkbox" onChange={handleFilters}  />1TB + 256GB SSD</label>
+            <label><input name="drive" value="1ssd" type="checkbox" onChange={handleFilters}  />1TB SSD</label>
+            <label><input name="drive" value="512ssd" type="checkbox" onChange={handleFilters}  />512GB SSD</label>
           </div>
         </div>
         <div className="filter" >

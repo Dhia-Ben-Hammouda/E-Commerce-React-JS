@@ -188,7 +188,7 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
           <FormGroup>
             <FormControlLabel
               control={<Checkbox name="drive" value="1hdd+256ssd" onChange={handleFilters} />}
-              label="1TB + 256GB SSD "
+              label="1TB + 256GB SSD"
             />
             <FormControlLabel
               control={<Checkbox name="drive" value="1ssd" onChange={handleFilters} />}
