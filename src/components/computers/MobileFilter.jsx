@@ -1,12 +1,12 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
 import { clickHandler } from "./Computers.jsx";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { Slider } from "@mui/material";
+import { IoIosArrowDown } from "react-icons/io";
 
 const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealPriceRange }) => {
 
-  function handleFilters(e) {
+  function handleFilters(e) 
+  {
     const name = e.target.name;
     const value = e.target.value;
 
@@ -76,43 +76,14 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
     }
   }
 
-  function priceHandler(e) {
-    const content = document.querySelector("#price").children[1];
-    const elements = Array.from(document.getElementsByClassName("content"));
-    content.classList.toggle("active");
+  function toggleHandler(e)
+  {
+    const target = e.target.nextElementSibling
+
+    console.log(target);
+
+    target.classList.toggle("active");
   }
-
-  function brandHandler(e) {
-    const elements = Array.from(document.getElementsByClassName("content"));
-    const content = document.querySelector("#brand").children[1];
-    content.classList.toggle("active");
-  }
-
-  function procesorHandler(e) {
-    const elements = Array.from(document.getElementsByClassName("content"));
-    const content = document.querySelector("#procesor").children[1];
-    content.classList.toggle("active");
-  }
-
-  function driveHandler(e) {
-    const elements = Array.from(document.getElementsByClassName("content"));
-    const content = document.querySelector("#drive").children[1];
-    content.classList.toggle("active");
-  }
-
-  function graphicsCardHandler(e) {
-    const elements = Array.from(document.getElementsByClassName("content"));
-    const content = document.querySelector("#gc").children[1];
-    content.classList.toggle("active");
-  }
-
-  function memoryHandler(e) {
-    const elements = Array.from(document.getElementsByClassName("content"));
-    const content = document.querySelector("#memory").children[1];
-    content.classList.toggle("active");
-  }
-
-
 
   return (
     <div className="mobile-filter">
@@ -120,93 +91,69 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <ImCross color="#fff" />
       </div>
       <div className="filter-container">
-        <div className="filter" id="price" onClick={priceHandler}>
-          <div className="header">
-            <h2>Price</h2>
-            <IoIosArrowDown color="#777" />
+        <div className="filter">
+          <div className="header" id="price" onClick={ toggleHandler }>
+            <h2 id="price">Price</h2>
+            <IoIosArrowDown id="price" color="#777" />
           </div>
           <div className="content">
-            <div className="price">
-              <h1>Price</h1>
-              <Slider
-                className="slider"
-                step={200}
-                style={{ color: "#777" }}
-                min={0}
-                max={4000}
-                value={priceRange}
-                valueLabelDisplay="auto"
-                onChange={(e, newValue) => { setPriceRange(newValue) }}
-                onChangeCommitted={(e, newValue) => { setRealPriceRange(priceRange) }}
-              />
-              <div className="price-inputs">
-                <input
-                  className="min"
-                  value={priceRange[0] + "  DT"}
-                  onChange={() => { }}
-                />
-                <input
-                  className="max"
-                  value={priceRange[1] + "  DT"}
-                  onChange={() => { }} />
-              </div>
-            </div>
+
           </div>
         </div>
-        <div className="filter" id="brand" onClick={brandHandler}>
-          <div className="header">
-            <h2>Brand</h2>
-            <IoIosArrowDown color="#777" />
+        <div className="filter" id="brand">
+          <div className="header" id="brand" onClick={ toggleHandler }>
+            <h2 id="brand">Brand</h2>
+            <IoIosArrowDown id="brand" color="#777" />
           </div>
           <div className="content">
-            <label><input name="brand" value="HP" type="checkbox" />HP</label>
-            <label><input name="brand" value="Asus" type="checkbox" />Asus</label>
-            <label><input name="brand" value="Dell" type="checkbox" />Dell</label>
+            <label><input name="brand" value="HP" type="checkbox" onChange={handleFilters}  />HP</label>
+            <label><input name="brand" value="Asus" type="checkbox" onChange={handleFilters}  />Asus</label>
+            <label><input name="brand" value="Dell" type="checkbox" onChange={handleFilters}  />Dell</label>
           </div>
         </div>
-        <div className="filter" id="procesor" onClick={procesorHandler}>
-          <div className="header">
-            <h2>Procesor</h2>
-            <IoIosArrowDown color="#777" />
+        <div className="filter">
+          <div className="header" id="procesor" onClick={ toggleHandler }>
+            <h2 id="procesor" >Procesor</h2>
+            <IoIosArrowDown id="procesor" color="#777" />
           </div>
           <div className="content">
-            <label><input name="procesor" value="ryzen5" type="checkbox" />AMD Ryzen 5</label>
-            <label><input name="procesor" value="i5" type="checkbox" />Intel Core i5</label>
-            <label><input name="procesor" value="ryzen7" type="checkbox" />AMD Ryzen 7</label>
-            <label><input name="procesor" value="i7" type="checkbox" />Intel Core i7</label>
+            <label><input name="procesor" value="ryzen5" type="checkbox" onChange={handleFilters}  />AMD Ryzen 5</label>
+            <label><input name="procesor" value="i5" type="checkbox" onChange={handleFilters}  />Intel Core i5</label>
+            <label><input name="procesor" value="ryzen7" type="checkbox" onChange={handleFilters}  />AMD Ryzen 7</label>
+            <label><input name="procesor" value="i7" type="checkbox" onChange={handleFilters}  />Intel Core i7</label>
           </div>
         </div>
-        <div className="filter" id="memory" onClick={memoryHandler}>
-          <div className="header">
-            <h2>Memory</h2>
-            <IoIosArrowDown color="#777" />
+        <div className="filter">
+          <div className="header" id="memory" onClick={ toggleHandler }>
+            <h2 id="memory" >Memory</h2>
+            <IoIosArrowDown id="memory" color="#777" />
           </div>
           <div className="content">
-            <label><input name="memory" value="8gb" type="checkbox" />8 gb</label>
-            <label><input name="memory" value="16gb" type="checkbox" />16 gb</label>
-            <label><input name="memory" value="32gb" type="checkbox" />32 gb</label>
+            <label><input name="memory" value="8gb" type="checkbox" onChange={handleFilters}  />8 gb</label>
+            <label><input name="memory" value="16gb" type="checkbox" onChange={handleFilters}  />16 gb</label>
+            <label><input name="memory" value="32gb" type="checkbox" onChange={handleFilters}  />32 gb</label>
           </div>
         </div>
-        <div className="filter" id="drive" onClick={driveHandler}>
-          <div className="header">
-            <h2>Drive</h2>
-            <IoIosArrowDown color="#777" />
+        <div className="filter">
+          <div className="header" id="drive" onClick={ toggleHandler }>
+            <h2 id="drive">Drive</h2>
+            <IoIosArrowDown id="drive" color="#777" />
           </div>
           <div className="content">
-            <label><input name="drive" value="" type="checkbox" />8 gb</label>
-            <label><input name="drive" value="" type="checkbox" />16 gb</label>
-            <label><input name="drive" value="" type="checkbox" />32 gb</label>
+            <label><input name="drive" value="8gb" type="checkbox" onChange={handleFilters}  />8 gb</label>
+            <label><input name="drive" value="16gb" type="checkbox" onChange={handleFilters}  />16 gb</label>
+            <label><input name="drive" value="32gb" type="checkbox" onChange={handleFilters}  />32 gb</label>
           </div>
         </div>
-        <div className="filter" id="gc" onClick={graphicsCardHandler}>
-          <div className="header">
-            <h2>Graphics Card</h2>
-            <IoIosArrowDown color="#777" />
+        <div className="filter" >
+          <div className="header" id="gc" onClick={ toggleHandler }>
+            <h2 id="gc">Graphics Card</h2>
+            <IoIosArrowDown id="gc" color="#777" />
           </div>
           <div className="content">
-            <label><input name="graphicsCard" value="gtx1650" type="checkbox" />GTX 1650</label>
-            <label><input name="graphicsCard" value="rtx3050" type="checkbox" />RTX 3050</label>
-            <label><input name="graphicsCard" value="rtx3050ti" type="checkbox" />RTX 3050 ti</label>
+            <label><input name="graphicsCard" value="gtx1650" type="checkbox" onChange={handleFilters}  />GTX 1650</label>
+            <label><input name="graphicsCard" value="rtx3050" type="checkbox" onChange={handleFilters}  />RTX 3050</label>
+            <label><input name="graphicsCard" value="rtx3050ti" type="checkbox" onChange={handleFilters}  />RTX 3050 ti</label>
           </div>
         </div>
       </div>

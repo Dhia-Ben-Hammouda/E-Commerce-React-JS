@@ -100,20 +100,22 @@ const Filter = ({filters , setFilters , priceRange , setPriceRange , setRealPric
     <>
       <div className="filter-container">
         <div className="header">
-          <h2>Filter By</h2>
+          <h2 style={{color:"#151515" , margin:"auto 0"}}>Filter By</h2>
         </div>
         <div className="price">
           <h1>Price</h1>
-          <Slider
-            step={200}
-            style={{ color: "#777" }}
-            min={0}
-            max={4000}
-            value={priceRange}
-            valueLabelDisplay="auto"
-            onChange={(e, newValue) => { setPriceRange(newValue)  }}
-            onChangeCommitted={ (e,newValue) => {setRealPriceRange(priceRange) } }
-          />
+          <div className="slider">
+            <Slider
+              step={200}
+              style={{ color: "#777" , transform:"scale(.9)" , marginBottom:".75rem" }}
+              min={0}
+              max={4000}
+              value={priceRange}
+              valueLabelDisplay="auto"
+              onChange={(e, newValue) => { setPriceRange(newValue)  }}
+              onChangeCommitted={ (e,newValue) => {setRealPriceRange(priceRange) } }
+            />
+          </div>
           <div className="price-inputs">
             <input
               className="min"

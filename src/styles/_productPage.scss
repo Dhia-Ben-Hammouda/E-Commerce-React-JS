@@ -106,9 +106,28 @@
     padding-bottom: 2rem;
     margin-bottom: 2rem;
 
+
+    .price{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .slider{
+        display: flex;
+        width:70%;
+      }
+    }
+
     div:not(.header) {
       margin-top: 1rem;
       width: 80%;
+
+      label{
+      
+        span{
+          font-size: 14px;
+        }
+      }
 
       h1 {
         font-size: 18px;
@@ -125,6 +144,7 @@
           width: 80px;
           color: #777;
           text-align: center;
+          font-size: 13px;
 
           &:first-of-type {
             margin-right: .3rem;
@@ -268,7 +288,7 @@
             height:80%;
 
             .slider{
-              transform: scale( .8 , 1 );
+              transform: scale( .9 , .9 );
             }
 
             h1{
@@ -278,6 +298,7 @@
 
           label{
             font-size: 12px;
+            color:#777;
 
             input{
               margin-right: .7rem;
