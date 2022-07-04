@@ -236,7 +236,7 @@
 
 @media (max-width:576px) {
 
-  .mobile-filter{
+  .mobile-filter , .mobile-filter2 , .mobile-filter3 , .mobile-filter4{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -312,42 +312,6 @@
         }
       }
     }
-  }
-
-  .mobile-filter2{
-    display: block;
-    background:#fff;
-    height: calc(100vh - 80px);
-    width:0%;
-    position: fixed;
-    z-index: 5555555556;
-    top:80px;
-    box-shadow: 1px 0px 1px;
-    transition: .5s;
-  }
-
-  .mobile-filter3{
-    display: block;
-    background:#fff;
-    height: calc(100vh - 80px);
-    width:0%;
-    position: fixed;
-    z-index: 5555555556;
-    top:80px;
-    box-shadow: 1px 0px 1px;
-    transition: .5s;
-  }
-
-  .mobile-filter4{
-    display: block;
-    background:#fff;
-    height: calc(100vh - 80px);
-    width:0%;
-    position: fixed;
-    z-index: 5555555556;
-    top:80px;
-    box-shadow: 1px 0px 1px;
-    transition: .5s;
   }
 
   .pagination-filter {

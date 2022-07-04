@@ -2,6 +2,7 @@ import React from "react";
 import { ImCross } from "react-icons/im";
 import { clickHandler } from "./Computers.jsx";
 import { IoIosArrowDown } from "react-icons/io";
+import arrow from "../../images/arrow.png";
 
 const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealPriceRange }) => {
 
@@ -78,7 +79,10 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
 
   function toggleHandler(e)
   {
-    const target = e.target.nextElementSibling
+    const id = e.target.id;
+    console.log(id);
+    console.log(e.target);
+    const target = document.getElementById(id).nextElementSibling;
 
     console.log(target);
 
@@ -94,16 +98,16 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <div className="filter">
           <div className="header" id="price" onClick={ toggleHandler }>
             <h2 id="price">Price</h2>
-            <IoIosArrowDown id="price" color="#777" />
+            <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="price" alt="" />
           </div>
           <div className="content">
 
           </div>
         </div>
-        <div className="filter" id="brand">
+        <div className="filter">
           <div className="header" id="brand" onClick={ toggleHandler }>
             <h2 id="brand">Brand</h2>
-            <IoIosArrowDown id="brand" color="#777" />
+            <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="brand" alt="" />
           </div>
           <div className="content">
             <label><input name="brand" value="HP" type="checkbox" onChange={handleFilters}  />HP</label>
@@ -114,7 +118,7 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <div className="filter">
           <div className="header" id="procesor" onClick={ toggleHandler }>
             <h2 id="procesor" >Procesor</h2>
-            <IoIosArrowDown id="procesor" color="#777" />
+            <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="procesor" alt="" />
           </div>
           <div className="content">
             <label><input name="procesor" value="ryzen5" type="checkbox" onChange={handleFilters}  />AMD Ryzen 5</label>
@@ -126,7 +130,7 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <div className="filter">
           <div className="header" id="memory" onClick={ toggleHandler }>
             <h2 id="memory" >Memory</h2>
-            <IoIosArrowDown id="memory" color="#777" />
+            <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="memory" alt="" />
           </div>
           <div className="content">
             <label><input name="memory" value="8gb" type="checkbox" onChange={handleFilters}  />8 gb</label>
@@ -137,7 +141,7 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <div className="filter">
           <div className="header" id="drive" onClick={ toggleHandler }>
             <h2 id="drive">Drive</h2>
-            <IoIosArrowDown id="drive" color="#777" />
+            <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="drive" alt="" />
           </div>
           <div className="content">
             <label><input name="drive" value="8gb" type="checkbox" onChange={handleFilters}  />8 gb</label>
@@ -148,7 +152,7 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
         <div className="filter" >
           <div className="header" id="gc" onClick={ toggleHandler }>
             <h2 id="gc">Graphics Card</h2>
-            <IoIosArrowDown id="gc" color="#777" />
+            <img style={{width:".7rem" , marginRight:".1rem"}} src={arrow} id="gc" alt="" />
           </div>
           <div className="content">
             <label><input name="graphicsCard" value="gtx1650" type="checkbox" onChange={handleFilters}  />GTX 1650</label>
