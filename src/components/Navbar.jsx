@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const [searchTerm , setSearchTerm ] = useState("");
+  const [products , setProducts] = useState(useSelector(state => state.search.products));
 
   const count = useSelector(state => state.cart.quantity);
 
@@ -62,7 +64,33 @@ const Navbar = () => {
               <div className="search-icon">
                 <FaSearch size={"1.25rem"} />
               </div>
-              <input placeholder="Search for products" />
+              <input 
+                placeholder="Search for products" 
+                value={searchTerm}
+                onChange={(e)=>{setSearchTerm(e.target.value)}}
+              />
+              <div className="list">
+                {
+                  products.map((product ,index)=>{
+                    if(index < 3)
+                    {
+                      return(
+                        <div key={index+1} className="item">
+                          <a href="">
+                            <img src={product.picture} alt="" />
+                          </a>
+                          <div>
+                            <a href={`/product/${product._id}`}>
+                              <h3>{product.name.slice(0,40)}...</h3>
+                            </a>
+                            <h4>{product.price} DT</h4>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })
+                }
+              </div>
             </div>
             <div className="wrapper">
               {

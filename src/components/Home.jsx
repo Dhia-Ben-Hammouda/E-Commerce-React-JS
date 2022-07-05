@@ -10,8 +10,18 @@ import img9 from "../images/ads/img9.jpg";
 import img10 from "../images/ads/img10.jpg";
 import img11 from "../images/ads/img11.jpg";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch , useSelector } from "react-redux";
+import { useState , useEffect } from "react";
+import { fetchAllProducts } from "../app/actions/searchActions.js";
 
 const Home = () => {
+  const [searchTerm , setSearchTerm ] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchAllProducts());
+  } , [dispatch]) 
+
   return (
     <>
       <Navbar />
@@ -20,7 +30,11 @@ const Home = () => {
           <div className="search-icon">
             <FaSearch color="white" size={"1.25rem"} />
           </div>
-          <input placeholder="Search for products" />
+          <input 
+            placeholder="Search for products" 
+            value={searchTerm}
+            onChange={(e)=>{setSearchTerm(e.target.value)}}
+          />
         </div>
       </div>
       <Carousel />
