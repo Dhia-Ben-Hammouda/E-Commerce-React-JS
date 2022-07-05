@@ -135,7 +135,7 @@ nav{
         align-items: center;
 
         .item{
-          background:white;
+          background: white;
           display: flex;
           align-items: center;
           width:90%;
@@ -145,13 +145,16 @@ nav{
             margin-left:1rem;
             margin-top:.5rem;
             width:70%;
-            background:gold;
+            
+            a{
+              width: 100%;
 
-            h3{
-              font-size: 11px;
-              color:$primary;
+              h3{
+                font-size: 11px;
+                color:$primary;
+              }
             }
-  
+
             h4{
               font-size: 12px;
               color:red;
@@ -163,6 +166,7 @@ nav{
             display: flex;
             justify-content: center;
             align-items: center;
+            
             img{
               width:100%;
             }
@@ -174,6 +178,7 @@ nav{
         border:none;
         outline:none; 
         font-size: 14px;
+        color:#777;
       }
       
       .search-icon{
