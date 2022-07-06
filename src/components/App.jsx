@@ -13,6 +13,7 @@ import InsertComputer from "../api/InsertComputer.jsx";
 import InsertKeyboard from "../api/InsertKeyboard.jsx";
 import InsertMouse from "../api/InsertMouse.jsx";
 import InsertScreen from "../api/InsertScreen.jsx";
+import AllProducts from "./AllProducts.jsx";
 import { Route, Routes } from "react-router-dom";
 import "../styles/styles.scss";
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/InsertMouse" element={ <InsertMouse/> } />
         <Route path="/InsertKeyboard" element={ <InsertKeyboard/> } />
         <Route path="/product/:id" element={ <Product/> } />
+        <Route path="/allProducts/:searchTerm" element={ <AllProducts/> } />
         <Route path="/settings" element={ <Settings/> } />
       </Routes>
     </>

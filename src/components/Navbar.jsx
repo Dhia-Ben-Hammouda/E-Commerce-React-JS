@@ -94,7 +94,7 @@ const Navbar = () => {
                       })}
                       <div className="search-option">
                         <p>Click to see all products</p>
-                        <a href="#">
+                        <a href={`/allProducts/${searchTerm}`}>
                           Products
                         </a>
                       </div>
