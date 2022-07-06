@@ -92,9 +92,12 @@ const Navbar = () => {
                           );
                         }
                       })}
-                    <div>
-
-                    </div>
+                      <div className="search-option">
+                        <p>Click to see all products</p>
+                        <a href="#">
+                          Products
+                        </a>
+                      </div>
                   </>
                 }
               </div>

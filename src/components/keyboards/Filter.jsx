@@ -60,7 +60,7 @@ const Filter = ({ filters, setFilters, priceRange, setPriceRange, setRealPriceRa
     <>
       <div className="filter-container">
         <div className="header">
-          <h2 style={{ color: "#151515", margin: "auto 0" }}>Filter By</h2>
+          <h2 style={{ color: "#fff", margin: "auto 0" }}>Filter By</h2>
         </div>
         <div className="price">
           <h1>Price</h1>

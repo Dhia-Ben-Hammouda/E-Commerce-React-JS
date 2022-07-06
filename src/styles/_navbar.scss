@@ -128,12 +128,36 @@ nav{
         border-radius: 20px;
         width:100%;
         position: absolute;
-        top: 101.2%;
+        top: 101%;
         right:0px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        box-shadow: 0px 0px 1px;
+        box-shadow: 0px 0px 2px;
+
+        .search-option{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width:90%;
+
+          p{
+            color:#777;
+            font-size: 11px;
+          }
+
+          a{
+            background:$secondary;
+            font-size: 12px;
+            position: relative;
+            bottom: .5rem;
+            padding:.5rem 1rem;
+
+            &:hover{
+              color:white !important;
+            }
+          }
+        }
 
         .item{
           background: white;
