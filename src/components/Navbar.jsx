@@ -73,7 +73,9 @@ const Navbar = () => {
                 {
                   searchTerm !== "" && <>
                     {
-                      products.map((product, index) => {
+                      products.filter((product)=>{
+                        return product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                      }).map((product, index) => {
                         if (index < 3) {
                           return (
                             <div key={index + 1} className="item">
