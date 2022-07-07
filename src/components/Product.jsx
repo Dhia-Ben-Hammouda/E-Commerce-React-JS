@@ -26,7 +26,7 @@ const Product = () => {
   function clickHandler()
   {
     dispatch(addToCart({
-      id:product.id,
+      id:product._id,
       picture:product.picture,
       name:product.name,
       price:product.price,
