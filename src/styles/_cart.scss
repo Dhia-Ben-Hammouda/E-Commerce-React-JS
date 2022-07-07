@@ -55,6 +55,22 @@
           justify-content: space-around;
           align-items: center;
 
+          div{
+            display: flex;
+            align-items: center;
+
+            div{
+              color:white;
+              background:$secondary;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width:23px;
+              height:23px;
+              border-radius: 50%;
+            }
+          }
+
           input{
             width:40px;
             margin-left: 1rem;
@@ -73,7 +89,7 @@
   }
 
   .checkout{
-    padding:1.2rem 1rem;
+    padding:1.55rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,15 +114,14 @@
         background:$secondary;
         border:none;
         outline:none;
-        width: 100%;
-        font-size: 14px;
-        padding:.75rem 0rem;
-        border-radius: 13px;
+        font-size: 12px;
+        padding:.5rem 1rem;
+        border-radius: 10px;
         transition: .5s;
         color:white;
 
         &:hover{
-          transform: scale(1.1 , 1);
+          transform: scale(1.15 , 1);
         }
       }
     }
@@ -176,6 +191,15 @@
     
     .checkout{
       width:95%;
+
+      .wrapper{
+
+        button{
+          &:hover{
+            transform: scale(1,1);
+          }
+        }
+      }
     }
   }
 }
