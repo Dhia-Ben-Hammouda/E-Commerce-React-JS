@@ -2,13 +2,24 @@ import React from "react";
 import Navbar from "./Navbar.jsx";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../app/actions/cartActions.js";
+import { useDispatch } from "react-redux";
 
 const AllProducts = () => {
   const { searchTerm } = useParams();
+  const dispatch = useDispatch();
   const products = useSelector(state => state.search.products);
 
-  console.log(searchTerm);
-  console.log(products);
+  function addItemToCart(product)
+  {
+    dispatch(addToCart({
+      id:product._id,
+      picture:product.picture,
+      name:product.name,
+      price:product.price,
+      quantity:1
+    }))
+  }
 
   return (
     <>
@@ -21,7 +32,9 @@ const AllProducts = () => {
             return (
               <div key={index} className="grid-item">
                 <div className="img-wrapper">
-                  <img src={product.picture} />
+                  <a href={`/product/${product._id}`}>
+                    <img alt="" src={product.picture} />
+                  </a>
                 </div>
                 <h1>
                   <a href={`/product/${product._id}`}>
@@ -31,7 +44,7 @@ const AllProducts = () => {
                 <h2>{product.description}</h2>
                 <div className="price-wrapper">
                   <h3>{product.price} DT</h3>
-                  <button>Add To cart</button>
+                  <button onClick={()=>{addItemToCart(product)}}>Add To cart</button>
                 </div>
               </div>
             );

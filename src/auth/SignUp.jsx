@@ -48,7 +48,7 @@ const SignUp = ()=>{
     <>
       <div className="sign-up-container">
         <form className="sign-up-form" onSubmit={submitHandler}>
-          <IconContext.Provider value={{color:"#777" , size:"1.25rem"}}>
+          <IconContext.Provider value={{color:"#777" , size:"1rem"}}>
             <div className="input">
               <FaSignature />
               <input 
