@@ -7,6 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from "../Pagination.jsx";
 import { FaSearch } from "react-icons/fa";
 import MobileFilter from "./MobileFilter.jsx";
+import { useSelector } from "react-redux";
 
 export function clickHandler() {
   let filter = document.querySelector(".mobile-filter2");
@@ -15,6 +16,8 @@ export function clickHandler() {
 }
 
 const Keyboards = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState(useSelector(state => state.search.products));
   const [loading, setLoading] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [keyboards, setKeyboards] = useState([]);
@@ -73,7 +76,43 @@ const Keyboards = () => {
             <div className="search-icon">
               <FaSearch color="white" size={"1.25rem"} />
             </div>
-            <input placeholder="Search for products" />
+            <input 
+              placeholder="Search for products" 
+              value={searchTerm}
+              onChange={(e) => { setSearchTerm(e.target.value) }}
+            />
+            <div className="mobile-search">
+              {
+                searchTerm !== "" && <>
+                  {
+                    products.filter((product) => {
+                      return product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    }).map((product, index) => {
+                      if (index < 3) {
+                        return (
+                          <div key={index + 1} className="item">
+                            <a href={`/product/${product._id}`}>
+                              <img src={product.picture} alt="" />
+                            </a>
+                            <div>
+                              <a href={`/product/${product._id}`}>
+                                <h3>{product.name.slice(0, 40)}...</h3>
+                              </a>
+                              <h4>{product.price} DT</h4>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })}
+                  <div className="search-option">
+                    <p>Click to see all products</p>
+                    <a href={`/allProducts/${searchTerm}`}>
+                      Products
+                    </a>
+                  </div>
+                </>
+              }
+            </div>
           </div>
         </div>
       </div>
