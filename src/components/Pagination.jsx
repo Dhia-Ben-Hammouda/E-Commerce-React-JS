@@ -10,7 +10,6 @@ const Pagination = ({ page, numOfPages, setPage }) => {
       <button
         key={idx + 1}
         onClick={() => setPage(idx + 1)}
-        disabled={page === idx + 1}
         className={ idx+1 === page ? "page active" : "page"  }
       >
         {idx + 1}
@@ -30,7 +29,6 @@ const Pagination = ({ page, numOfPages, setPage }) => {
         {[...Array(5)].map((_, idx) => (
           <button
             key={startValue + idx + 1}
-            disabled={page === startValue + idx + 1}
             onClick={() => setPage(startValue + idx + 1)}
             className={ idx+1+startValue === page ? "page active" : "page"  }
           >
@@ -66,7 +64,6 @@ const Pagination = ({ page, numOfPages, setPage }) => {
             {[...Array(5)].map((_, idx) => (
               <button
                 key={startValue + idx + 1}
-                disabled={page === startValue + idx + 1}
                 onClick={() => setPage(startValue + idx + 1)}
                 className={ idx+1+startValue === page ? "page active" : "page"  }
               >
