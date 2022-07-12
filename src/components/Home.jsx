@@ -10,17 +10,18 @@ import img9 from "../images/ads/img9.jpg";
 import img10 from "../images/ads/img10.jpg";
 import img11 from "../images/ads/img11.jpg";
 import { FaSearch } from "react-icons/fa";
-import { useDispatch , useSelector } from "react-redux";
-import { useState , useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { fetchAllProducts } from "../app/actions/searchActions.js";
 
 const Home = () => {
-  const [searchTerm , setSearchTerm ] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState(useSelector(state => state.search.products));
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchAllProducts());
-  } , [dispatch]) 
+  }, [dispatch])
 
   return (
     <>
@@ -30,11 +31,43 @@ const Home = () => {
           <div className="search-icon">
             <FaSearch color="white" size={"1.25rem"} />
           </div>
-          <input 
-            placeholder="Search for products" 
+          <input
+            placeholder="Search for products"
             value={searchTerm}
-            onChange={(e)=>{setSearchTerm(e.target.value)}}
+            onChange={(e) => { setSearchTerm(e.target.value) }}
           />
+          <div className="mobile-search">
+            {
+              searchTerm !== "" && <>
+                {
+                  products.filter((product) => {
+                    return product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                  }).map((product, index) => {
+                    if (index < 3) {
+                      return (
+                        <div key={index + 1} className="item">
+                          <a href={`/product/${product._id}`}>
+                            <img src={product.picture} alt="" />
+                          </a>
+                          <div>
+                            <a href={`/product/${product._id}`}>
+                              <h3>{product.name.slice(0, 40)}...</h3>
+                            </a>
+                            <h4>{product.price} DT</h4>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                <div className="search-option">
+                  <p>Click to see all products</p>
+                  <a href={`/allProducts/${searchTerm}`}>
+                    Products
+                  </a>
+                </div>
+              </>
+            }
+          </div>
         </div>
       </div>
       <Carousel />
