@@ -41,6 +41,11 @@
     align-items: center;
     padding:3rem;
 
+    a{
+      text-decoration: none;
+      color:#777;
+    }
+
     .forgot{
       width:85%;
       display: flex;

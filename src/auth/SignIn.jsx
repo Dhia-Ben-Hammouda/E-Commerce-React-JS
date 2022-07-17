@@ -74,7 +74,9 @@ const SignIn = () => {
           </IconContext.Provider>
           <div className="forgot" style={{ color: "#777" }}>
             <label><input type="checkbox" /> Remember Me </label>
-            <p>Forgot password ?</p>
+            <a href="/passwordReset">
+              <p>Forgot password ?</p>
+            </a>
           </div>
           <button type="submit">
             Sign in

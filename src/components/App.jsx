@@ -9,6 +9,7 @@ import SignUp from "../auth/SignUp.jsx";
 import Settings from "./Settings.jsx";
 import Cart from "./Cart.jsx";
 import Product from "./Product.jsx";
+import ResetPassword from "../auth/ResetPassword.jsx";
 import InsertComputer from "../api/InsertComputer.jsx";
 import InsertKeyboard from "../api/InsertKeyboard.jsx";
 import InsertMouse from "../api/InsertMouse.jsx";
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/product/:id" element={ <Product/> } />
         <Route path="/allProducts/:searchTerm" element={ <AllProducts/> } />
         <Route path="/settings" element={ <Settings/> } />
+        <Route path="/passwordReset" element={ <ResetPassword/> } />
       </Routes>
     </>
   );
