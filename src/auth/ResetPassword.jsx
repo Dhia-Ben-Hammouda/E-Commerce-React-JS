@@ -9,7 +9,7 @@ const ResetPassword = ()=>{
   {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/resetPassword" , {
+    const response = await fetch("http://localhost:5000/resetPassword",{
       method:"POST",
       headers:{
         "content-type":"application/json"
@@ -37,7 +37,7 @@ const ResetPassword = ()=>{
               onChange={(e)=>{setEmail(e.target.value)}}
             />
           </div>
-          <button>Send password reset link</button>
+          <button type="submit">Send password reset link</button>
         </form>
       </div>
     </>
