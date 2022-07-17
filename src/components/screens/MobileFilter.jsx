@@ -93,26 +93,33 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
             <label><input name="brand" value="HP" type="checkbox" onChange={handleFilters} />HP</label>
             <label><input name="brand" value="Redragon" type="checkbox" onChange={handleFilters} />Redragon</label>
             <label><input name="brand" value="Dell" type="checkbox" onChange={handleFilters} />Dell</label>
+            <label><input name="brand" value="Samsung" type="checkbox" onChange={handleFilters} />Samsung</label>
           </div>
         </div>
+
         <div className="filter">
           <div className="header" id="procesor" onClick={toggleHandler}>
-            <h2 id="procesor" >Mechanical</h2>
+            <h2 id="procesor" >Size</h2>
             <img style={{ width: ".7rem", marginRight: ".1rem" }} src={arrow} id="procesor" alt="" />
           </div>
           <div className="content">
-            <label><input name="mechanical" value="yes" type="checkbox" onChange={handleFilters} />Yes</label>
-            <label><input name="mechanical" value="no" type="checkbox" onChange={handleFilters} />No</label>
+            <label><input name="size" value="21" type="checkbox" onChange={handleFilters} />21'</label>
+            <label><input name="size" value="24" type="checkbox" onChange={handleFilters} />24'</label>
+            <label><input name="size" value="27" type="checkbox" onChange={handleFilters} />27'</label>
+            <label><input name="size" value="32" type="checkbox" onChange={handleFilters} />32'</label>
           </div>
         </div>
+
         <div className="filter">
           <div className="header" id="memory" onClick={toggleHandler}>
-            <h2 id="memory" >Wireless</h2>
+            <h2 id="memory" >Resolution</h2>
             <img style={{ width: ".7rem", marginRight: ".1rem" }} src={arrow} id="memory" alt="" />
           </div>
           <div className="content">
-            <label><input name="wireless" value="yes" type="checkbox" onChange={handleFilters} />Yes</label>
-            <label><input name="wireless" value="no" type="checkbox" onChange={handleFilters} />No</label>
+            <label><input name="resolution" value="HD" type="checkbox" onChange={handleFilters} />HD</label>
+            <label><input name="resolution" value="Full HD" type="checkbox" onChange={handleFilters} />Full HD</label>
+            <label><input name="resolution" value="QHD" type="checkbox" onChange={handleFilters} />QHD</label>
+            <label><input name="resolution" value="4k" type="checkbox" onChange={handleFilters} />4K</label>
           </div>
         </div>
 
