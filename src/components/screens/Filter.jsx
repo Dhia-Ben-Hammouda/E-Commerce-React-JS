@@ -70,6 +70,7 @@ const Filter = ({ filters, setFilters, setPriceRange, priceRange, setRealPriceRa
           <h1>Price</h1>
           <div className="slider">
             <Slider
+              className="s"
               step={100}
               style={{ color: "#777" , transform:"scale(.9)" , marginBottom:".75rem" }}
               min={0}

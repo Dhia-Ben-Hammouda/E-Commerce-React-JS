@@ -96,6 +96,7 @@ const MobileFilter = ({ filters, setFilters, priceRange, setPriceRange, setRealP
           <div className="content">
             <div className="mobile-slider">
               <Slider
+                className="s"
                 step={200}
                 style={{ position: "absolute", left: "0", color: "#777", transform: "scale(.7)", marginBottom: ".75rem" }}
                 min={0}

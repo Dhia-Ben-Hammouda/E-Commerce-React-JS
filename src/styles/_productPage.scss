@@ -101,9 +101,9 @@
   .filter-container {
     background: white;
     overflow: hidden;
-    box-shadow: 0px 2px 4px -1px rgba(0 ,0  ,0 , 0.2),
-                0px -2px 5px 0px rgba(0,0,0,0.1),
-                0px 1px 10px 0px rgba(0,0,0,0.12);
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px -2px 5px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     width: 26%;
     display: flex;
     flex-direction: column;
@@ -120,6 +120,14 @@
       .slider {
         display: flex;
         width: 70%;
+
+        .s{
+          color:$secondary !important;
+          .css-eg0mwd-MuiSlider-thumb {
+            background-color: white !important;
+            box-shadow: 0px 0px 3px #777;
+          }
+        }
       }
     }
 
@@ -296,6 +304,14 @@
           .mobile-slider {
             margin-top: .7rem;
             height: 40px;
+
+            .s{
+              color:$secondary !important;
+              .css-eg0mwd-MuiSlider-thumb {
+                background-color: white !important;
+                box-shadow: 0px 0px 3px #777;
+              }
+            }
           }
 
           .price {
@@ -351,6 +367,7 @@
         border-radius: 10px;
         padding: .5rem .8rem;
         margin-left: .5rem;
+        box-shadow: 0px 0px 1px;
         color: white;
       }
 
@@ -362,9 +379,9 @@
         align-items: center;
         padding: .3rem .3rem;
         border-radius: 50px;
-        box-shadow: 0px 2px 4px -1px rgba(0 ,0  ,0 , 0.2),
-                0px -2px 5px 0px rgba(0,0,0,0.1),
-                0px 1px 10px 0px rgba(0,0,0,0.12);
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+          0px -2px 5px 0px rgba(0, 0, 0, 0.1),
+          0px 1px 10px 0px rgba(0, 0, 0, 0.12);
         width: 70%;
 
         .mobile-search {
@@ -378,33 +395,33 @@
           flex-direction: column;
           align-items: center;
           box-shadow: 0px 0px 2px;
-          z-index:10;
+          z-index: 10;
 
-          .search-option{
+          .search-option {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            width:90%;
-            padding-bottom:.5rem;
-  
-            p{
-              color:#777;
+            width: 90%;
+            padding-bottom: .5rem;
+
+            p {
+              color: #777;
               font-size: 11px;
             }
-  
-            a{
-              background:$secondary;
+
+            a {
+              background: $secondary;
               font-size: 12px;
               position: relative;
               border-radius: 10px;
               bottom: .5rem;
-              padding:.5rem 1rem;
+              padding: .5rem 1rem;
               transition: .5s;
               text-decoration: none;
-              color:white;
-  
-              &:hover{
-                color:white !important;
+              color: white;
+
+              &:hover {
+                color: white !important;
               }
             }
           }
